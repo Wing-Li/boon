@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">boon</string>
+
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="back">返回</string>
+
+    <string name="menu_learn">Learn</string>
+    <string name="menu_learn_msg">学习</string>
+    <string name="menu_joke">Joke</string>
+    <string name="menu_joke_msg">逗逼</string>
+    <string name="menu_young">Young</string>
+    <string name="menu_young_msg">妹子</string>
+    <string name="menu_super">Super</string>
+    <string name="menu_super_msg">超级福利</string>
+
+    <string name="msg_no_more_data">没有更多数据&#8230;.</string>
+    <string name="msg_waitting_loding">请等待，当前正在加载&#8230;.</string>
+    <string name="msg_net_erro">网络错误&#8230;</string>
+    <string name="load_error">加载出错，请重新打开应用程序</string>
+    <string name="msg_loading">正在加载...</string>
+
+</resources>
