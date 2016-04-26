@@ -8,8 +8,8 @@
 目前只完成初版，后期还会继续完善。
 因为临时公司要求学习php，项目暂且搁置了。
 
-![](https://github.com/Wing-Li/boon/blob/master/img/learn.png =600*337)
-![](https://github.com/Wing-Li/boon/blob/master/img/joke.png =600*337)
-![](https://github.com/Wing-Li/boon/blob/master/img/young.png =600*337)
+![](https://github.com/Wing-Li/boon/blob/master/img/learn.png)
+![](https://github.com/Wing-Li/boon/blob/master/img/joke.png)
+![](https://github.com/Wing-Li/boon/blob/master/img/young.png)
 
 
