@@ -46,12 +46,10 @@ public abstract class BaseFragment extends Fragment {
 
         ButterKnife.bind( this, rootView );
 
-
         return rootView;
     }
 
     protected abstract int getLayoutResource();
-
 
     public String getName() {
         return BaseFragment.class.getName();
@@ -60,7 +58,7 @@ public abstract class BaseFragment extends Fragment {
 
     public BaseActivity getHolder() {
         if (holder == null) {
-            throw new IllegalArgumentException( "the acticity must be extends BaseCompatActivity" );
+            throw new IllegalArgumentException( "the acticity must be extends BaseActivity" );
         }
         return holder;
     }

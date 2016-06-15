@@ -11,10 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lyl.boon.R;
-import com.lyl.boon.api.img.ImgUtils;
 import com.lyl.boon.app.MyApp;
-
-import me.drakeet.materialdialog.MaterialDialog;
 
 /**
  * Wing_Li
@@ -44,7 +41,6 @@ public class BaseActivity extends AppCompatActivity {
 
         //记录此activity已经打开
         appApplication = (MyApp) getApplication();
-        appApplication.activities.add( this );
     }
 
 
@@ -87,20 +83,12 @@ public class BaseActivity extends AppCompatActivity {
         Toast.makeText( getApplicationContext(), res, Toast.LENGTH_SHORT ).show();
     }
 
-    public void isWifi() {
-
-    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        appApplication.activities.remove( this );
         if (dialog != null && dialog.isShowing()) {
             dialog.dismiss();
         }
-    }
-
-    protected void setImage(String url, ImageView imageView) {
-        ImgUtils.load( this, url, imageView );
     }
 }

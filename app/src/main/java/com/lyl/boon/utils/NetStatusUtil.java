@@ -9,7 +9,7 @@ import android.telephony.TelephonyManager;
  * Wing_Li
  * 2016/4/15.
  */
-public class NetUtil {
+public class NetStatusUtil {
 
     /**
      * 检测当前打开的网络类型是否WIFI
