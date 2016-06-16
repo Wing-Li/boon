@@ -1,10 +1,10 @@
-package com.lyl.boon.ui.adapter;
+package com.lyl.boon.main.learn;
 
 import android.content.Context;
 
 import com.lyl.boon.R;
 import com.lyl.boon.entity.GankDataEntity;
-import com.lyl.boon.ui.adapter.base.MyBaseAdapter;
+import com.lyl.boon.framework.base.apdter.MyBaseAdapter;
 
 import org.byteam.superadapter.internal.SuperViewHolder;
 

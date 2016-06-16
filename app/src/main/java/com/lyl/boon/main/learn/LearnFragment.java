@@ -1,10 +1,10 @@
-package com.lyl.boon.ui.fragment;
+package com.lyl.boon.main.learn;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 import com.lyl.boon.app.AppConstant;
-import com.lyl.boon.ui.fragment.basefragment.BaseMenuFragment;
+import com.lyl.boon.framework.base.fragment.BaseMenuFragment;
 
 /**
  * Wing_Li

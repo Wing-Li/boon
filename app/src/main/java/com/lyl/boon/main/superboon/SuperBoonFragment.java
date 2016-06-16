@@ -1,4 +1,4 @@
-package com.lyl.boon.ui.fragment;
+package com.lyl.boon.main.superboon;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,7 +7,7 @@ import com.lyl.boon.R;
 import com.lyl.boon.api.net.Network;
 import com.lyl.boon.entity.BaseTngouEntiry;
 import com.lyl.boon.entity.SuperMenuEntiry;
-import com.lyl.boon.ui.fragment.basefragment.BaseMenuFragment;
+import com.lyl.boon.framework.base.fragment.BaseMenuFragment;
 
 import java.util.List;
 

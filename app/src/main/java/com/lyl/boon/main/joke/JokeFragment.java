@@ -1,12 +1,11 @@
-package com.lyl.boon.ui.fragment;
+package com.lyl.boon.main.joke;
 
 import android.view.View;
 
 import com.lyl.boon.R;
 import com.lyl.boon.api.net.Network;
 import com.lyl.boon.entity.ZhuangbiEntiry;
-import com.lyl.boon.ui.adapter.JokeListAdapter;
-import com.lyl.boon.ui.fragment.basefragment.BaseRecyclerFragment;
+import com.lyl.boon.framework.base.fragment.BaseRecyclerFragment;
 
 import java.util.ArrayList;
 import java.util.List;

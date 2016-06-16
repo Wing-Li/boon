@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.lyl.boon.R;
-import com.lyl.boon.ui.activity.ImageActivity;
+import com.lyl.boon.main.image.ImageActivity;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.lyl.boon.ui.adapter;
+package com.lyl.boon.main.superboon;
 
 import android.content.Context;
 import android.widget.ImageView;
@@ -7,7 +7,7 @@ import com.lyl.boon.R;
 import com.lyl.boon.api.img.ImgUtils;
 import com.lyl.boon.api.net.Network;
 import com.lyl.boon.entity.SuperImageEntirty;
-import com.lyl.boon.ui.adapter.base.MyBaseAdapter;
+import com.lyl.boon.framework.base.apdter.MyBaseAdapter;
 
 import org.byteam.superadapter.internal.SuperViewHolder;
 

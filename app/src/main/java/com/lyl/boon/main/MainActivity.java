@@ -1,4 +1,4 @@
-package com.lyl.boon.ui.activity;
+package com.lyl.boon.main;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,11 +7,11 @@ import android.view.View;
 import android.view.Window;
 
 import com.lyl.boon.R;
-import com.lyl.boon.ui.BaseActivity;
-import com.lyl.boon.ui.fragment.JokeFragment;
-import com.lyl.boon.ui.fragment.LearnFragment;
-import com.lyl.boon.ui.fragment.SuperBoonFragment;
-import com.lyl.boon.ui.fragment.YoungFragment;
+import com.lyl.boon.framework.base.BaseActivity;
+import com.lyl.boon.main.joke.JokeFragment;
+import com.lyl.boon.main.learn.LearnFragment;
+import com.lyl.boon.main.superboon.SuperBoonFragment;
+import com.lyl.boon.main.young.YoungFragment;
 import com.lyl.boon.utils.NetStatusUtil;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.BottomBarTab;

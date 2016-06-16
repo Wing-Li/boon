@@ -1,4 +1,4 @@
-package com.lyl.boon.ui.fragment;
+package com.lyl.boon.main.superboon;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,8 +10,7 @@ import com.lyl.boon.R;
 import com.lyl.boon.api.net.Network;
 import com.lyl.boon.entity.SuperImageEntirty;
 import com.lyl.boon.entity.SuperImageEntirty.ListBean;
-import com.lyl.boon.ui.adapter.SuperGalleryAdapter;
-import com.lyl.boon.ui.fragment.basefragment.BaseRecyclerFragment;
+import com.lyl.boon.framework.base.fragment.BaseRecyclerFragment;
 import com.lyl.boon.utils.IntentUtils;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.lyl.boon.ui;
+package com.lyl.boon.framework.base;
 
 import android.app.Dialog;
 import android.os.Bundle;

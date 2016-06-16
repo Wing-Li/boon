@@ -1,4 +1,4 @@
-package com.lyl.boon.ui.fragment.basefragment;
+package com.lyl.boon.framework.base.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,8 +8,8 @@ import android.support.v4.view.ViewPager;
 import android.widget.TextView;
 
 import com.lyl.boon.R;
-import com.lyl.boon.ui.BaseFragment;
-import com.lyl.boon.ui.adapter.ViewPageAdpater;
+import com.lyl.boon.framework.base.BaseFragment;
+import com.lyl.boon.main.ViewPageAdpater;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +55,7 @@ public abstract class BaseMenuFragment extends BaseFragment {
         mTitles = new ArrayList<>();
         mFragments = new ArrayList<>();
         setFragment();
+
         setTitle( 0 );//默认标题是第一个fragment的标题
     }
 

@@ -1,4 +1,4 @@
-package com.lyl.boon.ui.fragment;
+package com.lyl.boon.main.young;
 
 import android.view.View;
 
@@ -6,8 +6,7 @@ import com.lyl.boon.R;
 import com.lyl.boon.api.net.Network;
 import com.lyl.boon.entity.BaseGankEntiry;
 import com.lyl.boon.entity.GankDataEntity;
-import com.lyl.boon.ui.adapter.YongAdapter;
-import com.lyl.boon.ui.fragment.basefragment.BaseRecyclerFragment;
+import com.lyl.boon.framework.base.fragment.BaseRecyclerFragment;
 import com.lyl.boon.utils.IntentUtils;
 
 import java.util.ArrayList;

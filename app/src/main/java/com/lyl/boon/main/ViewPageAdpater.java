@@ -1,4 +1,4 @@
-package com.lyl.boon.ui.adapter;
+package com.lyl.boon.main;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

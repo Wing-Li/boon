@@ -1,4 +1,4 @@
-package com.lyl.boon.ui.fragment;
+package com.lyl.boon.main.superboon;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,9 +9,7 @@ import com.lyl.boon.R;
 import com.lyl.boon.api.net.Network;
 import com.lyl.boon.entity.BaseTngouEntiry;
 import com.lyl.boon.entity.SuperGalleryEntiry;
-import com.lyl.boon.ui.activity.SuperGalleryActivity;
-import com.lyl.boon.ui.adapter.SuperListAdapter;
-import com.lyl.boon.ui.fragment.basefragment.BaseRecyclerFragment;
+import com.lyl.boon.framework.base.fragment.BaseRecyclerFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +47,7 @@ public class SuperBoonListFragment extends BaseRecyclerFragment<SuperGalleryEnti
     @Override
     protected void initData() {
         mData = new ArrayList<SuperGalleryEntiry>();
-        mAdapter = new SuperListAdapter( getHolder(), mData, R.layout.item_image_v );
+        mAdapter = new SuperBoonListAdapter( getHolder(), mData, R.layout.item_image_v );
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.lyl.boon.ui.fragment.basefragment;
+package com.lyl.boon.framework.base.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,8 +10,8 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 import com.lyl.boon.R;
-import com.lyl.boon.ui.BaseFragment;
-import com.lyl.boon.ui.adapter.base.MyBaseAdapter;
+import com.lyl.boon.framework.base.BaseFragment;
+import com.lyl.boon.framework.base.apdter.MyBaseAdapter;
 import com.lyl.boon.ui.view.recycler.OnRecycleViewScrollListener;
 import com.wang.avi.AVLoadingIndicatorView;
 

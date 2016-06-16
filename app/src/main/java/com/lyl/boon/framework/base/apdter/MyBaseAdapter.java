@@ -1,4 +1,4 @@
-package com.lyl.boon.ui.adapter.base;
+package com.lyl.boon.framework.base.apdter;
 
 import android.content.Context;
 

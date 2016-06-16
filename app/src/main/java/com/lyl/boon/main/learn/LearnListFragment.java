@@ -1,4 +1,4 @@
-package com.lyl.boon.ui.fragment;
+package com.lyl.boon.main.learn;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,8 +9,7 @@ import com.lyl.boon.R;
 import com.lyl.boon.api.net.Network;
 import com.lyl.boon.entity.BaseGankEntiry;
 import com.lyl.boon.entity.GankDataEntity;
-import com.lyl.boon.ui.adapter.DevelopAdapter;
-import com.lyl.boon.ui.fragment.basefragment.BaseRecyclerFragment;
+import com.lyl.boon.framework.base.fragment.BaseRecyclerFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,12 +61,11 @@ public class LearnListFragment extends BaseRecyclerFragment<GankDataEntity> {
             }
         } ).subscribeOn( Schedulers.io() ).observeOn( AndroidSchedulers.mainThread() ).subscribe( observer );
     }
-
     @Override
     protected void ItemClickListener(View itemView, int viewType, int position) {
         GankDataEntity gankDataEntity = (GankDataEntity) mAdapter.getItem( position );
         //避免内存泄露，开启一个新的进程来加载WebView。
-        Intent intent = new Intent( "com.lyl.boon.ui.activity.Html5Activity" );
+        Intent intent = new Intent( "com.lyl.boon.main.web.Html5Activity" );
         Bundle bundle = new Bundle();
         bundle.putString( "url", gankDataEntity.getUrl() );
         intent.putExtra( "bundle", bundle );

@@ -1,4 +1,4 @@
-package com.lyl.boon.ui.activity;
+package com.lyl.boon.main.web;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 
 import com.lyl.boon.R;
-import com.lyl.boon.ui.BaseActivity;
+import com.lyl.boon.framework.base.BaseActivity;
 import com.lyl.boon.ui.view.loading.LoadingView;
 import com.lyl.boon.utils.LogUtil;
 

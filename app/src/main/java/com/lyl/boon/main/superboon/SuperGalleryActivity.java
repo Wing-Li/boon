@@ -1,10 +1,9 @@
-package com.lyl.boon.ui.activity;
+package com.lyl.boon.main.superboon;
 
 import android.os.Bundle;
 
 import com.lyl.boon.R;
-import com.lyl.boon.ui.BaseActivity;
-import com.lyl.boon.ui.fragment.SuperGalleryFragment;
+import com.lyl.boon.framework.base.BaseActivity;
 
 public class SuperGalleryActivity extends BaseActivity {
 
