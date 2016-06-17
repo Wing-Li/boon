@@ -3,6 +3,7 @@ package com.lyl.boon.main.learn;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import com.lyl.boon.R;
@@ -46,6 +47,8 @@ public class LearnListFragment extends BaseRecyclerFragment<GankDataEntity> {
     protected void initData() {
         mData = new ArrayList<GankDataEntity>();
         mAdapter = new DevelopAdapter( getHolder(), mData, R.layout.item_develop );
+        View itemHrader = LayoutInflater.from(getHolder()).inflate(R.layout.item_header,null);
+        mAdapter.addHeaderView(itemHrader);
     }
 
     @Override
