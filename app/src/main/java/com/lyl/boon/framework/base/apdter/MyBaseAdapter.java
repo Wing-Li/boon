@@ -8,7 +8,7 @@ import org.byteam.superadapter.internal.SuperViewHolder;
 import java.util.List;
 
 /**
- * 本着二次封装的原则，把使用的这个库在封装一遍
+ * 本着二次封装的原则，把使用的这个库在封装一遍,防止出现意外
  * Wing_Li
  * 2016/4/6.
  */

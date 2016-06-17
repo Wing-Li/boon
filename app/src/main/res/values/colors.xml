@@ -6,11 +6,8 @@
 
     <!--actionbar_background -->
     <color name="actionbar_background">#CEA15C</color>
-
     <color name="action_title_color">#534847</color>
-
     <color name="image_bg">#444444</color>
-
     <color name="loading">#666666</color>
 
     <!--loading 颜色-->
