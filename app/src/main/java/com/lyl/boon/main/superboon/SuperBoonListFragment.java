@@ -3,7 +3,6 @@ package com.lyl.boon.main.superboon;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 
 import com.lyl.boon.R;
@@ -49,8 +48,6 @@ public class SuperBoonListFragment extends BaseRecyclerFragment<SuperGalleryEnti
     protected void initData() {
         mData = new ArrayList<SuperGalleryEntiry>();
         mAdapter = new SuperBoonListAdapter( getHolder(), mData, R.layout.item_image_v );
-        View itemHrader = LayoutInflater.from(getHolder()).inflate(R.layout.item_header,null);
-        mAdapter.addHeaderView(itemHrader);
     }
 
     @Override

@@ -3,7 +3,7 @@ package com.lyl.boon.main.learn;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
-import com.lyl.boon.app.AppConstant;
+import com.lyl.boon.app.Constant;
 import com.lyl.boon.framework.base.fragment.BaseMenuFragment;
 
 /**
@@ -16,9 +16,9 @@ public class LearnFragment extends BaseMenuFragment {
 
     @Override
     protected void setFragment() {
-        addFragment( AppConstant.GANK_TYPE_ANDROID, AppConstant.GANK_TYPE_ANDROID );
-        addFragment( AppConstant.GANK_TYPE_IOS, AppConstant.GANK_TYPE_IOS );
-        addFragment( AppConstant.GANK_TYPE_WEB, AppConstant.GANK_TYPE_WEB );
+        addFragment( Constant.GANK_TYPE_ANDROID, Constant.GANK_TYPE_ANDROID );
+        addFragment( Constant.GANK_TYPE_IOS, Constant.GANK_TYPE_IOS );
+        addFragment( Constant.GANK_TYPE_WEB, Constant.GANK_TYPE_WEB );
 
         mViewPageAdpater.setFragments( mFragments, mTitles );
     }

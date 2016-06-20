@@ -24,10 +24,10 @@ public class ImgUtils {
 
     /**
      * @param context
-     * @param url 图片的地址
-     * @param imageView  ImageView
-     * @param thumbnail  简单的缩略图:0.1f 作为参数，Glide 将会显示原始图像的10%的大小
-     * @param scaleType  SCALETYPE_NULL:没有类型，
+     * @param url               图片的地址
+     * @param imageView         ImageView
+     * @param thumbnail         简单的缩略图:0.1f 作为参数，Glide 将会显示原始图像的10%的大小
+     * @param scaleType         SCALETYPE_NULL:没有类型，
      * @param diskCacheStrategy DiskCacheStrategy.NONE 什么都不缓存，就像刚讨论的那样
      *                          DiskCacheStrategy.SOURCE 仅仅只缓存原来的全分辨率的图像。在我们上面的例子中，将会只有一个1000x1000 像素的图片
      *                          DiskCacheStrategy.RESULT 仅仅缓存最终的图像，即，降低分辨率后的（或者是转换后的）
@@ -48,6 +48,10 @@ public class ImgUtils {
             Glide.with(context).load(url).asGif().placeholder(placeholderRes).error(errorRes).thumbnail(thumbnail)
                     .diskCacheStrategy(diskCacheStrategy).fitCenter().into(imageView);
         }
+    }
+
+    public static void load(Context context, int url, ImageView imageView) {
+        Glide.with(context).load(url).placeholder(placeholderRes).error(errorRes).fitCenter().into(imageView);
     }
 
     public static void load(Context context, String url, ImageView imageView) {

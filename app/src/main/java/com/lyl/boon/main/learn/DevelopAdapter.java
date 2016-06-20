@@ -20,6 +20,10 @@ public class DevelopAdapter extends MyBaseAdapter<GankDataEntity> {
         super(context, items, layoutResId);
     }
 
+    @Override
+    public int getCount() {
+        return this.getItemCount();
+    }
 
     @Override
     public void onBind(SuperViewHolder holder, int viewType, int position, GankDataEntity data) {

@@ -4,7 +4,7 @@ package com.lyl.boon.app;
  * Wing_Li
  * 2016/4/7.
  */
-public class AppConstant {
+public class Constant {
     public static final String GANK_TYPE_ANDROID ="Android";
     public static final String GANK_TYPE_IOS ="iOS";
     public static final String GANK_TYPE_WEB ="前端";

@@ -33,9 +33,9 @@ public class LearnListFragment extends BaseRecyclerFragment<GankDataEntity> {
 
     @Override
     public void onAttach(Context context) {
-        super.onAttach( context );
+        super.onAttach(context);
         Bundle bundle = getArguments();
-        type = bundle.getString( LearnFragment.LEARN_TYPE );
+        type = bundle.getString(LearnFragment.LEARN_TYPE);
     }
 
     @Override
@@ -46,14 +46,15 @@ public class LearnListFragment extends BaseRecyclerFragment<GankDataEntity> {
     @Override
     protected void initData() {
         mData = new ArrayList<GankDataEntity>();
-        mAdapter = new DevelopAdapter( getHolder(), mData, R.layout.item_develop );
-        View itemHrader = LayoutInflater.from(getHolder()).inflate(R.layout.item_header,null);
+        mAdapter = new DevelopAdapter(getHolder(), mData, R.layout.item_develop);
+
+        View itemHrader = LayoutInflater.from(getHolder()).inflate(R.layout.item_header, null);
         mAdapter.addHeaderView(itemHrader);
     }
 
     @Override
     protected void setSubscribe() {
-        subscription = Network.getGankMenuList().getGankList( type, page ).map( new Func1<BaseGankEntiry<List<GankDataEntity>>, List<GankDataEntity>>() {
+        subscription = Network.getGankMenuList().getGankList(type, page).map(new Func1<BaseGankEntiry<List<GankDataEntity>>, List<GankDataEntity>>() {
             @Override
             public List<GankDataEntity> call(BaseGankEntiry<List<GankDataEntity>> baseGankEntiry) {
                 if (!baseGankEntiry.isError()) {
@@ -62,17 +63,18 @@ public class LearnListFragment extends BaseRecyclerFragment<GankDataEntity> {
                 }
                 return null;
             }
-        } ).subscribeOn( Schedulers.io() ).observeOn( AndroidSchedulers.mainThread() ).subscribe( observer );
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
+
     @Override
     protected void ItemClickListener(View itemView, int viewType, int position) {
-        GankDataEntity gankDataEntity = (GankDataEntity) mAdapter.getItem( position );
+        GankDataEntity gankDataEntity = (GankDataEntity) mAdapter.getItem(position - 1);
         //避免内存泄露，开启一个新的进程来加载WebView。
-        Intent intent = new Intent( "com.lyl.boon.main.web.Html5Activity" );
+        Intent intent = new Intent("com.lyl.boon.main.web.Html5Activity");
         Bundle bundle = new Bundle();
-        bundle.putString( "url", gankDataEntity.getUrl() );
-        intent.putExtra( "bundle", bundle );
-        startActivity( intent );
+        bundle.putString("url", gankDataEntity.getUrl());
+        intent.putExtra("bundle", bundle);
+        startActivity(intent);
     }
 
 
