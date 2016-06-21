@@ -16,21 +16,4 @@
 
         <item name="android:windowNoTitle">true</item>
     </style>
-
-    <!--&lt;!&ndash; 自定义ActionBar样式，重设ActionBar背景，隐藏ActionBar左侧的应用图标和标题 &ndash;&gt;-->
-    <!--<style name="actionbar_def_style" parent="@android:style/Widget.Holo.Light.ActionBar">-->
-        <!--&lt;!&ndash; 在样式里面直接替换掉ActionBar的背景，避免在有的窗口进入慢时导致进入时显示系统默认的ActionBar &ndash;&gt;-->
-        <!--<item name="android:background">@color/actionbar_background</item>-->
-        <!--&lt;!&ndash; 在样式里面去掉ActionBar的应用图标和标题 &ndash;&gt;-->
-        <!--<item name="android:displayOptions">useLogo</item>-->
-    <!--</style>-->
-
-    <!--&lt;!&ndash; 自定义窗口样式，需要带ActionBar &ndash;&gt;-->
-    <!--<style name="CustomActionBarTheme" parent="@android:style/Theme.Holo.Light">-->
-        <!--<item name="android:displayOptions">useLogo</item>-->
-        <!--<item name="android:actionBarStyle">@style/actionbar_def_style</item>-->
-        <!--&lt;!&ndash;返回icon&ndash;&gt;-->
-        <!--<item name="android:homeAsUpIndicator">@drawable/ic_back</item>-->
-    <!--</style>-->
-
 </resources>
