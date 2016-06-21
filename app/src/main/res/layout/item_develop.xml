@@ -1,27 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_vertical"
-    android:orientation="vertical"
     >
-
     <TextView
         android:id="@+id/item_develop_title"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/learn_item_height"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:gravity="center_vertical"
-        android:text="123456789456"
+        android:layout_marginTop="12dp"
+        android:text="那些女生做起来很正常，男生做起来很奇怪的事"
         android:textColor="#666666"
         android:textSize="14sp"
+        />
+
+    <TextView
+        android:id="@+id/item_develop_tho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/item_develop_title"
+        android:layout_below="@+id/item_develop_title"
+        android:layout_marginTop="4dp"
+        android:text="代码家"
+        android:textColor="#666666"
+        android:textSize="12sp"
+        />
+
+    <TextView
+        android:id="@+id/item_develop_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/item_develop_tho"
+        android:layout_toRightOf="@+id/item_develop_tho"
+        android:text=" - 2016-06-20"
+        android:textColor="#666666"
+        android:textSize="12sp"
         />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_below="@+id/item_develop_tho"
+        android:layout_marginTop="12dp"
         android:background="@color/colorPrimaryDark"/>
 
-</LinearLayout>
+</RelativeLayout>

@@ -17,4 +17,18 @@
     <color name="view_bg">#00000000</color>
     <color name="shadow">#25808080</color>
     <color name="dialog_bg">#f5f5f5</color>
+
+
+    <color name="color1">#30A9DE</color>
+    <color name="color2">#EFDC05</color>
+    <color name="color3">#E53A40</color>
+    <color name="color4">#090707</color>
+    <color name="color5">#A593E0</color>
+    <color name="color6">#F6B352</color>
+    <color name="color7">#F68657</color>
+    <color name="color8">#8CD790</color>
+    <color name="color9">#77AF9C</color>
+    <color name="color10">#285943</color>
+
+
 </resources>
