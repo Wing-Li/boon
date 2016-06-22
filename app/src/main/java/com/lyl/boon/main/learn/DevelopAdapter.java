@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.lyl.boon.R;
 import com.lyl.boon.entity.GankDataEntity;
 import com.lyl.boon.framework.base.apdter.MyBaseAdapter;
+import com.lyl.boon.utils.MyUtils;
 
 import org.byteam.superadapter.internal.SuperViewHolder;
 
@@ -33,7 +34,7 @@ public class DevelopAdapter extends MyBaseAdapter<GankDataEntity> {
 
         TextView whoTv = holder.getView(R.id.item_develop_tho);
         whoTv.setText(who.trim());
-//        whoTv.setTextColor(mContext.getResources().getColorStateList(MyUtils.getColors()));
+        whoTv.setTextColor(mContext.getResources().getColorStateList(MyUtils.getColors()));
 
         holder.setText(R.id.item_develop_date, " - " + data.getCreatedAt().substring(0, 10).trim());
     }
