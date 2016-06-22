@@ -19,5 +19,6 @@
     <string name="msg_net_erro">网络错误&#8230;</string>
     <string name="load_error">加载出错，请重新打开应用程序</string>
     <string name="msg_loading">正在加载...</string>
+    <string name="default_who">佚名</string>
 
 </resources>

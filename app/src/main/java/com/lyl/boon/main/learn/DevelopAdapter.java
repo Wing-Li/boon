@@ -1,6 +1,8 @@
 package com.lyl.boon.main.learn;
 
 import android.content.Context;
+import android.text.TextUtils;
+import android.widget.TextView;
 
 import com.lyl.boon.R;
 import com.lyl.boon.entity.GankDataEntity;
@@ -21,14 +23,18 @@ public class DevelopAdapter extends MyBaseAdapter<GankDataEntity> {
     }
 
     @Override
-    public int getCount() {
-        return this.getItemCount();
-    }
-
-    @Override
     public void onBind(SuperViewHolder holder, int viewType, int position, GankDataEntity data) {
         super.onBind(holder, viewType, position, data);
 
-        holder.setText(R.id.item_develop_title, data.getDesc());
+        holder.setText(R.id.item_develop_title, data.getDesc().trim());
+
+        String who = data.getWho();
+        if (TextUtils.isEmpty(who)) who = mContext.getString(R.string.default_who);
+
+        TextView whoTv = holder.getView(R.id.item_develop_tho);
+        whoTv.setText(who.trim());
+//        whoTv.setTextColor(mContext.getResources().getColorStateList(MyUtils.getColors()));
+
+        holder.setText(R.id.item_develop_date, " - " + data.getCreatedAt().substring(0, 10).trim());
     }
 }

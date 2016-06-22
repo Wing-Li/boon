@@ -14,9 +14,11 @@ import java.util.List;
  */
 public class MyBaseAdapter<T> extends SuperAdapter<T> {
 
+    public Context mContext;
 
     public MyBaseAdapter(Context context, List<T> items, int layoutResId) {
         super(context, items, layoutResId);
+        mContext = context;
     }
 
     @Override

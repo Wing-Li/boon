@@ -59,7 +59,6 @@ public class LearnListFragment extends BaseRecyclerFragment<GankDataEntity> {
             public List<GankDataEntity> call(BaseGankEntiry<List<GankDataEntity>> baseGankEntiry) {
                 if (!baseGankEntiry.isError()) {
                     return baseGankEntiry.getResults();
-
                 }
                 return null;
             }
@@ -76,6 +75,4 @@ public class LearnListFragment extends BaseRecyclerFragment<GankDataEntity> {
         intent.putExtra("bundle", bundle);
         startActivity(intent);
     }
-
-
 }

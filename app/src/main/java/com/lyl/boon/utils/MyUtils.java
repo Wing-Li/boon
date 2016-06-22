@@ -13,6 +13,6 @@ public class MyUtils {
             .color6, R.color.color7, R.color.color8, R.color.color9, R.color.color10};
 
     public static int getColors() {
-        return mTextColors[new Random().nextInt(11)];
+        return mTextColors[new Random().nextInt(10)];
     }
 }
