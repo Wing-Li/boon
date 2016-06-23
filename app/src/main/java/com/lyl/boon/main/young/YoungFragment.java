@@ -59,9 +59,6 @@ public class YoungFragment extends BaseRecyclerFragment<GankDataEntity> {
             imgs.add( entity.getUrl() );
         }
 
-        showToast( "imgs 有" + imgs.size() + "个，当前点击的是第：" + position );
-
         IntentUtils.startImageActivity( getHolder(), imgs, position );
-
     }
 }

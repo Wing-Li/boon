@@ -4,6 +4,9 @@
     <color name="colorPrimaryDark">#E0E3DA</color>
     <color name="colorAccent">#566270</color>
 
+    <color name="transparent">#00000000</color>
+    <color name="gary">#25808080</color>
+
     <!--actionbar_background -->
     <color name="actionbar_background">#CEA15C</color>
     <color name="action_title_color">#534847</color>

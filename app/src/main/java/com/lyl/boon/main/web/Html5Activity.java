@@ -1,5 +1,6 @@
 package com.lyl.boon.main.web;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.KeyEvent;
@@ -10,6 +11,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.lyl.boon.R;
 import com.lyl.boon.framework.base.BaseActivity;
@@ -22,10 +24,9 @@ public class Html5Activity extends BaseActivity {
 
     private String mUrl;
 
-    private LinearLayout mLayout;
+    private RelativeLayout mLayout;
     private LoadingView mLoadingView;
     private WebView mWebView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,21 @@ public class Html5Activity extends BaseActivity {
         LogUtil.d("Web--Url:", mUrl);
 
         initActionbar();
-        mLayout = (LinearLayout) findViewById(R.id.web_layout);
+        mActionLeftImg.setImageResource(R.drawable.ic_back);
+        mActionLeftImg.setColorFilter(Color.BLACK);
+        mActionLeftImg.setVisibility(View.VISIBLE);
+        mActionLeftImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        initWebView();
+    }
+
+    private void initWebView() {
+        mLayout = (RelativeLayout) findViewById(R.id.web_layout);
         mLoadingView = (LoadingView) findViewById(R.id.loadingView);
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
@@ -45,6 +60,7 @@ public class Html5Activity extends BaseActivity {
         mWebView = new WebView(getApplicationContext());
         mWebView.setLayoutParams(params);
         mLayout.addView(mWebView);
+        mLoadingView.bringToFront();
 
         WebSettings mWebSettings = mWebView.getSettings();
         mWebSettings.setSupportZoom(true);
@@ -61,9 +77,7 @@ public class Html5Activity extends BaseActivity {
         mWebView.setWebViewClient(webViewClient);
 
         mWebView.loadUrl(mUrl);
-
     }
-
 
     /**
      * 多窗口的问题
@@ -74,7 +88,6 @@ public class Html5Activity extends BaseActivity {
         mWebSettings.setSupportMultipleWindows(true);
         mWebSettings.setJavaScriptCanOpenWindowsAutomatically(true);
     }
-
 
     /**
      * HTML5数据存储
@@ -136,6 +149,7 @@ public class Html5Activity extends BaseActivity {
     private boolean stopLoading() {
         if (mLoadingView != null && mLoadingView.isShown()) {
             mLoadingView.setVisibility(View.GONE);
+            mLayout.removeView(mLoadingView);
             return true;
         }
         return false;

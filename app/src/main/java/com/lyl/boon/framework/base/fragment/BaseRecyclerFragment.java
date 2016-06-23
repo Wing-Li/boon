@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.lyl.boon.R;
 import com.lyl.boon.framework.base.BaseFragment;
@@ -159,6 +160,7 @@ public abstract class BaseRecyclerFragment<T> extends BaseFragment {
     private void stopLoadingView() {
         if (mLoadingView != null && mLoadingView.isShown()) {
             mLoadingView.setVisibility(View.GONE);
+            ((ViewGroup) mLoadingView.getParent()).removeView(mLoadingView);
         }
     }
 
@@ -189,13 +191,12 @@ public abstract class BaseRecyclerFragment<T> extends BaseFragment {
     /**
      * 点击事件
      *
-     * @param itemView
-     * @param viewType
+     * @param itemView 当前的 Item
+     * @param viewType 当有多种 Item 时，当前的类型
      * @param position 第几个
      */
     protected void ItemClickListener(View itemView, int viewType, int position) {
 
     }
 
-    ;
 }

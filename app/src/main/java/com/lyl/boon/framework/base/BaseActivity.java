@@ -27,9 +27,9 @@ public class BaseActivity extends AppCompatActivity {
     //标题
     public TextView mActionTitle;
     //标题图片
-    public ImageView mActionImage;
-    //侧边栏开关
     public ImageView mActionRightImg;
+    //侧边栏开关
+    public ImageView mActionLeftImg;
     //返回按钮
     public TextView mActionBack;
 
@@ -37,50 +37,51 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
+        super.onCreate(savedInstanceState);
 
         //记录此activity已经打开
         appApplication = (MyApp) getApplication();
     }
 
-
     /**
      * 初始化actionbar
      */
     protected void initActionbar() {
-        ActionBar.LayoutParams lp = new ActionBar.LayoutParams( ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT, Gravity.CENTER );
-        View viewTitleBar = getLayoutInflater().inflate( R.layout.action_bar_title, null );
+        ActionBar.LayoutParams lp = new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar
+                .LayoutParams.MATCH_PARENT, Gravity.CENTER);
+        View viewTitleBar = getLayoutInflater().inflate(R.layout.action_bar_title, null);
 
         actionBar = getSupportActionBar();
 
-        if (actionBar == null && lp == null && viewTitleBar == null) {
-            return;
-        }
+        if (actionBar == null) return;
 
-        actionBar.setCustomView( viewTitleBar, lp );
-        actionBar.setDisplayShowHomeEnabled( false );//去掉导航
-        actionBar.setDisplayShowTitleEnabled( false );//去掉标题
-        actionBar.setDisplayOptions( ActionBar.DISPLAY_SHOW_CUSTOM );
-        actionBar.setDisplayShowCustomEnabled( true );
-        //标题图片
-        mActionImage = (ImageView) getSupportActionBar().getCustomView().findViewById( R.id.action_bar_cat_img );
-        //标题文字
-        mActionTitle = (TextView) getSupportActionBar().getCustomView().findViewById( R.id.action_bar_title_txt );
+        actionBar.setCustomView(viewTitleBar, lp);
+        actionBar.setDisplayShowHomeEnabled(false);//去掉导航
+        actionBar.setDisplayShowTitleEnabled(false);//去掉标题
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        actionBar.setDisplayShowCustomEnabled(true);
+
+        View actionView = getSupportActionBar().getCustomView();
+
+        if (actionView == null) return;
+
         //右边图标
-        mActionRightImg = (ImageView) getSupportActionBar().getCustomView().findViewById( R.id.action_bar_title_menu );
-        //返回
-        mActionBack = (TextView) getSupportActionBar().getCustomView().findViewById( R.id.action_bar_back_txt );
+        mActionRightImg = (ImageView) actionView.findViewById(R.id.action_bar_right_img);
+        //标题文字
+        mActionTitle = (TextView) actionView.findViewById(R.id.action_bar_title_txt);
+        //左边图标
+        mActionLeftImg = (ImageView) actionView.findViewById(R.id.action_bar_left_img);
+        //左边文字
+        mActionBack = (TextView) actionView.findViewById(R.id.action_bar_back_txt);
 
-        mActionBack.setVisibility( View.GONE );
-        mActionTitle.setVisibility( View.VISIBLE );
     }
 
     public void showToast(String str) {
-        Toast.makeText( getApplicationContext(), str, Toast.LENGTH_SHORT ).show();
+        Toast.makeText(getApplicationContext(), str, Toast.LENGTH_SHORT).show();
     }
 
     public void showToast(int res) {
-        Toast.makeText( getApplicationContext(), res, Toast.LENGTH_SHORT ).show();
+        Toast.makeText(getApplicationContext(), res, Toast.LENGTH_SHORT).show();
     }
 
 
