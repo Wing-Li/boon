@@ -1,6 +1,5 @@
 package com.lyl.boon.main.web;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.KeyEvent;
@@ -41,7 +40,8 @@ public class Html5Activity extends BaseActivity {
         mLayout = (LinearLayout) findViewById(R.id.web_layout);
         mLoadingView = (LoadingView) findViewById(R.id.loadingView);
 
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT);
         mWebView = new WebView(getApplicationContext());
         mWebView.setLayoutParams(params);
         mLayout.addView(mWebView);
@@ -54,27 +54,14 @@ public class Html5Activity extends BaseActivity {
         mWebSettings.setLoadsImagesAutomatically(true);
         mWebSettings.setSupportMultipleWindows(true);
 
-        //调用JS方法.安卓版本大于17,加上注解 @JavascriptInterface
-        mWebSettings.setJavaScriptEnabled(true);
-
         saveData(mWebSettings);
         newWin(mWebSettings);
 
         mWebView.setWebChromeClient(webChromeClient);
         mWebView.setWebViewClient(webViewClient);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            mWebView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-                @Override
-                public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                    stopLoading();
-                }
-
-
-            });
-        }
-
         mWebView.loadUrl(mUrl);
+
     }
 
 
@@ -121,7 +108,6 @@ public class Html5Activity extends BaseActivity {
 
     WebChromeClient webChromeClient = new WebChromeClient() {
 
-
         //=========多窗口的问题==========================================================
         @Override
         public boolean onCreateWindow(WebView view, boolean isDialog, boolean isUserGesture, Message resultMsg) {
@@ -131,7 +117,6 @@ public class Html5Activity extends BaseActivity {
             return true;
         }
         //=========多窗口的问题==========================================================
-
 
         @Override
         public void onProgressChanged(WebView view, int newProgress) {
@@ -148,17 +133,24 @@ public class Html5Activity extends BaseActivity {
         }
     };
 
-    private void stopLoading() {
+    private boolean stopLoading() {
         if (mLoadingView != null && mLoadingView.isShown()) {
             mLoadingView.setVisibility(View.GONE);
+            return true;
         }
+        return false;
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && mWebView.canGoBack()) {
-            mWebView.goBack();
-            return true;
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (stopLoading()) {
+                return true;
+            }
+            if (mWebView.canGoBack()) {
+                mWebView.goBack();
+                return true;
+            }
         }
 
         return super.onKeyDown(keyCode, event);
