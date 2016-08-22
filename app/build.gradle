@@ -2,9 +2,24 @@ apply plugin: 'com.android.application'
 repositories {
     maven { url "https://jitpack.io" }
 }
+
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
+
+    // 签名文件
+    signingConfigs {
+        config {
+            keyAlias 'lyl'
+            keyPassword '123456'
+            storeFile file('../lyl.jks')
+            storePassword '123456'
+        }
+    }
 
     defaultConfig {
         applicationId "com.lyl.boon"
@@ -13,10 +28,72 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    // 多渠道/多环境 的不同配置
+    productFlavors {
+        dev {
+            // 每个环境包名不同
+            applicationId "com.lyl.boon.dev"
+            // 动态添加 string.xml 字段；
+            // 注意，这里是添加，在 string.xml 不能有这个字段，会重名！！！
+            resValue "string", "app_name", "dev_boon"
+            resValue "bool", "isrRank", 'false'
+            // 动态修改 常量 字段
+            buildConfigField "String", "ENVIRONMENT", '"dev"'
+            // 修改 AndroidManifest.xml 里渠道变量
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "dev"]
+        }
+        stage {
+            applicationId "com.lyl.boon.stage"
+
+            resValue "string", "app_name", "stage_boon"
+            resValue "bool", "isrRank", 'true'
+
+            buildConfigField "String", "ENVIRONMENT", '"stage"'
+
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "stage"]
+        }
+        prod {
+            applicationId "com.lyl.boon.prod"
+
+            resValue "string", "app_name", "boon"
+            resValue "bool", "isrRank", 'true'
+
+            buildConfigField "String", "ENVIRONMENT", '"prod"'
+
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "prod"]
+        }
+    }
+
+    //移除lint检测的error
+    lintOptions {
+        abortOnError false
+    }
+
     buildTypes {
+        debug {
+            signingConfig signingConfigs.config
+        }
+
         release {
             minifyEnabled false
+            zipAlignEnabled true
+            //移除无用的resource文件
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+
+            // 批量打包
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        //输出apk名称为：渠道名_版本名_时间.apk
+                        def fileName = "${variant.productFlavors[0].name}_v${defaultConfig.versionName}_${releaseTime()}.apk"
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+            }
         }
     }
 }

@@ -43,6 +43,7 @@ public abstract class BaseRecyclerFragment<T> extends BaseFragment {
     RecyclerView mRecyclerView;
     @Bind(R.id.mSwipeRefreshLayout)
     protected SwipeRefreshLayout mSwipeRefreshLayout;
+    @Nullable
     @Bind(R.id.loadingView)
     AVLoadingIndicatorView mLoadingView;
 

@@ -42,6 +42,11 @@
             android:name=".main.superboon.SuperGalleryActivity"
             android:launchMode="singleTop">
         </activity>
+
+        <meta-data
+            android:name="UMENG"
+            android:value="${UMENG_CHANNEL_VALUE}"/>
     </application>
+
 
 </manifest>
