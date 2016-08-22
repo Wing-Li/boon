@@ -124,9 +124,9 @@ public class Html5Activity extends BaseActivity {
         //=========多窗口的问题==========================================================
         @Override
         public boolean onCreateWindow(WebView view, boolean isDialog, boolean isUserGesture, Message resultMsg) {
-            WebView.WebViewTransport transport = (WebView.WebViewTransport) resultMsg.obj;
-            transport.setWebView(mWebView);
-            resultMsg.sendToTarget();
+            WebView.HitTestResult result = view.getHitTestResult();
+            String data = result.getExtra();
+            mWebView.loadUrl(data);
             return true;
         }
         //=========多窗口的问题==========================================================
