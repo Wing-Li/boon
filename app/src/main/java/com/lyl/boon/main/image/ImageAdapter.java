@@ -3,11 +3,9 @@ package com.lyl.boon.main.image;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.lyl.boon.R;
 import com.lyl.boon.api.img.ImgUtils;
 
 import java.util.List;
@@ -53,11 +51,15 @@ public class ImageAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         String imgUrl = imgs.get( position );
-        View view = LayoutInflater.from( mContext ).inflate( R.layout.item_image_show, container );
-        PhotoView img = (PhotoView) view.findViewById( R.id.item_list_image );
-        ImgUtils.load( mContext, imgUrl, img );
 
-        ((ViewPager) container).addView( view );
-        return view;
+//        View view = LayoutInflater.from( mContext ).inflate( R.layout.item_image_show, container );
+//        PhotoView img = (PhotoView) view.findViewById( R.id.item_list_image );
+
+        PhotoView photoView = new PhotoView(mContext);
+        photoView.setAdjustViewBounds(true);
+        ImgUtils.load( mContext, imgUrl, photoView );
+
+        ((ViewPager) container).addView( photoView );
+        return photoView;
     }
 }
