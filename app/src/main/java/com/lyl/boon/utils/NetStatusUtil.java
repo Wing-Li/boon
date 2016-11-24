@@ -79,8 +79,8 @@ public class NetStatusUtil {
                 default:
                     stateCode = NetState.NET_UNKNOWN;
             }
-
         }
         return stateCode;
     }
+
 }

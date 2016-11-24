@@ -27,7 +27,6 @@ public class ZhuangbiEntiry extends BaseEntiry{
      * "user_id":1,"created_at":"2016-01-27 23:22:50","updated_at":"2016-01-27 23:23:42","uploadable_id":null,"uploadable_type":null,"url":"http://7xjzdd
      * .com1.z0.glb.clouddn.com/i/2016-01-27-bd6f1e1e31fea64f7f2f33ba31b0b1a2.gif"}
      */
-
     private int id;
     private String description;
     private String path;
@@ -307,4 +306,5 @@ public class ZhuangbiEntiry extends BaseEntiry{
             this.url = url;
         }
     }
+
 }

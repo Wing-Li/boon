@@ -92,10 +92,8 @@ public abstract class OnRecycleViewScrollListener extends RecyclerView.OnScrollL
                 max = value;
             }
         }
-
         return max;
     }
-
 
     public enum LayoutManagerType {
         LinearLayout,
@@ -104,4 +102,5 @@ public abstract class OnRecycleViewScrollListener extends RecyclerView.OnScrollL
     }
 
     public abstract void onLoadMore();
+
 }

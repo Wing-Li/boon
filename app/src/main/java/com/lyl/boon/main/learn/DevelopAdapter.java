@@ -38,4 +38,5 @@ public class DevelopAdapter extends MyBaseAdapter<GankDataEntity> {
 
         holder.setText(R.id.item_develop_date, " - " + data.getCreatedAt().substring(0, 10).trim());
     }
+
 }

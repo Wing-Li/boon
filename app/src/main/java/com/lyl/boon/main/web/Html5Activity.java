@@ -21,7 +21,6 @@ import com.lyl.boon.utils.LogUtil;
 
 public class Html5Activity extends BaseActivity {
 
-
     private String mUrl;
 
     private RelativeLayout mLayout;
@@ -172,19 +171,19 @@ public class Html5Activity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
-        if (mWebView != null) {
-            mWebView.loadDataWithBaseURL(null, "", "text/html", "utf-8", null);
-            mWebView.clearHistory();
+        super.onDestroy();
 
+        if (mWebView != null) {
+            mWebView.clearHistory();
             ((ViewGroup) mWebView.getParent()).removeView(mWebView);
+            mWebView.loadUrl("about:blank");
+            mWebView.stopLoading();
+            mWebView.setWebChromeClient(null);
+            mWebView.setWebViewClient(null);
             mWebView.destroy();
             mWebView = null;
         }
-
         System.exit(0);
-
-        super.onDestroy();
     }
-
 
 }

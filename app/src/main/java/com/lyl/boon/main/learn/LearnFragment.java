@@ -32,4 +32,5 @@ public class LearnFragment extends BaseMenuFragment {
         fragment.setArguments( bundle );
         mFragments.add( fragment );
     }
+
 }

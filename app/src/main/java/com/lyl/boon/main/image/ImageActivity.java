@@ -41,7 +41,6 @@ public class ImageActivity extends BaseActivity {
     private void initData() {
         Bundle bundle = getIntent().getBundleExtra("bundle");
         imgs = bundle.getStringArrayList("imgs");
-
         position = bundle.getInt("position");
     }
 
@@ -50,8 +49,6 @@ public class ImageActivity extends BaseActivity {
         imageViewpager.setAdapter(mImageAdapter);
         imageViewpager.setOffscreenPageLimit(2);
         imageViewpager.setCurrentItem(position);
-
-
     }
 
     @Override
@@ -60,4 +57,5 @@ public class ImageActivity extends BaseActivity {
         finish();
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
+
 }

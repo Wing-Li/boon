@@ -48,11 +48,9 @@ public class LoadingView extends FrameLayout {
     public LoadingView(Context context, AttributeSet attrs) {
         super(context, attrs, 0);
         init(context, attrs);
-
     }
 
     private void init(Context context, AttributeSet attrs) {
-
         TypedArray typedArray = context
                 .obtainStyledAttributes(attrs, R.styleable.LoadingView);
         mLoadText = typedArray.getString(R.styleable.LoadingView_loadingText);
@@ -60,7 +58,6 @@ public class LoadingView extends FrameLayout {
 
         typedArray.recycle();
     }
-
 
     public LoadingView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
@@ -77,7 +74,6 @@ public class LoadingView extends FrameLayout {
         final float scale = getContext().getResources().getDisplayMetrics().density;
         return (int) (dipValue * scale + 0.5f);
     }
-
 
     @Override
     protected void onFinishInflate() {
@@ -103,10 +99,8 @@ public class LoadingView extends FrameLayout {
 
         addView(view, layoutParams);
 
-
         startLoading(900);
     }
-
 
     private AnimatorSet mAnimatorSet = null;
 
@@ -150,8 +144,6 @@ public class LoadingView extends FrameLayout {
     }
 
     public void setLoadingText(CharSequence loadingText) {
-
-
         if (TextUtils.isEmpty(loadingText)) {
             mLoadTextView.setVisibility(GONE);
         } else {
@@ -165,10 +157,8 @@ public class LoadingView extends FrameLayout {
      * 上抛
      */
     public void upThrow() {
-
         ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(mShapeLoadingView, "translationY", mDistance, 0);
         ObjectAnimator scaleIndication = ObjectAnimator.ofFloat(mIndicationIm, "scaleX", 0.2f, 1);
-
 
         ObjectAnimator objectAnimator1 = null;
         switch (mShapeLoadingView.getShape()) {
@@ -189,7 +179,6 @@ public class LoadingView extends FrameLayout {
                 break;
         }
 
-
         objectAnimator.setDuration(ANIMATION_DURATION);
         objectAnimator1.setDuration(ANIMATION_DURATION);
         objectAnimator.setInterpolator(new DecelerateInterpolator(factor));
@@ -197,7 +186,6 @@ public class LoadingView extends FrameLayout {
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.setDuration(ANIMATION_DURATION);
         animatorSet.playTogether(objectAnimator, objectAnimator1, scaleIndication);
-
 
         animatorSet.addListener(new Animator.AnimatorListener() {
             @Override
@@ -208,8 +196,6 @@ public class LoadingView extends FrameLayout {
             @Override
             public void onAnimationEnd(Animator animation) {
                 freeFall();
-
-
             }
 
             @Override
@@ -223,8 +209,6 @@ public class LoadingView extends FrameLayout {
             }
         });
         animatorSet.start();
-
-
     }
 
     public float factor = 1.2f;
@@ -233,10 +217,8 @@ public class LoadingView extends FrameLayout {
      * 下落
      */
     public void freeFall() {
-
         ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(mShapeLoadingView, "translationY", 0, mDistance);
         ObjectAnimator scaleIndication = ObjectAnimator.ofFloat(mIndicationIm, "scaleX", 1, 0.2f);
-
 
         objectAnimator.setDuration(ANIMATION_DURATION);
         objectAnimator.setInterpolator(new AccelerateInterpolator(factor));
@@ -251,8 +233,6 @@ public class LoadingView extends FrameLayout {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-
-
                 mShapeLoadingView.changeShape();
                 upThrow();
             }
@@ -268,8 +248,6 @@ public class LoadingView extends FrameLayout {
             }
         });
         animatorSet.start();
-
-
     }
 
 }

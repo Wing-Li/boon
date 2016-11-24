@@ -69,4 +69,5 @@ public class LogUtil {
         if (isDebug && msg != null)
             Log.v(tag, msg);
     }
+
 }

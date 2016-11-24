@@ -18,6 +18,7 @@ import java.util.List;
  * 2016/4/14.
  */
 public class SuperGalleryAdapter extends MyBaseAdapter<SuperImageEntirty.ListBean> {
+
     private Context context;
 
     public SuperGalleryAdapter(Context context, List<SuperImageEntirty.ListBean> items, int layoutResId) {
@@ -30,4 +31,5 @@ public class SuperGalleryAdapter extends MyBaseAdapter<SuperImageEntirty.ListBea
         super.onBind( holder, viewType, position, item );
         ImgUtils.loadF( context, Network.TNGOU_IMG + item.getSrc(), (ImageView) holder.getView( R.id.item_image_h ) );
     }
+
 }

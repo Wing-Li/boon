@@ -18,6 +18,7 @@ import java.util.List;
  * 2016/4/14.
  */
 public class SuperBoonListAdapter extends MyBaseAdapter<SuperGalleryEntiry> {
+
     private Context context;
 
     public SuperBoonListAdapter(Context context, List<SuperGalleryEntiry> items, int layoutResId) {
@@ -31,4 +32,5 @@ public class SuperBoonListAdapter extends MyBaseAdapter<SuperGalleryEntiry> {
         String url = Network.TNGOU_IMG + item.getImg();
         ImgUtils.load( context, url, (ImageView) holder.getView( R.id.item_image_v ) );
     }
+
 }

@@ -22,7 +22,6 @@ import butterknife.Bind;
  */
 public abstract class BaseMenuFragment extends BaseFragment {
 
-
     @Bind(R.id.m_tablayout)
     TabLayout mTablayout;
     @Bind(R.id.m_viewpager)
@@ -49,17 +48,14 @@ public abstract class BaseMenuFragment extends BaseFragment {
         initData();
     }
 
-
-
     private void initData() {
         mTitles = new ArrayList<>();
         mFragments = new ArrayList<>();
+
         setFragment();
 
         setTitle( 0 );//默认标题是第一个fragment的标题
     }
-
-
 
     protected void initView() {
         mViewPageAdpater = new ViewPageAdpater( getChildFragmentManager() );

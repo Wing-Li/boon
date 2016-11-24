@@ -194,4 +194,5 @@ public class MainActivity extends BaseActivity {
     private void setActTitle(int res) {
         mActionTitle.setText(res);
     }
+
 }

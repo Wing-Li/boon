@@ -111,4 +111,5 @@ public class SuperGalleryFragment extends BaseRecyclerFragment<ListBean> {
 
         IntentUtils.startImageActivity(getHolder(), imgs, position);
     }
+
 }

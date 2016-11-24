@@ -33,8 +33,10 @@ public class SuperGalleryActivity extends BaseActivity {
             bundle.putString("title", mTitle);
             galleryFragment.setArguments(bundle);
         }
+
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().add(R.id.activity_super_gallery, galleryFragment).commit();
         }
     }
+
 }

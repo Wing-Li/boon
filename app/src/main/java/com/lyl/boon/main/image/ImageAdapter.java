@@ -17,10 +17,9 @@ import uk.co.senab.photoview.PhotoView;
  * 2016/4/15.
  */
 public class ImageAdapter extends PagerAdapter {
+    Context mContext;
 
     List<String> imgs;
-
-    Context mContext;
 
     public ImageAdapter(Context context, List<String> imgs) {
         this.mContext = context;
@@ -62,4 +61,5 @@ public class ImageAdapter extends PagerAdapter {
         ((ViewPager) container).addView( photoView );
         return photoView;
     }
+
 }

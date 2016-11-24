@@ -14,6 +14,8 @@ import rx.Observable;
  * 2016/4/15.
  */
 public interface ZhuangbiApi {
+
     @GET("search")
     Observable<List<ZhuangbiEntiry>> search(@Query("q") String id);
+
 }

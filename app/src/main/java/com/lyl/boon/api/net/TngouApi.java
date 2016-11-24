@@ -38,5 +38,4 @@ public interface TngouApi {
     @GET("show")
     Observable<SuperImageEntirty> getGalleryInfo(@Query("id") int id);
 
-
 }

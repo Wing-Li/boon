@@ -18,7 +18,6 @@ public class GankDataEntity extends BaseEntiry{
      * used : true
      * who : __weak_Point
      */
-
     private String _id;
     private String _ns;
     private String createdAt;
@@ -109,4 +108,5 @@ public class GankDataEntity extends BaseEntiry{
     public void setWho(String who) {
         this.who = who;
     }
+
 }

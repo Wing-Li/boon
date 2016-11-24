@@ -17,7 +17,9 @@ import java.util.List;
  * 2016/4/14.
  */
 public class YongAdapter extends MyBaseAdapter<GankDataEntity> {
+
     private Context context;
+
     public YongAdapter(Context context, List<GankDataEntity> items, int layoutResId) {
         super(context, items, layoutResId);
         this.context = context;
@@ -28,4 +30,5 @@ public class YongAdapter extends MyBaseAdapter<GankDataEntity> {
         super.onBind(holder, viewType, position, item);
         ImgUtils.loadF(context,item.getUrl(), (ImageView) holder.getView(R.id.item_image_v ));
     }
+
 }

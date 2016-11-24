@@ -38,7 +38,6 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         //记录此activity已经打开
         appApplication = (MyApp) getApplication();
     }
@@ -52,7 +51,6 @@ public class BaseActivity extends AppCompatActivity {
         View viewTitleBar = getLayoutInflater().inflate(R.layout.action_bar_title, null);
 
         actionBar = getSupportActionBar();
-
         if (actionBar == null) return;
 
         actionBar.setCustomView(viewTitleBar, lp);
@@ -62,7 +60,6 @@ public class BaseActivity extends AppCompatActivity {
         actionBar.setDisplayShowCustomEnabled(true);
 
         View actionView = getSupportActionBar().getCustomView();
-
         if (actionView == null) return;
 
         //右边图标
@@ -73,7 +70,6 @@ public class BaseActivity extends AppCompatActivity {
         mActionLeftImg = (ImageView) actionView.findViewById(R.id.action_bar_left_img);
         //左边文字
         mActionBack = (TextView) actionView.findViewById(R.id.action_bar_back_txt);
-
     }
 
     public void showToast(String str) {
@@ -92,4 +88,5 @@ public class BaseActivity extends AppCompatActivity {
             dialog.dismiss();
         }
     }
+
 }

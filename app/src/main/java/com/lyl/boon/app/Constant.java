@@ -21,4 +21,5 @@ public class Constant {
      * 启动HTML页面的名称
      */
     public static final String WEB_NAME = "com.lyl.boon.ui.activity.htmlactivity";
+
 }

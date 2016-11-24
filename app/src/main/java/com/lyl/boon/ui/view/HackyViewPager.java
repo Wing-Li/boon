@@ -26,8 +26,8 @@ public class HackyViewPager extends ViewPager {
             return super.onInterceptTouchEvent( ev );
         } catch (IllegalArgumentException e) {
         } catch (ArrayIndexOutOfBoundsException e) {
-
         }
         return false;
     }
+
 }

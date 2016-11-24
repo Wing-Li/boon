@@ -5,4 +5,5 @@ package com.lyl.boon.entity;
  * 2016/4/15.
  */
 public class BaseEntiry {
+
 }

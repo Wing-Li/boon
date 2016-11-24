@@ -72,5 +72,4 @@ public class SuperBoonFragment extends BaseMenuFragment {
         }
     };
 
-
 }

@@ -34,4 +34,5 @@ public class BaseGankEntiry<T> extends BaseEntiry {
     public void setCategory(List<String> category) {
         this.category = category;
     }
+
 }

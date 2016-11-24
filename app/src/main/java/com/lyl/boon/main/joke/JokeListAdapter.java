@@ -39,4 +39,5 @@ public class JokeListAdapter extends MyBaseAdapter<ZhuangbiEntiry> {
             ImgUtils.loadC( context, url, (ImageView) holder.getView( R.id.item_grid_img ) );
         }
     }
+
 }

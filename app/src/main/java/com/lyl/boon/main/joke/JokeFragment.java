@@ -54,4 +54,5 @@ public class JokeFragment extends BaseRecyclerFragment<ZhuangbiEntiry> {
     protected void ItemClickListener(View itemView, int viewType, int position) {
 
     }
+
 }

@@ -20,7 +20,6 @@ import com.lyl.boon.R;
  */
 public class ShapeLoadingView extends View {
 
-
     private static final float genhao3 = 1.7320508075689f;
     private static  final  float mTriangle2Circle =0.25555555f;
 
@@ -74,7 +73,6 @@ public class ShapeLoadingView extends View {
     private float mControlY = 0;
     private float mAnimPercent;
 
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -109,7 +107,6 @@ public class ShapeLoadingView extends View {
                     canvas.drawPath(path, mPaint);
 
                     invalidate();
-
                 } else {
                     Path path = new Path();
                     mPaint.setColor(getResources().getColor(R.color.triangle));
@@ -121,12 +118,9 @@ public class ShapeLoadingView extends View {
                     mAnimPercent = 0;
                     path.close();
                     canvas.drawPath(path, mPaint);
-
                 }
                 break;
             case SHAPE_CIRCLE:
-
-
                 if (mIsLoading) {
                     float magicNumber = mMagicNumber + mAnimPercent;
                     mAnimPercent += 0.12;
@@ -154,14 +148,11 @@ public class ShapeLoadingView extends View {
                             relativeXFromView(0.5f - magicNumber / 2), relativeYFromView(0),
                             relativeXFromView(0.5f), relativeYFromView(0f));
 
-
                     path.close();
                     canvas.drawPath(path, mPaint);
 
-
                     invalidate();
                 } else {
-
                     mPaint.setColor(getResources().getColor(R.color.circle));
                     Path path = new Path();
 
@@ -184,17 +175,10 @@ public class ShapeLoadingView extends View {
 
                     path.close();
                     canvas.drawPath(path, mPaint);
-
-
                 }
-
                 break;
             case SHAPE_RECT:
-
-
                 if (mIsLoading) {
-
-
                     mAnimPercent += 0.15;
                     if (mAnimPercent >= 1) {
                         mShape = Shape.SHAPE_TRIANGLE;
@@ -214,10 +198,8 @@ public class ShapeLoadingView extends View {
 
                     path.close();
 
-
                     canvas.drawPath(path, mPaint);
                     invalidate();
-
                 } else {
                     mPaint.setColor(getResources().getColor(R.color.rect));
                     mControlX = relativeXFromView(0.5f - genhao3 / 4);
@@ -230,17 +212,10 @@ public class ShapeLoadingView extends View {
                     path.close();
                     mAnimPercent = 0;
                     canvas.drawPath(path, mPaint);
-
                 }
-
-
                 break;
-
         }
-
-
     }
-
 
     private float relativeXFromView(float percent) {
         return getWidth() * percent;
@@ -250,10 +225,8 @@ public class ShapeLoadingView extends View {
         return getHeight() * percent;
     }
 
-
     public void changeShape() {
         mIsLoading = true;
-
 
         invalidate();
     }
@@ -261,7 +234,6 @@ public class ShapeLoadingView extends View {
     public enum Shape {
         SHAPE_TRIANGLE, SHAPE_RECT, SHAPE_CIRCLE
     }
-
 
     @Override
     public void setVisibility(int visibility) {
@@ -275,4 +247,5 @@ public class ShapeLoadingView extends View {
     public Shape getShape() {
         return mShape;
     }
+
 }

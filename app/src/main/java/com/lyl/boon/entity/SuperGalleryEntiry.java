@@ -5,6 +5,7 @@ package com.lyl.boon.entity;
  * 2016/4/14.
  */
 public class SuperGalleryEntiry extends BaseEntiry{
+
     private int id;
     private int  galleryclass ;//          图片分类
     private String title     ;//          标题
@@ -77,4 +78,5 @@ public class SuperGalleryEntiry extends BaseEntiry{
     public void setSize(int size) {
         this.size = size;
     }
+
 }

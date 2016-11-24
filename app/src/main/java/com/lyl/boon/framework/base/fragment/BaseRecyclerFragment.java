@@ -64,7 +64,6 @@ public abstract class BaseRecyclerFragment<T> extends BaseFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         initData();
         initListType();
         initView();

@@ -61,4 +61,5 @@ public class YoungFragment extends BaseRecyclerFragment<GankDataEntity> {
 
         IntentUtils.startImageActivity( getHolder(), imgs, position );
     }
+
 }

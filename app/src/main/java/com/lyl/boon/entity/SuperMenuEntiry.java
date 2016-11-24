@@ -67,4 +67,5 @@ public class SuperMenuEntiry extends BaseEntiry{
     public void setSeq(int seq) {
         this.seq = seq;
     }
+
 }
