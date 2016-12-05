@@ -6,6 +6,7 @@
 
     <color name="transparent">#00000000</color>
     <color name="gary">#25808080</color>
+    <color name="white">#ffffff</color>
 
     <!--actionbar_background -->
     <color name="actionbar_background">#CEA15C</color>

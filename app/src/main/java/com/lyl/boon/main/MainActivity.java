@@ -1,6 +1,7 @@
 package com.lyl.boon.main;
 
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -14,9 +15,9 @@ import com.lyl.boon.main.superboon.SuperBoonFragment;
 import com.lyl.boon.main.young.YoungFragment;
 import com.lyl.boon.utils.NetStatusUtil;
 import com.roughike.bottombar.BottomBar;
-import com.roughike.bottombar.BottomBarTab;
-import com.roughike.bottombar.OnTabClickListener;
+import com.roughike.bottombar.OnTabSelectListener;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 import me.drakeet.materialdialog.MaterialDialog;
 
@@ -29,7 +30,8 @@ public class MainActivity extends BaseActivity {
 
     private Fragment oldFragment;
 
-    private BottomBar mBottomBar;
+    @Bind(R.id.bottomBar)
+    BottomBar mBottomBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,61 +60,36 @@ public class MainActivity extends BaseActivity {
      * 设置底部按钮
      */
     private void initBottom(Bundle savedInstanceState) {
-        mBottomBar = BottomBar.attach(this, savedInstanceState);
+        mBottomBar.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelected(@IdRes int tabId) {
 
-        mBottomBar.noTabletGoodness();
-        mBottomBar.setItems(new BottomBarTab(R.drawable.ic_phone_android_black_24dp, R.string.menu_learn),//
-                new BottomBarTab(R.drawable.ic_sentiment_very_satisfied_black_24dp, R.string.menu_joke), //
-                new BottomBarTab(R.drawable.ic_pregnant_woman_black_24dp, R.string.menu_young),//
-                new BottomBarTab(R.drawable.ic_wc_black_24dp, R.string.menu_super));
-
-        mBottomBar.mapColorForTab(0, "#a8dba8");
-        mBottomBar.mapColorForTab(1, "#ff5f2e");
-        mBottomBar.mapColorForTab(2, "#fcbe32");
-        mBottomBar.mapColorForTab(3, "#bd1550");
-
-        mBottomBar.setOnTabClickListener(bottomBarListener);
+                switch (tabId) {
+                    case R.id.menu_learn: //学习
+                        setActTitle(R.string.menu_learn_msg);
+                        toFragment(learnFragment);
+                        break;
+                    case R.id.menu_joke: //开心
+                        checkNet(1);
+                        break;
+                    case R.id.menu_young: //美女
+                        checkNet(2);
+                        break;
+                    case R.id.menu_super: //超级福利
+                        checkNet(3);
+                        break;
+                    default:
+                        setActTitle(R.string.menu_learn_msg);
+                        toFragment(learnFragment);
+                        break;
+                }
+            }
+        });
     }
 
     /**
-     * 底部按钮的点击事件
+     * 检查网络，并跳转
      */
-    private OnTabClickListener bottomBarListener = new OnTabClickListener() {
-        @Override
-        public void onTabSelected(int position) {
-            switch (position) {
-                case 0://学习
-                {
-                    setActTitle(R.string.menu_learn_msg);
-                    toFragment(learnFragment);
-                    break;
-                }
-                case 1://开心
-                {
-                    checkNet(1);
-                    break;
-                }
-                case 2: //美女
-                {
-                    checkNet(2);
-                    break;
-                }
-                case 3: //超级福利
-                {
-                    checkNet(3);
-                    break;
-                }
-                default:
-                    break;
-            }
-        }
-
-        @Override
-        public void onTabReSelected(int position) {
-
-        }
-    };
-
     private void checkNet(final int position) {
         if (NetStatusUtil.isWifi(MainActivity.this)) {
             goFragment(position);
@@ -132,6 +109,7 @@ public class MainActivity extends BaseActivity {
                 public void onClick(View v) {
                     mMaterialDialog.dismiss();
                     showToast("(*^__^*) 没事去读书学习吧");
+                    mBottomBar.selectTabWithId(R.id.menu_learn);
                 }
             });
 
@@ -181,8 +159,8 @@ public class MainActivity extends BaseActivity {
     private void toFragment(Fragment to) {
         if (to == oldFragment) return;
 
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction().setCustomAnimations(android
-                .R.anim.fade_in, android.R.anim.fade_out);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.fade_in, android.R
+                .anim.fade_out);
         if (!to.isAdded()) {    // 先判断是否被add过
             transaction.hide(oldFragment).add(R.id.fragment_content, to).commit(); // 隐藏当前的fragment，add下一个到Activity中
         } else {

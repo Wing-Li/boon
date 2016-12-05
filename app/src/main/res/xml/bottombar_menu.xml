@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/menu_learn"
+        title="@string/menu_learn"
+        icon="@drawable/ic_phone_android_black_24dp"
+        barColorWhenSelected="#a8dba8"
+        />
+    <tab
+        id="@+id/menu_joke"
+        title="@string/menu_joke"
+        icon="@drawable/ic_sentiment_very_satisfied_black_24dp"
+        barColorWhenSelected="#ff5f2e"
+        />
+    <tab
+        id="@+id/menu_young"
+        title="@string/menu_young"
+        icon="@drawable/ic_pregnant_woman_black_24dp"
+        barColorWhenSelected="#fcbe32"
+        />
+    <tab
+        id="@+id/menu_super"
+        title="@string/menu_super"
+        icon="@drawable/ic_wc_black_24dp"
+        barColorWhenSelected="#bd1550"
+        />
+</tabs>

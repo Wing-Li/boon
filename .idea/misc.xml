@@ -38,13 +38,7 @@
             <id>Android</id>
           </State>
           <State>
-            <id>Android &gt; Lint &gt; Correctness</id>
-          </State>
-          <State>
-            <id>Android &gt; Lint &gt; Internationalization</id>
-          </State>
-          <State>
-            <id>Android &gt; Lint &gt; Security</id>
+            <id>Android Lint</id>
           </State>
           <State>
             <id>CorrectnessLintAndroid</id>
