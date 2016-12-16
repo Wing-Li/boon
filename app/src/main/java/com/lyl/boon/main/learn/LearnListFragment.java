@@ -20,7 +20,7 @@ import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
- * 当有多个加载页面的时候，可以把 上拉刷新。下拉加载，在封装一个BaseLoadFragment；留下 Data 和 ItemView 即可。之后使用直接竭诚
+ * 当有多个加载页面的时候，可以把 上拉刷新。下拉加载，在封装一个BaseLoadFragment；留下 Data 和 ItemView 即可。之后使用直接继承
  * Wing_Li
  * 2016/4/5.
  */
