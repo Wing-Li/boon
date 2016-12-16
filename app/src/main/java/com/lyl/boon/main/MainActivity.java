@@ -41,7 +41,7 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         initActionbar();
-        initBottom(savedInstanceState);
+        initBottom();
         initFragmentContent(savedInstanceState);
     }
 
@@ -59,7 +59,7 @@ public class MainActivity extends BaseActivity {
     /**
      * 设置底部按钮
      */
-    private void initBottom(Bundle savedInstanceState) {
+    private void initBottom() {
         mBottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelected(@IdRes int tabId) {
@@ -170,7 +170,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void setActTitle(int res) {
-        mActionTitle.setText(res);
+        mActionTitle.setText(getString(res));
     }
 
 }

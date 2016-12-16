@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.widget.TextView;
 
 import com.lyl.boon.R;
 import com.lyl.boon.framework.base.BaseFragment;
@@ -31,10 +30,7 @@ public abstract class BaseMenuFragment extends BaseFragment {
     protected List<Fragment> mFragments;
     protected ViewPageAdpater mViewPageAdpater;
 
-    /**
-     * Action 的标题
-     */
-    protected TextView mTitleTxt;
+
 
     @Override
     protected int getLayoutResource() {
@@ -61,8 +57,6 @@ public abstract class BaseMenuFragment extends BaseFragment {
         mViewPageAdpater = new ViewPageAdpater( getChildFragmentManager() );
         mViewpager.setAdapter( mViewPageAdpater );
         mTablayout.setupWithViewPager( mViewpager );
-
-        mTitleTxt = (TextView) getHolder().getSupportActionBar().getCustomView().findViewById( R.id.action_bar_title_txt );
 
         mViewpager.addOnPageChangeListener( new ViewPager.OnPageChangeListener() {
             @Override
@@ -96,7 +90,7 @@ public abstract class BaseMenuFragment extends BaseFragment {
      */
     private void setTitle(int position) {
         if (mTitles != null && mTitles.size() > 0) {
-            mTitleTxt.setText( mTitles.get( position ) );
+           setTitle( mTitles.get( position ) );
         }
     }
 

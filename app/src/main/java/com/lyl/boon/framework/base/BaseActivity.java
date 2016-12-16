@@ -4,11 +4,14 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewSwitcher;
 
 import com.lyl.boon.R;
 import com.lyl.boon.app.MyApp;
@@ -25,7 +28,7 @@ public class BaseActivity extends AppCompatActivity {
     public ActionBar actionBar;
     //整个顶部
     //标题
-    public TextView mActionTitle;
+    public TextSwitcher mActionTitle;
     //标题图片
     public ImageView mActionRightImg;
     //侧边栏开关
@@ -65,11 +68,34 @@ public class BaseActivity extends AppCompatActivity {
         //右边图标
         mActionRightImg = (ImageView) actionView.findViewById(R.id.action_bar_right_img);
         //标题文字
-        mActionTitle = (TextView) actionView.findViewById(R.id.action_bar_title_txt);
+        mActionTitle = (TextSwitcher) actionView.findViewById(R.id.action_bar_title_txt);
         //左边图标
         mActionLeftImg = (ImageView) actionView.findViewById(R.id.action_bar_left_img);
         //左边文字
         mActionBack = (TextView) actionView.findViewById(R.id.action_bar_back_txt);
+        setTitleAnims();
+    }
+
+    private void setTitleAnims() {
+        mActionTitle.setFactory(new ViewSwitcher.ViewFactory() {
+            @Override
+            public View makeView() {
+                final TextView textView = new TextView(BaseActivity.this);
+                textView.setSingleLine(true);
+                textView.setTextAppearance(BaseActivity.this, R.style.action_title_style);
+                textView.setGravity(Gravity.CENTER);
+                textView.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+                textView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        textView.setSelected(true);
+                    }
+                }, 1738);
+                return textView;
+            }
+        });
+        mActionTitle.setInAnimation(this, android.R.anim.fade_in);
+        mActionTitle.setOutAnimation(this, android.R.anim.fade_out);
     }
 
     public void showToast(String str) {
