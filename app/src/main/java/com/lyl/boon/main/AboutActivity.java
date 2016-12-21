@@ -33,6 +33,8 @@ public class AboutActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
         ButterKnife.bind(this);
+        initActionbar();
+        mActionTitle.setText(getString(R.string.about_title));
     }
 
 

@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
+import android.widget.Toast;
 
 import com.lyl.boon.R;
 import com.lyl.boon.framework.base.BaseActivity;
@@ -160,8 +162,8 @@ public class MainActivity extends BaseActivity {
     private void toFragment(Fragment to) {
         if (to == oldFragment) return;
 
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.fade_in, android.R
-                .anim.fade_out);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction().setCustomAnimations(android
+                .R.anim.fade_in, android.R.anim.fade_out);
         if (!to.isAdded()) {    // 先判断是否被add过
             transaction.hide(oldFragment).add(R.id.fragment_content, to).commit(); // 隐藏当前的fragment，add下一个到Activity中
         } else {
@@ -174,4 +176,19 @@ public class MainActivity extends BaseActivity {
         mActionTitle.setText(getString(res));
     }
 
+    private long time = 0;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (System.currentTimeMillis() - time <= 2000) {
+                finish();
+            } else {
+                time = System.currentTimeMillis();
+                Toast.makeText(getApplicationContext(), R.string.exit_app, Toast.LENGTH_SHORT).show();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }
