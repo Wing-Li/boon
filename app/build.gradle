@@ -10,7 +10,7 @@ def releaseTime() {
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    buildToolsVersion '25'
 
     // 签名文件
     signingConfigs {

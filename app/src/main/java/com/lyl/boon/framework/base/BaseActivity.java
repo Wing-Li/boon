@@ -2,6 +2,7 @@ package com.lyl.boon.framework.base;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -104,6 +105,7 @@ public class BaseActivity extends AppCompatActivity {
         mActionBack.setVisibility(View.GONE);
         mActionLeftImg.setVisibility(View.VISIBLE);
         mActionLeftImg.setImageResource(R.drawable.ic_info_outline_black_24dp);
+        mActionLeftImg.setColorFilter(Color.GRAY);
         mActionLeftImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

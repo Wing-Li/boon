@@ -5,6 +5,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.target.Target;
 import com.lyl.boon.R;
 
 /**
@@ -33,20 +34,20 @@ public class ImgUtils {
      *                          DiskCacheStrategy.RESULT 仅仅缓存最终的图像，即，降低分辨率后的（或者是转换后的）
      *                          DiskCacheStrategy.ALL 缓存所有版本的图像（默认行为）
      */
-    public static void load(Context context, String url, ImageView imageView, float thumbnail, int scaleType, DiskCacheStrategy
-            diskCacheStrategy) {
+    public static void load(Context context, String url, ImageView imageView, float thumbnail, int scaleType,
+                            DiskCacheStrategy diskCacheStrategy) {
         if (scaleType == TYPE_NULL) {
-            Glide.with(context).load(url).placeholder(placeholderRes).error(errorRes).thumbnail(thumbnail).diskCacheStrategy
-                    (diskCacheStrategy).into(imageView);
+            Glide.with(context).load(url).placeholder(placeholderRes).error(errorRes).thumbnail(thumbnail)
+                    .diskCacheStrategy(diskCacheStrategy).into(imageView);
         } else if (scaleType == TYPE_FITCENTER) {
-            Glide.with(context).load(url).placeholder(placeholderRes).error(errorRes).thumbnail(thumbnail).diskCacheStrategy
-                    (diskCacheStrategy).fitCenter().into(imageView);
+            Glide.with(context).load(url).placeholder(placeholderRes).error(errorRes).thumbnail(thumbnail)
+                    .diskCacheStrategy(diskCacheStrategy).fitCenter().into(imageView);
         } else if (scaleType == TYPE_CENTERCROP) {
-            Glide.with(context).load(url).placeholder(placeholderRes).error(errorRes).thumbnail(thumbnail).diskCacheStrategy
-                    (diskCacheStrategy).centerCrop().into(imageView);
+            Glide.with(context).load(url).placeholder(placeholderRes).error(errorRes).thumbnail(thumbnail)
+                    .diskCacheStrategy(diskCacheStrategy).centerCrop().into(imageView);
         } else if (scaleType == TYPE_GIF) {
-            Glide.with(context).load(url).asGif().placeholder(placeholderRes).error(errorRes).thumbnail(thumbnail).diskCacheStrategy
-                    (diskCacheStrategy).fitCenter().into(imageView);
+            Glide.with(context).load(url).asGif().placeholder(placeholderRes).error(errorRes).thumbnail(thumbnail)
+                    .diskCacheStrategy(diskCacheStrategy).fitCenter().into(imageView);
         }
     }
 
@@ -68,6 +69,10 @@ public class ImgUtils {
 
     public static void loadGif(Context context, String url, ImageView imageView) {
         load(context, url, imageView, 0.2f, TYPE_GIF, DiskCacheStrategy.RESULT);
+    }
+
+    public static void getBitmap(Context context, String url, Target simpleTarget) {
+        Glide.with(context).load(url).asBitmap().into(simpleTarget);
     }
 
     /**
