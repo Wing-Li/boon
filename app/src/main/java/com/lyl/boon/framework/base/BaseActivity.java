@@ -101,17 +101,49 @@ public class BaseActivity extends AppCompatActivity {
         mActionTitle.setOutAnimation(this, android.R.anim.fade_out);
     }
 
-    public void setAppAbout(){
-        mActionBack.setVisibility(View.GONE);
-        mActionLeftImg.setVisibility(View.VISIBLE);
-        mActionLeftImg.setImageResource(R.drawable.ic_info_outline_black_24dp);
+    public void setBackIcon() {
+        mActionLeftImg.setImageResource(R.drawable.ic_back);
         mActionLeftImg.setColorFilter(Color.GRAY);
+        mActionLeftImg.setVisibility(View.VISIBLE);
         mActionLeftImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    public void setAppAbout() {
+        mActionBack.setVisibility(View.GONE);
+        mActionRightImg.setVisibility(View.VISIBLE);
+        mActionRightImg.setImageResource(R.drawable.ic_info_outline_black_24dp);
+        mActionRightImg.setColorFilter(Color.GRAY);
+        mActionRightImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(BaseActivity.this, AboutActivity.class));
             }
         });
+    }
+
+    public void setShareIcon(final String shareContent) {
+        mActionRightImg.setVisibility(View.VISIBLE);
+        mActionRightImg.setImageResource(R.drawable.ic_share_black_24dp);
+        mActionRightImg.setColorFilter(Color.GRAY);
+        mActionRightImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shareContent(shareContent);
+            }
+        });
+    }
+
+    public void shareContent(String text) {
+        if (TextUtils.isEmpty(text)) {
+            showToast(R.string.share_err);
+        } else {
+            share(text);
+        }
     }
 
     public void showToast(String str) {
@@ -129,6 +161,15 @@ public class BaseActivity extends AppCompatActivity {
         if (dialog != null && dialog.isShowing()) {
             dialog.dismiss();
         }
+    }
+
+    private void share(String str) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_SUBJECT, "分享");
+        intent.putExtra(Intent.EXTRA_TEXT, str);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(Intent.createChooser(intent, "分享"));
     }
 
 }

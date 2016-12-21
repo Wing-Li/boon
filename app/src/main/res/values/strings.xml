@@ -29,6 +29,8 @@
     <string name="msg_loading">正在加载...</string>
     <string name="default_who">佚名</string>
 
+    <string name="share_err">分享失败</string>
+
     <string name="exit_app">再次点击退出</string>
 
 </resources>

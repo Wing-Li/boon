@@ -70,6 +70,7 @@ public class LearnListFragment extends BaseRecyclerFragment<GankDataEntity> {
         //避免内存泄露，开启一个新的进程来加载WebView。
         Intent intent = new Intent("com.lyl.boon.main.web.Html5Activity");
         Bundle bundle = new Bundle();
+        bundle.putString("desc", gankDataEntity.getDesc());
         bundle.putString("url", gankDataEntity.getUrl());
         intent.putExtra("bundle", bundle);
         startActivity(intent);

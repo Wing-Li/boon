@@ -1,6 +1,5 @@
 package com.lyl.boon.main.web;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.KeyEvent;
@@ -22,6 +21,7 @@ import com.lyl.boon.utils.LogUtil;
 public class Html5Activity extends BaseActivity {
 
     private String mUrl;
+    private String mDesc;
 
     private RelativeLayout mLayout;
     private LoadingView mLoadingView;
@@ -34,20 +34,18 @@ public class Html5Activity extends BaseActivity {
 
         Bundle bundle = getIntent().getBundleExtra("bundle");
         mUrl = bundle.getString("url");
+        mDesc = bundle.getString("desc");
         LogUtil.d("Web--Url:", mUrl);
 
         initActionbar();
-        mActionLeftImg.setImageResource(R.drawable.ic_back);
-        mActionLeftImg.setColorFilter(Color.BLACK);
-        mActionLeftImg.setVisibility(View.VISIBLE);
-        mActionLeftImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        setBackIcon();
+        // 设置分享
+        String share = mDesc + " 链接地址:" + mUrl;
+        setShareIcon(share);
 
         initWebView();
+
+
     }
 
     private void initWebView() {
