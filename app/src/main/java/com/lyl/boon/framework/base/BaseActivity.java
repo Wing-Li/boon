@@ -1,6 +1,7 @@
 package com.lyl.boon.framework.base;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import android.widget.ViewSwitcher;
 
 import com.lyl.boon.R;
 import com.lyl.boon.app.MyApp;
+import com.lyl.boon.main.AboutActivity;
 
 /**
  * Wing_Li
@@ -96,6 +98,18 @@ public class BaseActivity extends AppCompatActivity {
         });
         mActionTitle.setInAnimation(this, android.R.anim.fade_in);
         mActionTitle.setOutAnimation(this, android.R.anim.fade_out);
+    }
+
+    public void setAppAbout(){
+        mActionBack.setVisibility(View.GONE);
+        mActionLeftImg.setVisibility(View.VISIBLE);
+        mActionLeftImg.setImageResource(R.drawable.ic_info_outline_black_24dp);
+        mActionLeftImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(BaseActivity.this, AboutActivity.class));
+            }
+        });
     }
 
     public void showToast(String str) {

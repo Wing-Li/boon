@@ -49,6 +49,9 @@
             android:name=".main.superboon.SuperGalleryActivity"
             android:launchMode="singleTop">
         </activity>
+        <activity
+            android:name=".main.AboutActivity"
+            android:launchMode="singleTop"/>
 
         <!--Bugly 应用升级-->
         <activity

@@ -7,6 +7,8 @@
     <color name="transparent">#00000000</color>
     <color name="gary">#25808080</color>
     <color name="white">#ffffff</color>
+    <color name="french_grey">#F0F0F0</color>
+    <color name="link_text">#A0B93A</color>
 
     <!--actionbar_background -->
     <color name="actionbar_background">#CEA15C</color>

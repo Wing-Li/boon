@@ -41,6 +41,7 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         initActionbar();
+        setAppAbout();
         initBottom();
         initFragmentContent(savedInstanceState);
     }
