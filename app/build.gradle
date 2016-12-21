@@ -15,10 +15,10 @@ android {
     // 签名文件
     signingConfigs {
         config {
-            keyAlias 'lyl'
-            keyPassword '123456'
-            storeFile file('../lyl.jks')
-            storePassword '123456'
+            keyAlias 'boon'
+            keyPassword '2530513'
+            storeFile file('../boon.jks')
+            storePassword '2530513'
         }
     }
 
@@ -138,7 +138,6 @@ dependencies {
     compile 'com.wang.avi:library:1.0.5'
     compile 'com.nineoldandroids:library:2.4.0'
     //bug分析
-    compile 'com.tencent.bugly:crashreport:2.4.0'
     compile 'com.tencent.bugly:nativecrashreport:3.1.0'
     //应用升级
     compile 'com.tencent.bugly:crashreport_upgrade:1.2.1'
