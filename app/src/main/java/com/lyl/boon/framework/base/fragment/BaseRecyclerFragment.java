@@ -70,6 +70,13 @@ public abstract class BaseRecyclerFragment<T> extends BaseFragment {
         loadMore();
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        stopLoad();
+        stopLoadingView();
+    }
+
     private void initView() {
         //必须在子页面new 出列表的Adapter
         if (mAdapter == null) {
@@ -141,6 +148,7 @@ public abstract class BaseRecyclerFragment<T> extends BaseFragment {
         public void onError(Throwable e) {
             getHolder().showToast(R.string.msg_net_erro);
             stopLoadingView();
+            stopLoad();
         }
 
         @Override
@@ -151,11 +159,17 @@ public abstract class BaseRecyclerFragment<T> extends BaseFragment {
                 mAdapter.addAll(dataEntities);
             }
 
-            setRefreshing(false);
-            isLoading = false;
+            stopLoad();
             page++;
         }
     };
+
+    private void stopLoad(){
+        if (mSwipeRefreshLayout != null && mSwipeRefreshLayout.isRefreshing()) {
+            mSwipeRefreshLayout.setRefreshing(false);
+        }
+        isLoading = false;
+    }
 
     private void stopLoadingView() {
         if (mLoadingView != null && mLoadingView.isShown()) {
