@@ -45,17 +45,15 @@ public class MainActivity extends BaseActivity {
         initActionbar();
         setAppAbout();
         initBottom();
-        initFragmentContent(savedInstanceState);
+        initFragmentContent();
     }
 
     /**
      * 设置中间内容页
      */
-    private void initFragmentContent(Bundle savedInstanceState) {
+    private void initFragmentContent() {
         learnFragment = new LearnFragment();
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().add(R.id.fragment_content, learnFragment).commit();
-        }
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_content, learnFragment).commit();
         oldFragment = learnFragment;
     }
 

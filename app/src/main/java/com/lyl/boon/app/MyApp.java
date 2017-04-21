@@ -4,6 +4,7 @@ import android.app.Application;
 import android.os.Environment;
 import android.text.TextUtils;
 
+import com.lyl.boon.BuildConfig;
 import com.tencent.bugly.Bugly;
 import com.tencent.bugly.crashreport.CrashReport;
 
@@ -27,9 +28,12 @@ public class MyApp extends Application {
      * 初始化BUG分析 和 应用升级检测
      */
     private void initBugly() {
-        CrashReport.UserStrategy strategy = new CrashReport.UserStrategy(getApplicationContext());
-        strategy.setAppReportDelay(60000);
-        Bugly.init(getApplicationContext(), "410b074705", true, strategy);
+        String buglyAppId = BuildConfig.BUGLYAPPID;
+        if (!TextUtils.isEmpty(buglyAppId)){
+            CrashReport.UserStrategy strategy = new CrashReport.UserStrategy(getApplicationContext());
+            strategy.setAppReportDelay(60000);
+            Bugly.init(getApplicationContext(), buglyAppId, true, strategy);
+        }
     }
 
     public static String getAppPath() {

@@ -17,6 +17,8 @@ import com.lyl.boon.framework.base.BaseActivity;
 import com.lyl.boon.ui.view.loading.LoadingView;
 import com.lyl.boon.utils.LogUtil;
 
+import java.io.File;
+
 
 public class Html5Activity extends BaseActivity {
 
@@ -91,11 +93,14 @@ public class Html5Activity extends BaseActivity {
      */
     private void saveData(WebSettings mWebSettings) {
         //有时候网页需要自己保存一些关键数据,Android WebView 需要自己设置
-        mWebSettings.setDomStorageEnabled(true);
-        mWebSettings.setDatabaseEnabled(true);
-        mWebSettings.setAppCacheEnabled(true);
-        String appCachePath = getApplicationContext().getCacheDir().getAbsolutePath();
-        mWebSettings.setAppCachePath(appCachePath);
+        File cacheDir = getApplicationContext().getCacheDir();
+        if (cacheDir != null){
+            String appCachePath  = cacheDir.getAbsolutePath();
+            mWebSettings.setDomStorageEnabled(true);
+            mWebSettings.setDatabaseEnabled(true);
+            mWebSettings.setAppCacheEnabled(true);
+            mWebSettings.setAppCachePath(appCachePath);
+        }
     }
 
     WebViewClient webViewClient = new WebViewClient() {
