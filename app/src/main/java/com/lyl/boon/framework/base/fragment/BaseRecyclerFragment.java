@@ -182,7 +182,9 @@ public abstract class BaseRecyclerFragment<T> extends BaseFragment {
      * 显示刷新的进度圈
      */
     protected void setRefreshing(boolean b) {
-        mSwipeRefreshLayout.setRefreshing(b);
+        if (mSwipeRefreshLayout != null){
+            mSwipeRefreshLayout.setRefreshing(b);
+        }
     }
 
     /**

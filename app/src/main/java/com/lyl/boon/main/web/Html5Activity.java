@@ -35,9 +35,14 @@ public class Html5Activity extends BaseActivity {
         setContentView(R.layout.activity_web);
 
         Bundle bundle = getIntent().getBundleExtra("bundle");
-        mUrl = bundle.getString("url");
-        mDesc = bundle.getString("desc");
-        LogUtil.d("Web--Url:", mUrl);
+        if (bundle != null){
+            mUrl = bundle.getString("url");
+            mDesc = bundle.getString("desc");
+            LogUtil.d("Web--Url:", mUrl);
+        }else {
+            showToast(getString(R.string.param_error));
+            return;
+        }
 
         initActionbar();
         setBackIcon();

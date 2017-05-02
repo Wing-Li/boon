@@ -1,6 +1,5 @@
 package com.lyl.boon.framework.base;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -38,8 +37,6 @@ public class BaseActivity extends AppCompatActivity {
     public ImageView mActionLeftImg;
     //返回按钮
     public TextView mActionBack;
-
-    protected Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -158,9 +155,6 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (dialog != null && dialog.isShowing()) {
-            dialog.dismiss();
-        }
     }
 
     private void share(String str) {

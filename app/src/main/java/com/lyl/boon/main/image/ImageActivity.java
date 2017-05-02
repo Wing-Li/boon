@@ -40,8 +40,13 @@ public class ImageActivity extends BaseActivity {
 
     private void initData() {
         Bundle bundle = getIntent().getBundleExtra("bundle");
-        imgs = bundle.getStringArrayList("imgs");
-        position = bundle.getInt("position");
+        if (bundle != null) {
+            imgs = bundle.getStringArrayList("imgs");
+            position = bundle.getInt("position");
+        }else {
+            showToast(R.string.msg_net_erro);
+            return;
+        }
     }
 
     private void initView() {

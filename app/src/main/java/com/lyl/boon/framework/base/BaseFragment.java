@@ -84,11 +84,11 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected void showToast(String str) {
-        Toast.makeText( getHolder(), str, Toast.LENGTH_SHORT ).show();
+        Toast.makeText(getHolder().getApplicationContext(), str, Toast.LENGTH_SHORT ).show();
     }
 
     protected void showToast(int res) {
-        Toast.makeText( getHolder(), res, Toast.LENGTH_SHORT ).show();
+        Toast.makeText(getHolder().getApplicationContext(), res, Toast.LENGTH_SHORT ).show();
     }
 
 }
