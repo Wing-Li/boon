@@ -37,8 +37,8 @@ android {
         applicationId "com.lyl.boon"
         minSdkVersion 17
         targetSdkVersion 23
-        versionCode 2
-        versionName "1.0.1"
+        versionCode 3
+        versionName "1.0.3"
         ndk {
             abiFilters 'armeabi' //设置支持的SO库架构, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
         }
@@ -101,7 +101,7 @@ android {
             minifyEnabled false
             zipAlignEnabled true
             //移除无用的resource文件
-            shrinkResources true
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.config
 
