@@ -16,7 +16,7 @@ import java.io.File;
  */
 public class MyApp extends Application {
 
-    public static String mAppPath;
+    private static String mAppPath;
 
     @Override
     public void onCreate() {

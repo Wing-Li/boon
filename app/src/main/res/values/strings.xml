@@ -23,8 +23,9 @@
 
     <string name="msg_no_more_data">没有更多数据&#8230;.</string>
     <string name="msg_waitting_loding">请等待，当前正在加载&#8230;.</string>
-    <string name="msg_net_erro">网络错误&#8230;</string>
+    <string name="msg_net_erro">网络错误,请稍后再试</string>
     <string name="load_error">加载出错，请重新打开应用程序</string>
+    <string name="down_error">下载出错，请稍后再试</string>
     <string name="img_err">图片获取失败</string>
     <string name="msg_loading">正在加载...</string>
     <string name="default_who">佚名</string>
@@ -32,5 +33,11 @@
     <string name="share_err">分享失败</string>
 
     <string name="exit_app">再次点击退出</string>
+    <string name="save_success">保存成功</string>
+    <string name="save_fail">保存失败</string>
+    <string name="param_error">参数错误，请稍后再试</string>
+    <string name="image_save">保存图片</string>
+    <string name="image_save_msg">您要将图片保存到本地吗？</string>
+    <string name="save">保存</string>
 
 </resources>

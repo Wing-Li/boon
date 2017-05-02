@@ -17,8 +17,13 @@ public class SuperGalleryActivity extends BaseActivity {
         setContentView(R.layout.activity_super_gallery);
 
         Bundle budele = getIntent().getBundleExtra("budele");
-        mId = budele.getInt("id");
-        mTitle = budele.getString("title");
+        if (budele != null){
+            mId = budele.getInt("id");
+            mTitle = budele.getString("title");
+        }else {
+            showToast(R.string.msg_net_erro);
+            return;
+        }
 
         initView(savedInstanceState);
     }

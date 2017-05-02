@@ -78,15 +78,15 @@ public class ImageAdapter extends PagerAdapter {
                     Toast.makeText(mContext.getApplicationContext(), R.string.img_err,Toast.LENGTH_SHORT).show();
                     return false;
                 }
-                new AlertDialog.Builder(mContext).setTitle("保存图片")//
-                        .setMessage("您要将图片保存到本地吗？")//
-                        .setNegativeButton("保存", new DialogInterface.OnClickListener() {
+                new AlertDialog.Builder(mContext).setTitle(mContext.getString(R.string.image_save))//
+                        .setMessage(mContext.getString(R.string.image_save_msg))//
+                        .setNegativeButton(mContext.getString(R.string.save), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 ImgUtils.getBitmap(mContext, imgUrl, simpleTarget);
                             }
                         })//
-                        .setPositiveButton("取消", null).create().show();
+                        .setPositiveButton(mContext.getString(R.string.cancel), null).create().show();
                 return true;
             }
         });
@@ -104,7 +104,7 @@ public class ImageAdapter extends PagerAdapter {
             FileOutputStream fileOutputStream = null;
             try {
                 fileOutputStream = new FileOutputStream(file);
-                resource.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
+                    resource.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
                 fileOutputStream.close();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -119,7 +119,7 @@ public class ImageAdapter extends PagerAdapter {
             }
 
             mContext.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(file)));
-            Toast.makeText(mContext, "保存成功", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext.getApplicationContext(), R.string.save_success, Toast.LENGTH_SHORT).show();
         }
     };
 }
