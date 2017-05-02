@@ -2,6 +2,8 @@ package com.lyl.boon.main.joke;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.ImageView;
@@ -80,8 +82,10 @@ public class JokeListAdapter extends MyBaseAdapter<ZhuangbiEntiry> {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
-                    boolean writtenToDisk = writeResponseBodyToDisk(response.body(), imgName);
+                    File imgFile = new File(MyApp.getAppPath() + File.separator + imgName);
+                    boolean writtenToDisk = writeResponseBodyToDisk(response.body(), imgName, imgFile);
                     if (writtenToDisk) {
+                        mContext.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(imgFile)));
                         Toast.makeText(mContext, R.string.save_success, Toast.LENGTH_SHORT).show();
                     }else {
                         Toast.makeText(mContext, R.string.save_fail, Toast.LENGTH_SHORT).show();
@@ -98,10 +102,8 @@ public class JokeListAdapter extends MyBaseAdapter<ZhuangbiEntiry> {
         });
     }
 
-    private boolean writeResponseBodyToDisk(ResponseBody body, String imgName) {
+    private boolean writeResponseBodyToDisk(ResponseBody body, String imgName, File imgFile) {
         try {
-            File futureStudioIconFile = new File(MyApp.getAppPath() + File.separator + imgName);
-
             InputStream inputStream = null;
             OutputStream outputStream = null;
 
@@ -112,7 +114,7 @@ public class JokeListAdapter extends MyBaseAdapter<ZhuangbiEntiry> {
                 long fileSizeDownloaded = 0;
 
                 inputStream = body.byteStream();
-                outputStream = new FileOutputStream(futureStudioIconFile);
+                outputStream = new FileOutputStream(imgFile);
 
                 while (true) {
                     int read = inputStream.read(fileReader);
