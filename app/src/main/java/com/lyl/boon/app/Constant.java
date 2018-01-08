@@ -13,6 +13,9 @@ public class Constant {
      */
     public static final String ENVIRONMENT = BuildConfig.ENVIRONMENT;
 
+    /**
+     * Gank.io API 接口的类型
+     */
     public static final String GANK_TYPE_ANDROID = "Android";
     public static final String GANK_TYPE_IOS = "iOS";
     public static final String GANK_TYPE_WEB = "前端";

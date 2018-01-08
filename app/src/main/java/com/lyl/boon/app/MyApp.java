@@ -16,6 +16,7 @@ import java.io.File;
  */
 public class MyApp extends Application {
 
+    /** App 存放文件的路径**/
     private static String mAppPath;
 
     @Override
@@ -36,6 +37,9 @@ public class MyApp extends Application {
         }
     }
 
+    /**
+     * 获取存放文件的了路径
+     */
     public static String getAppPath() {
         if (!TextUtils.isEmpty(mAppPath)) {
             return mAppPath;

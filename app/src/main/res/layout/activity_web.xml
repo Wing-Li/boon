@@ -7,11 +7,11 @@
     android:layout_height="match_parent"
     >
 
-    <com.lyl.boon.ui.view.loading.LoadingView
+    <com.lyl.boon.view.loading.LoadingView
         android:id="@+id/loadingView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         app:loadingText="加载中...">
-    </com.lyl.boon.ui.view.loading.LoadingView>
+    </com.lyl.boon.view.loading.LoadingView>
 </RelativeLayout>

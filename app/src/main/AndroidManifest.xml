@@ -23,7 +23,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".main.MainActivity"
+            android:name=".ui.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -33,7 +33,7 @@
         </activity>
 
         <activity
-            android:name=".main.web.Html5Activity"
+            android:name=".ui.web.Html5Activity"
             android:launchMode="singleInstance"
             android:process=":lyl.boon.process.web"
             android:screenOrientation="portrait">
@@ -44,15 +44,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".main.image.ImageActivity"
+            android:name=".ui.image.ImageActivity"
             android:launchMode="singleTop">
         </activity>
         <activity
-            android:name=".main.superboon.SuperGalleryActivity"
+            android:name=".ui.superboon.SuperGalleryActivity"
             android:launchMode="singleTop">
         </activity>
         <activity
-            android:name=".main.AboutActivity"
+            android:name=".ui.AboutActivity"
             android:launchMode="singleTop"/>
 
         <!--Bugly 应用升级-->
