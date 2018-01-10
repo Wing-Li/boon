@@ -28,7 +28,7 @@ public class SuperBoonListAdapter extends MyBaseAdapter<SuperGalleryEntity.ListB
     @Override
     public void onBind(SuperViewHolder holder, int viewType, int position, SuperGalleryEntity.ListBean item) {
         super.onBind( holder, viewType, position, item );
-        ImgUtils.load( context, item.getQhimg_thumb_url(), (ImageView) holder.getView( R.id.item_image_v ) );
+        ImgUtils.load( context, item.getQhimg_thumb_url(), (ImageView) holder.getView( R.id.item_image_v ), item.getQhimg_width(), item.getQhimg_height() );
     }
 
 }
