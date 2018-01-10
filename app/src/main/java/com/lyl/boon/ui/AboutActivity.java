@@ -53,7 +53,7 @@ public class AboutActivity extends BaseActivity {
                 break;
 
             case R.id.link_text:
-                openUri("market://details?id=com.lyl.boon");
+                openUri("https://www.coolapk.com/apk/com.lyl.boon");
                 break;
 
             case R.id.wing_li:

@@ -17,12 +17,14 @@ public class SuperBoonFragment extends BaseMenuFragment {
 
     @Override
     protected void setFragment(List<String> titles, List<Fragment> fragments) {
-        addFragment(titles, fragments, "萌女", 595);
-        addFragment(titles, fragments, "粉嫩", 625);
+        addFragment(titles, fragments, "萌妹子", 595);
+        addFragment(titles, fragments, "少女", 625);
         addFragment(titles, fragments, "婚纱", 596);
         addFragment(titles, fragments, "车模", 600);
         addFragment(titles, fragments, "明星", 599);
         addFragment(titles, fragments, "街拍", 596);
+        addFragment(titles, fragments, "时装秀", 2006);
+        addFragment(titles, fragments, "女孩们", 2007);
         addFragment(titles, fragments, "cosplay", 598);
     }
 

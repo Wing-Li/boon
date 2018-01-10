@@ -58,7 +58,7 @@ public class ImageActivity extends BaseActivity {
         if (bundle != null) {
             imgs = bundle.getStringArrayList("imgs");
             position = bundle.getInt("position");
-        }else {
+        } else {
             showToast(R.string.msg_net_erro);
             return;
         }
