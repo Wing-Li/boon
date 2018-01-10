@@ -18,7 +18,8 @@
         <ImageView
             android:id="@+id/item_grid_img"
             android:layout_width="match_parent"
-            android:layout_height="160dp" />
+            android:layout_height="160dp"
+            android:scaleType="fitCenter"/>
 
         <TextView
             android:id="@+id/item_grid_title"

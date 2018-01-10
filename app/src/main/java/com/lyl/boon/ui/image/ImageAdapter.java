@@ -3,7 +3,6 @@ package com.lyl.boon.ui.image;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -13,15 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
 import com.lyl.boon.R;
-import com.lyl.boon.utils.ImgUtils;
 import com.lyl.boon.app.MyApp;
+import com.lyl.boon.utils.FileUtils;
+import com.lyl.boon.utils.ImgUtils;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.List;
 
 import uk.co.senab.photoview.PhotoView;
@@ -80,7 +76,28 @@ public class ImageAdapter extends PagerAdapter {
                         .setNegativeButton(mContext.getString(R.string.save), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                ImgUtils.getBitmap(mContext, imgUrl, simpleTarget);
+                                ImgUtils.downloadImg(mContext, imgUrl, new ImgUtils.DownloadImage() {
+                                    @Override
+                                    public void downloadImage(File imgFile) {
+                                        if (imgFile != null){
+                                            String path = MyApp.getAppPath();
+                                            String imgName = "boon_" + System.currentTimeMillis() + ".jpg";
+                                            File file = new File(path, imgName);
+
+                                            // 移动下载的图片到 目标路径
+                                            boolean moveFile = FileUtils.moveFile(imgFile.getAbsolutePath(), file.getAbsolutePath());
+
+                                            if (moveFile){
+                                                mContext.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(file)));
+                                                Toast.makeText(mContext.getApplicationContext(), R.string.save_success, Toast.LENGTH_SHORT).show();
+                                            } else {
+                                                Toast.makeText(mContext.getApplicationContext(), R.string.save_fail, Toast.LENGTH_SHORT).show();
+                                            }
+                                        } else {
+                                            Toast.makeText(mContext.getApplicationContext(), R.string.save_fail, Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
                             }
                         })//
                         .setPositiveButton(mContext.getString(R.string.cancel), null).create().show();
@@ -92,31 +109,4 @@ public class ImageAdapter extends PagerAdapter {
         return photoView;
     }
 
-    private SimpleTarget simpleTarget = new SimpleTarget<Bitmap>() {
-        @Override
-        public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
-            String path = MyApp.getAppPath();
-            String imgName = "boon_" + System.currentTimeMillis() + ".jpg";
-            File file = new File(path, imgName);
-            FileOutputStream fileOutputStream = null;
-            try {
-                fileOutputStream = new FileOutputStream(file);
-                    resource.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
-                fileOutputStream.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    if (fileOutputStream != null) {
-                        fileOutputStream.close();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            mContext.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(file)));
-            Toast.makeText(mContext.getApplicationContext(), R.string.save_success, Toast.LENGTH_SHORT).show();
-        }
-    };
 }

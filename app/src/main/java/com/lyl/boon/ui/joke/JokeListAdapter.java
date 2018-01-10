@@ -51,12 +51,7 @@ public class JokeListAdapter extends MyBaseAdapter<ZhuangbiEntity> {
 
         final String url = item.getImage_url();
 
-        boolean gif = url.endsWith("gif");
-        if (gif) {
-            ImgUtils.loadGif(context, url, (ImageView) holder.getView(R.id.item_grid_img));
-        } else {
-            ImgUtils.loadC(context, url, (ImageView) holder.getView(R.id.item_grid_img));
-        }
+        ImgUtils.load(context, url, (ImageView) holder.getView(R.id.item_grid_img));
         String[] split = url.split("/");
         final String imgName = split[split.length - 1];
 

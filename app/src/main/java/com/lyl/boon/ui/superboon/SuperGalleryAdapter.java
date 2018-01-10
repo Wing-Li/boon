@@ -28,7 +28,7 @@ public class SuperGalleryAdapter extends MyBaseAdapter<SuperImageEntity.ListBean
     @Override
     public void onBind(SuperViewHolder holder, int viewType, int position, SuperImageEntity.ListBean item) {
         super.onBind( holder, viewType, position, item );
-        ImgUtils.loadF( context, item.getQhimg_url(), (ImageView) holder.getView( R.id.item_image_h ) );
+        ImgUtils.load( context, item.getQhimg_url(), (ImageView) holder.getView( R.id.item_image_h ) );
     }
 
 }
