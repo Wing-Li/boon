@@ -4,7 +4,7 @@ import android.view.View;
 
 import com.lyl.boon.R;
 import com.lyl.boon.net.Network;
-import com.lyl.boon.net.entity.ZhuangbiEntiry;
+import com.lyl.boon.net.entity.ZhuangbiEntity;
 import com.lyl.boon.ui.base.fragment.BaseRecyclerFragment;
 
 import java.util.ArrayList;
@@ -19,17 +19,17 @@ import rx.schedulers.Schedulers;
  * Wing_Li
  * 2016/4/1.
  */
-public class JokeFragment extends BaseRecyclerFragment<ZhuangbiEntiry> {
+public class JokeFragment extends BaseRecyclerFragment<ZhuangbiEntity> {
 
     @Override
     protected void setSubscribe() {
         subscription = Observable.zip( Network.getZhuangbi().search( "可爱" ), Network.getZhuangbi().search( "110" ), Network.getZhuangbi().search( "在下" ),
-                Network.getZhuangbi().search( "装逼" ), new Func4<List<ZhuangbiEntiry>, List<ZhuangbiEntiry>, List<ZhuangbiEntiry>, List<ZhuangbiEntiry>,
-                        List<ZhuangbiEntiry>>() {
+                Network.getZhuangbi().search( "装逼" ), new Func4<List<ZhuangbiEntity>, List<ZhuangbiEntity>, List<ZhuangbiEntity>, List<ZhuangbiEntity>,
+                        List<ZhuangbiEntity>>() {
             @Override
-            public List<ZhuangbiEntiry> call(List<ZhuangbiEntiry> zhuangbiEntiries, List<ZhuangbiEntiry> zhuangbiEntiries2, List<ZhuangbiEntiry>
-                    zhuangbiEntiries3, List<ZhuangbiEntiry> zhuangbiEntiries4) {
-                List<ZhuangbiEntiry> entiryList = new ArrayList<ZhuangbiEntiry>();
+            public List<ZhuangbiEntity> call(List<ZhuangbiEntity> zhuangbiEntiries, List<ZhuangbiEntity> zhuangbiEntiries2, List<ZhuangbiEntity>
+                    zhuangbiEntiries3, List<ZhuangbiEntity> zhuangbiEntiries4) {
+                List<ZhuangbiEntity> entiryList = new ArrayList<ZhuangbiEntity>();
                 entiryList.addAll( zhuangbiEntiries );
                 entiryList.addAll( zhuangbiEntiries2 );
                 entiryList.addAll( zhuangbiEntiries3 );
@@ -46,7 +46,7 @@ public class JokeFragment extends BaseRecyclerFragment<ZhuangbiEntiry> {
 
     @Override
     protected void initData() {
-        mData = new ArrayList<ZhuangbiEntiry>();
+        mData = new ArrayList<ZhuangbiEntity>();
         mAdapter = new JokeListAdapter( getHolder(), mData, R.layout.item_grid );
     }
 

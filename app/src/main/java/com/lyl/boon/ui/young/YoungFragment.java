@@ -5,7 +5,7 @@ import android.view.View;
 
 import com.lyl.boon.R;
 import com.lyl.boon.net.Network;
-import com.lyl.boon.net.entity.BaseGankEntiry;
+import com.lyl.boon.net.entity.BaseGankEntity;
 import com.lyl.boon.net.entity.GankDataEntity;
 import com.lyl.boon.ui.base.fragment.BaseRecyclerFragment;
 import com.lyl.boon.ui.image.ImageActivity;
@@ -37,9 +37,9 @@ public class YoungFragment extends BaseRecyclerFragment<GankDataEntity> {
 
     @Override
     protected void setSubscribe() {
-        subscription = Network.getGankMenuList().getGankList( "福利", page ).map( new Func1<BaseGankEntiry<List<GankDataEntity>>, List<GankDataEntity>>() {
+        subscription = Network.getGankMenuList().getGankList( "福利", page ).map( new Func1<BaseGankEntity<List<GankDataEntity>>, List<GankDataEntity>>() {
             @Override
-            public List<GankDataEntity> call(BaseGankEntiry<List<GankDataEntity>> baseGankEntiry) {
+            public List<GankDataEntity> call(BaseGankEntity<List<GankDataEntity>> baseGankEntiry) {
                 if (!baseGankEntiry.isError()) {
                     return baseGankEntiry.getResults();
                 }

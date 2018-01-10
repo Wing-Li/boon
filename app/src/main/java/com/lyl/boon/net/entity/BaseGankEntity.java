@@ -6,7 +6,7 @@ import java.util.List;
  * Wing_Li
  * 2016/3/30.
  */
-public class BaseGankEntiry<T> extends BaseEntiry {
+public class BaseGankEntity<T> extends BaseEntity {
     private boolean error;
     private T results;
     private List<String> category;

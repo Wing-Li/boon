@@ -9,8 +9,8 @@ import android.view.View;
 
 import com.lyl.boon.R;
 import com.lyl.boon.net.Network;
-import com.lyl.boon.net.entity.SuperImageEntirty;
-import com.lyl.boon.net.entity.SuperImageEntirty.ListBean;
+import com.lyl.boon.net.entity.SuperImageEntity;
+import com.lyl.boon.net.entity.SuperImageEntity.ListBean;
 import com.lyl.boon.ui.base.fragment.BaseRecyclerFragment;
 import com.lyl.boon.ui.image.ImageActivity;
 
@@ -26,10 +26,8 @@ import rx.schedulers.Schedulers;
  */
 public class SuperGalleryFragment extends BaseRecyclerFragment<ListBean> {
 
-    /**
-     * 当前页面显示的分类id
-     */
-    private int galleryId;
+    private int menu;
+    private String galleryId;// 当前页面显示的分类id
     private String title;
 
     /**
@@ -48,7 +46,8 @@ public class SuperGalleryFragment extends BaseRecyclerFragment<ListBean> {
     public void onAttach(Context context) {
         super.onAttach(context);
         Bundle bundle = getArguments();
-        galleryId = bundle.getInt("id");
+        menu = bundle.getInt("menu");
+        galleryId = bundle.getString("id");
         title = bundle.getString("title");
     }
 
@@ -85,10 +84,10 @@ public class SuperGalleryFragment extends BaseRecyclerFragment<ListBean> {
             return;
         }
 
-        subscription = Network.getTngou().getGalleryInfo(galleryId).map(new Func1<SuperImageEntirty, List<ListBean>>() {
+        subscription = Network.getTngou().getGalleryInfo(menu, galleryId).map(new Func1<SuperImageEntity, List<ListBean>>() {
             @Override
-            public List<ListBean> call(SuperImageEntirty superImageEntirty) {
-                if (superImageEntirty.isStatus()) {
+            public List<ListBean> call(SuperImageEntity superImageEntirty) {
+                if (superImageEntirty != null) {
                     List<ListBean> listBeen = superImageEntirty.getList();
                     isLoaded = true;
                     return listBeen;
@@ -107,7 +106,7 @@ public class SuperGalleryFragment extends BaseRecyclerFragment<ListBean> {
         imgs.clear();
 
         for (ListBean listBean : mData) {
-            imgs.add(Network.TNGOU_IMG + listBean.getSrc());
+            imgs.add(listBean.getQhimg_url());
         }
 
         Intent intent = ImageActivity.getIntent(getHolder(), imgs, position);

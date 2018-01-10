@@ -13,7 +13,7 @@ import com.lyl.boon.R;
 import com.lyl.boon.utils.ImgUtils;
 import com.lyl.boon.net.Network;
 import com.lyl.boon.app.MyApp;
-import com.lyl.boon.net.entity.ZhuangbiEntiry;
+import com.lyl.boon.net.entity.ZhuangbiEntity;
 import com.lyl.boon.ui.base.apdter.MyBaseAdapter;
 
 import org.byteam.superadapter.internal.SuperViewHolder;
@@ -34,17 +34,17 @@ import retrofit2.Response;
  * Wing_Li
  * 2016/4/14.
  */
-public class JokeListAdapter extends MyBaseAdapter<ZhuangbiEntiry> {
+public class JokeListAdapter extends MyBaseAdapter<ZhuangbiEntity> {
 
     private Context context;
 
-    public JokeListAdapter(Context context, List<ZhuangbiEntiry> items, int layoutResId) {
+    public JokeListAdapter(Context context, List<ZhuangbiEntity> items, int layoutResId) {
         super(context, items, layoutResId);
         this.context = context;
     }
 
     @Override
-    public void onBind(SuperViewHolder holder, int viewType, int position, ZhuangbiEntiry item) {
+    public void onBind(SuperViewHolder holder, int viewType, int position, ZhuangbiEntity item) {
         super.onBind(holder, viewType, position, item);
 
         holder.setText(R.id.item_grid_title, item.getDescription());

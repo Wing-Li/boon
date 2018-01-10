@@ -4,7 +4,7 @@ package com.lyl.boon.net.entity;
  * Wing_Li
  * 2016/3/30.
  */
-public class GankDataEntity extends BaseEntiry{
+public class GankDataEntity extends BaseEntity {
 
     /**
      * _id : 56e630f0677659174524a187

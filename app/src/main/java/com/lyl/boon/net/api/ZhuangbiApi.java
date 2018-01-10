@@ -1,7 +1,7 @@
 package com.lyl.boon.net.api;
 
 
-import com.lyl.boon.net.entity.ZhuangbiEntiry;
+import com.lyl.boon.net.entity.ZhuangbiEntity;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ import rx.Observable;
 public interface ZhuangbiApi {
 
     @GET("search")
-    Observable<List<ZhuangbiEntiry>> search(@Query("q") String id);
+    Observable<List<ZhuangbiEntity>> search(@Query("q") String id);
 
     @GET
     Call<ResponseBody> downloadFileWithDynamicUrlSync(@Url String filrUrl);

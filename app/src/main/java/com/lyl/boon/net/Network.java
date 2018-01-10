@@ -2,6 +2,7 @@ package com.lyl.boon.net;
 
 import android.support.annotation.NonNull;
 
+import com.lyl.boon.BuildConfig;
 import com.lyl.boon.net.api.GankApi;
 import com.lyl.boon.net.api.TngouApi;
 import com.lyl.boon.net.api.ZhuangbiApi;
@@ -9,6 +10,7 @@ import com.lyl.boon.net.api.ZhuangbiApi;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -24,18 +26,13 @@ public class Network {
      **/
     private static final String URL_GANK = "http://gank.io/api/";
     /**
-     * 天狗的图片请求地址
+     * 360图片 请求地址
      */
-    private static final String URL_TNGOU = "http://www.tngou.net/tnfs/api/";
+    private static final String URL_TNGOU = "http://image.so.com/";
     /**
      * 装逼图片地址
      */
     private static final String URL_ZHUANG = "http://zhuangbi.info/";
-
-    /**
-     * 天狗图片 访问图片时候的地址
-     */
-    public static final String TNGOU_IMG = "http://tnfs.tngou.net/img";
 
     /**
      * 设置超时的时间
@@ -57,6 +54,14 @@ public class Network {
     private static void initOkHttp() {
         httpClientBuilder = new OkHttpClient.Builder();
         httpClientBuilder.connectTimeout( DEFAULT_TIMEOUT, TimeUnit.SECONDS );
+
+        // devCompile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+        // compile 'com.squareup.okhttp3:okhttp:3.8.0'
+        if ("dev".equals(BuildConfig.ENVIRONMENT)) {
+            HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+            httpClientBuilder.addInterceptor(logging);
+        }
     }
 
     /**
@@ -70,7 +75,7 @@ public class Network {
     }
 
     /**
-     * 获取天狗接口的 请求的操作。
+     * 获取360图片接口的 请求的操作。
      */
     public static TngouApi getTngou() {
         if (tngouApi == null) {

@@ -7,8 +7,7 @@ import android.view.View;
 
 import com.lyl.boon.R;
 import com.lyl.boon.net.Network;
-import com.lyl.boon.net.entity.BaseTngouEntiry;
-import com.lyl.boon.net.entity.SuperGalleryEntiry;
+import com.lyl.boon.net.entity.SuperGalleryEntity;
 import com.lyl.boon.ui.base.fragment.BaseRecyclerFragment;
 
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ import rx.schedulers.Schedulers;
 /**
  * 超级福利的列表页面
  */
-public class SuperBoonListFragment extends BaseRecyclerFragment<SuperGalleryEntiry> {
+public class SuperBoonListFragment extends BaseRecyclerFragment<SuperGalleryEntity.ListBean> {
 
     /**
      * 当前页面显示的分类id
@@ -46,32 +45,34 @@ public class SuperBoonListFragment extends BaseRecyclerFragment<SuperGalleryEnti
 
     @Override
     protected void initData() {
-        mData = new ArrayList<SuperGalleryEntiry>();
+        mData = new ArrayList<SuperGalleryEntity.ListBean>();
         mAdapter = new SuperBoonListAdapter( getHolder(), mData, R.layout.item_image_v );
     }
 
     @Override
     protected void setSubscribe() {
-        subscription = Network.getTngou().getGalleryList( typeId, page, ROWS ).map( new Func1<BaseTngouEntiry<List<SuperGalleryEntiry>>,
-                List<SuperGalleryEntiry>>() {
+        int count = page * ROWS;
+        Network.getTngou().getGalleryList( typeId, count ).map(new Func1<SuperGalleryEntity, List<SuperGalleryEntity.ListBean>>() {
+
             @Override
-            public List<SuperGalleryEntiry> call(BaseTngouEntiry<List<SuperGalleryEntiry>> listBaseTngouEntiry) {
-                if (listBaseTngouEntiry.isStatus()) {
-                    return listBaseTngouEntiry.getTngou();
+            public List<SuperGalleryEntity.ListBean> call(SuperGalleryEntity superGalleryEntity) {
+                if (superGalleryEntity.getCount() > 0){
+                    return superGalleryEntity.getList();
                 }
                 return null;
             }
-        } ).subscribeOn( Schedulers.io() ).observeOn( AndroidSchedulers.mainThread() ).subscribe( observer );
+        }).subscribeOn( Schedulers.io() ).observeOn( AndroidSchedulers.mainThread() ).subscribe( observer );
     }
 
     @Override
     protected void ItemClickListener(View itemView, int viewType, int position) {
-        SuperGalleryEntiry galleryEntiry = (SuperGalleryEntiry) mAdapter.getItem( position );
+        SuperGalleryEntity.ListBean galleryEntiry = (SuperGalleryEntity.ListBean) mAdapter.getItem( position );
 
         Intent intent = new Intent( getHolder(), SuperGalleryActivity.class );
         Bundle bundle = new Bundle();
-        bundle.putInt( "id", galleryEntiry.getId() );
-        bundle.putString( "title", galleryEntiry.getTitle() );
+        bundle.putInt( "menu", typeId );
+        bundle.putString( "id", galleryEntiry.getId() );
+        bundle.putString( "title", galleryEntiry.getGroup_title() );
         intent.putExtra( "budele", bundle );
         startActivity( intent );
         getHolder().overridePendingTransition( R.anim.fade_in, R.anim.fade_out );

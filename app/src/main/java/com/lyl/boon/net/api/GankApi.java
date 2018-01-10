@@ -1,6 +1,6 @@
 package com.lyl.boon.net.api;
 
-import com.lyl.boon.net.entity.BaseGankEntiry;
+import com.lyl.boon.net.entity.BaseGankEntity;
 import com.lyl.boon.net.entity.GankDataEntity;
 
 import java.util.List;
@@ -21,7 +21,7 @@ public interface GankApi {
 //    请求个数： 数字，大于0
 //    第几页：数字，大于0
     @GET("data/{type}/20/{page}")
-    Observable<BaseGankEntiry<List<GankDataEntity>>> getGankList(@Path("type") String type, @Path("page") int page);
+    Observable<BaseGankEntity<List<GankDataEntity>>> getGankList(@Path("type") String type, @Path("page") int page);
 
 
     //    每日数据： http://gank.io/api/day/年/月/日

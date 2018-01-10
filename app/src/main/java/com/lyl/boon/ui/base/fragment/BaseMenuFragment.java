@@ -56,6 +56,7 @@ public abstract class BaseMenuFragment extends BaseFragment {
 
         // 将标题和页面设置给 ViewPager
         mViewPageAdpater.setFragments( mFragments, mTitles );
+        setTabLayout();
 
         //默认标题是第一个fragment的标题
         setTitle(0);

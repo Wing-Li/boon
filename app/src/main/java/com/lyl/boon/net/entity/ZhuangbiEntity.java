@@ -4,7 +4,7 @@ package com.lyl.boon.net.entity;
  * Wing_Li
  * 2016/4/15.
  */
-public class ZhuangbiEntiry extends BaseEntiry{
+public class ZhuangbiEntity extends BaseEntity {
 
     /**
      * id : 551

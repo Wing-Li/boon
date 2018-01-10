@@ -100,26 +100,26 @@ public class MainActivity extends BaseActivity {
         if (NetStatusUtil.isWifi(MainActivity.this)) {
             goFragment(position);
         } else {
-            final MaterialDialog mMaterialDialog = new MaterialDialog(this);
-            mMaterialDialog.setTitle("提示");
-            mMaterialDialog.setMessage("您当前不是WIFI状态，访问会消耗大量的流量，您确定要访问吗？");
-            mMaterialDialog.setPositiveButton("没事儿拼了", new View.OnClickListener() {
+            final MaterialDialog dialog = new MaterialDialog(this);
+            dialog.setTitle("提示");
+            dialog.setMessage("您当前不是WIFI状态，访问会消耗大量的流量，您确定要访问吗？");
+            dialog.setPositiveButton("没事儿拼了", new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     goFragment(position);
-                    mMaterialDialog.dismiss();
+                    dialog.dismiss();
                 }
             });
-            mMaterialDialog.setNegativeButton("还是不看了", new View.OnClickListener() {
+            dialog.setNegativeButton("还是不看了", new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mMaterialDialog.dismiss();
+                    dialog.dismiss();
                     showToast("(*^__^*) 没事去读书学习吧");
                     mBottomBar.selectTabWithId(R.id.menu_learn);
                 }
             });
 
-            mMaterialDialog.show();
+            dialog.show();
         }
     }
 
