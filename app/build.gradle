@@ -51,7 +51,8 @@ android {
             buildConfigField "String", "ENVIRONMENT", '"dev"'
             buildConfigField "String", "BUGLYAPPID", properties.getProperty('appIdMark')
             // 修改 AndroidManifest.xml 里渠道变量
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "dev"]
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "dev",
+                                    app_icon   : "@mipmap/ic_launcher"]
         }
         stage {
             applicationId "com.lyl.boon.stage"
@@ -62,7 +63,8 @@ android {
             buildConfigField "String", "ENVIRONMENT", '"stage"'
             buildConfigField "String", "BUGLYAPPID", properties.getProperty('appIdMark')
 
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "stage"]
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "stage",
+                                    app_icon   : "@drawable/logo"]
         }
         prod {
             applicationId "com.lyl.boon"
@@ -73,7 +75,8 @@ android {
             buildConfigField "String", "ENVIRONMENT", '"prod"'
             buildConfigField "String", "BUGLYAPPID", properties.getProperty('appIdMark')
 
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "prod"]
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "prod",
+                                    app_icon   : "@drawable/logo"]
         }
     }
 
