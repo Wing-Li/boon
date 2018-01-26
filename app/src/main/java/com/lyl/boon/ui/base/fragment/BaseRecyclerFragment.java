@@ -135,10 +135,10 @@ public abstract class BaseRecyclerFragment<T> extends BaseFragment {
         isLoading = true;
         setRefreshing(true);
         unsubscribe();
-        setSubscribe();
+        setSubscribe(observer);
     }
 
-    protected Observer<List<T>> observer = new Observer<List<T>>() {
+    private Observer<List<T>> observer = new Observer<List<T>>() {
         @Override
         public void onCompleted() {
 
@@ -190,7 +190,7 @@ public abstract class BaseRecyclerFragment<T> extends BaseFragment {
     /**
      * 设置订阅的 发布事件，observer在父类已经写好,如果需要做特殊处理，则重写一个。
      */
-    protected abstract void setSubscribe();
+    protected abstract void setSubscribe(Observer observer);
 
     /**
      * 设置列表的类型
@@ -211,7 +211,5 @@ public abstract class BaseRecyclerFragment<T> extends BaseFragment {
      * @param viewType 当有多种 Item 时，当前的类型
      * @param position 第几个
      */
-    protected void ItemClickListener(View itemView, int viewType, int position) {
-
-    }
+    protected abstract void ItemClickListener(View itemView, int viewType, int position);
 }

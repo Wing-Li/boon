@@ -13,6 +13,7 @@ import com.lyl.boon.ui.image.ImageActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
@@ -36,7 +37,7 @@ public class YoungFragment extends BaseRecyclerFragment<GankDataEntity> {
     }
 
     @Override
-    protected void setSubscribe() {
+    protected void setSubscribe(Observer observer) {
         subscription = Network.getGankMenuList().getGankList( "福利", page ).map( new Func1<BaseGankEntity<List<GankDataEntity>>, List<GankDataEntity>>() {
             @Override
             public List<GankDataEntity> call(BaseGankEntity<List<GankDataEntity>> baseGankEntiry) {
@@ -50,7 +51,6 @@ public class YoungFragment extends BaseRecyclerFragment<GankDataEntity> {
 
     @Override
     protected void ItemClickListener(View itemView, int viewType, int position) {
-        super.ItemClickListener( itemView, viewType, position );
         mData = mAdapter.getList();
 
         if (imgs == null) imgs = new ArrayList<>();

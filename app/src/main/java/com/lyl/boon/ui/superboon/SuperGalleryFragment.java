@@ -17,6 +17,7 @@ import com.lyl.boon.ui.image.ImageActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
@@ -74,7 +75,7 @@ public class SuperGalleryFragment extends BaseRecyclerFragment<ListBean> {
     }
 
     @Override
-    protected void setSubscribe() {
+    protected void setSubscribe(Observer observer) {
         //TODO
         //这里设计不太合理
         //因为 父类 ，无法判断 下一次是否还有数据，每一次到这里都会重复加载数据。
@@ -99,7 +100,6 @@ public class SuperGalleryFragment extends BaseRecyclerFragment<ListBean> {
 
     @Override
     protected void ItemClickListener(View itemView, int viewType, int position) {
-        super.ItemClickListener(itemView, viewType, position);
         mData = mAdapter.getList();
 
         if (imgs == null) imgs = new ArrayList<>();
