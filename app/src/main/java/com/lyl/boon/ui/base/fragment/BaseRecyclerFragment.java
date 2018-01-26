@@ -77,6 +77,10 @@ public abstract class BaseRecyclerFragment<T> extends BaseFragment {
         stopLoadingView();
     }
 
+    /**
+     * 设置列表的显示方式
+     * 设置 滑动、刷新、点击 事件
+     */
     private void initView() {
         //必须在子页面new 出列表的Adapter
         if (mAdapter == null) {
@@ -131,6 +135,9 @@ public abstract class BaseRecyclerFragment<T> extends BaseFragment {
         });
     }
 
+    /**
+     * 加载更多
+     */
     protected void loadMore() {
         isLoading = true;
         setRefreshing(true);
@@ -138,6 +145,9 @@ public abstract class BaseRecyclerFragment<T> extends BaseFragment {
         setSubscribe(observer);
     }
 
+    /**
+     * 网络请求成功
+     */
     private Observer<List<T>> observer = new Observer<List<T>>() {
         @Override
         public void onCompleted() {
@@ -164,6 +174,9 @@ public abstract class BaseRecyclerFragment<T> extends BaseFragment {
         }
     };
 
+    /**
+     * 停止加载
+     */
     private void stopLoad(){
         if (mSwipeRefreshLayout != null && mSwipeRefreshLayout.isRefreshing()) {
             mSwipeRefreshLayout.setRefreshing(false);
@@ -171,6 +184,9 @@ public abstract class BaseRecyclerFragment<T> extends BaseFragment {
         isLoading = false;
     }
 
+    /**
+     * 停止加载动画
+     */
     private void stopLoadingView() {
         if (mLoadingView != null && mLoadingView.isShown()) {
             mLoadingView.setVisibility(View.GONE);
@@ -194,13 +210,19 @@ public abstract class BaseRecyclerFragment<T> extends BaseFragment {
 
     /**
      * 设置列表的类型
+     * 给 mListType 赋值以下类型
      * <p/>
-     * BaseRecyclerFragment.TYPE_LIST 列表；TYPE_GRID 网格；TYPE_STAG_V 竖向瀑布流；
+     * BaseRecyclerFragment.TYPE_LIST 列表；</>
+     * BaseRecyclerFragment.TYPE_GRID 网格；</>
+     * BaseRecyclerFragment.TYPE_STAG_V 竖向瀑布流；
      */
     protected abstract void initListType();
 
     /**
      * 初始化 mData 和 mAdaper
+     * <p/>
+     * mData 是 List<T> <p/>
+     * mAdaper 必须继承 MyBaseAdapter
      */
     protected abstract void initData();
 
