@@ -52,7 +52,7 @@ android {
             buildConfigField "String", "BUGLYAPPID", properties.getProperty('appIdMark')
             // 修改 AndroidManifest.xml 里渠道变量
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "dev",
-                                    app_icon   : "@mipmap/ic_launcher"]
+                                    app_icon   : "@drawable/ic_launcher"]
         }
         stage {
             applicationId "com.lyl.boon.stage"
