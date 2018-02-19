@@ -15,6 +15,7 @@ import com.lyl.boon.ui.base.fragment.BaseRecyclerFragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
@@ -52,7 +53,7 @@ public class LearnListFragment extends BaseRecyclerFragment<GankDataEntity> {
     }
 
     @Override
-    protected void setSubscribe() {
+    protected void setSubscribe(Observer observer) {
         subscription = Network.getGankMenuList().getGankList(type, page).map(new Func1<BaseGankEntity<List<GankDataEntity>>, List<GankDataEntity>>() {
             @Override
             public List<GankDataEntity> call(BaseGankEntity<List<GankDataEntity>> baseGankEntiry) {

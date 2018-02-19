@@ -13,6 +13,7 @@ import com.lyl.boon.ui.base.fragment.BaseRecyclerFragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
@@ -50,7 +51,7 @@ public class SuperBoonListFragment extends BaseRecyclerFragment<SuperGalleryEnti
     }
 
     @Override
-    protected void setSubscribe() {
+    protected void setSubscribe(Observer observer) {
         int count = page * ROWS;
         Network.getTngou().getGalleryList( typeId, count ).map(new Func1<SuperGalleryEntity, List<SuperGalleryEntity.ListBean>>() {
 

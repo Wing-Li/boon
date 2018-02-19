@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rx.Observable;
+import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func4;
 import rx.schedulers.Schedulers;
@@ -22,7 +23,7 @@ import rx.schedulers.Schedulers;
 public class JokeFragment extends BaseRecyclerFragment<ZhuangbiEntity> {
 
     @Override
-    protected void setSubscribe() {
+    protected void setSubscribe(Observer observer) {
         subscription = Observable.zip( Network.getZhuangbi().search( "可爱" ), Network.getZhuangbi().search( "110" ), Network.getZhuangbi().search( "在下" ),
                 Network.getZhuangbi().search( "装逼" ), new Func4<List<ZhuangbiEntity>, List<ZhuangbiEntity>, List<ZhuangbiEntity>, List<ZhuangbiEntity>,
                         List<ZhuangbiEntity>>() {

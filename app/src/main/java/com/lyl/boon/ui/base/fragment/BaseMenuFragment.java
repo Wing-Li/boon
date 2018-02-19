@@ -46,6 +46,9 @@ public abstract class BaseMenuFragment extends BaseFragment {
         initData();
     }
 
+    /**
+     * 初始化 标题 和 页面
+     */
     private void initData() {
         mTitles = new ArrayList<>();
         mFragments = new ArrayList<>();
@@ -62,11 +65,15 @@ public abstract class BaseMenuFragment extends BaseFragment {
         setTitle(0);
     }
 
+    /**
+     * 将 ViewPage 和 Tablayout 绑定
+     */
     protected void initView() {
         mViewPageAdpater = new MainViewPageAdpater(getChildFragmentManager());
         mViewpager.setAdapter(mViewPageAdpater);
         mTablayout.setupWithViewPager(mViewpager);
 
+        // 滑动 Viewpager 修改标题
         mViewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -86,6 +93,9 @@ public abstract class BaseMenuFragment extends BaseFragment {
         });
     }
 
+    /**
+     * 当 tab 大于 4 个，就可以滑动
+     */
     protected void setTabLayout() {
         if (mViewPageAdpater.getCount() > 4) {
             mTablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
