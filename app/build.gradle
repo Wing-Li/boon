@@ -140,6 +140,7 @@ dependencies {
 
     compile 'com.roughike:bottom-bar:2.3.1'
 
+    compile 'com.github.githubwing:ByeBurger:1.2.3'
     //一个不错的BaseAapter封装类
     compile 'org.byteam.superadapter:superadapter:3.3'
 
