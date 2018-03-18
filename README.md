@@ -16,6 +16,10 @@
 想知道吗？
 
 
+[shadowsocks-libev 配置](https://github.com/Wing-Li/boon/blob/master/shadowsocks-libev.md)，
+国内好多网站都发不了，暂时放这里。
+
+
 ## License
 
     MIT License
