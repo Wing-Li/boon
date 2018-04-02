@@ -12,9 +12,9 @@
 #### 1. 安装
 对于Ubuntu 14.04和16.04用户，请从PPA安装：
 
-    sudo apt-get install software-properties-common -y 
-    sudo add-apt-repository ppa：max-c -lv / shadowsocks-libev -y 
-    sudo apt-get update 
+    sudo apt-get install software-properties-common -y
+    sudo add-apt-repository ppa:max-c-lv/shadowsocks-libev -y
+    sudo apt-get update
     sudo apt install shadowsocks-libev
     
 
