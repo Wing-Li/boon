@@ -1,5 +1,14 @@
 ## shadowsocks-libev
 
+#### 0. 先决条件
+获取最新的源代码
+要获得最新的源代码，您还应该更新子模块，如下所示：
+
+    git clone https://github.com/shadowsocks/shadowsocks-libev.git
+    cd shadowsocks-libev
+    git submodule update --init --recursive
+
+
 #### 1. 安装
 对于Ubuntu 14.04和16.04用户，请从PPA安装：
 
@@ -13,6 +22,7 @@ Ubuntu 16.10或更高版本：
 
     sudo apt update
     sudo apt install shadowsocks-libev
+
     
 #### 2. 配置文件：
 如果只配置一个用户：
@@ -31,10 +41,11 @@ Ubuntu 16.10或更高版本：
         "server":"0.0.0.0",
         "server_port":8099,
         "local_port":1080,
-        "password":"q12345678",
+        "password":"12345678",
         "timeout":600,
         "method":"chacha20-ietf-poly1305",
     }
+
     
 #### 3. 开启服务
 
@@ -44,6 +55,7 @@ Ubuntu 16.10或更高版本：
     
     sudo systemctl start shadowsocks-libev      # for systemd
     
+
     
 ## 配置 simple-obfs 插件
 
@@ -78,7 +90,7 @@ Debian / Ubuntu
         "server":"0.0.0.0",
         "server_port":8099,
         "local_port":1080,
-        "password":"q12345678",
+        "password":"12345678",
         "timeout":600,
         "method":"chacha20-ietf-poly1305",
         "plugin":"/usr/local/bin/obfs-server --obfs http"
@@ -88,7 +100,7 @@ Debian / Ubuntu
         "server":"0.0.0.0",
         "server_port":8338,
         "local_port":1080,
-        "password":"passwd",
+        "password":"12345678",
         "timeout":60,
         "method":"chacha20-ietf-poly1305"，
         "fast_open":true,
