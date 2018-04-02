@@ -1,14 +1,5 @@
 ## shadowsocks-libev
 
-#### 0. 先决条件
-获取最新的源代码
-要获得最新的源代码，您还应该更新子模块，如下所示：
-
-    git clone https://github.com/shadowsocks/shadowsocks-libev.git
-    cd shadowsocks-libev
-    git submodule update --init --recursive
-
-
 #### 1. 安装
 对于Ubuntu 14.04和16.04用户，请从PPA安装：
 
