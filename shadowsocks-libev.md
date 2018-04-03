@@ -1,14 +1,5 @@
 ## shadowsocks-libev
 
-#### 0. 先决条件
-获取最新的源代码
-要获得最新的源代码，您还应该更新子模块，如下所示：
-
-    git clone https://github.com/shadowsocks/shadowsocks-libev.git
-    cd shadowsocks-libev
-    git submodule update --init --recursive
-
-
 #### 1. 安装
 对于Ubuntu 14.04和16.04用户，请从PPA安装：
 
@@ -65,7 +56,8 @@ Ubuntu 16.10或更高版本：
 
 接下来是地址混淆插件，可装 可不装。
 
-    
+
+
 ## 配置 simple-obfs 插件
 
 #### 1. 安装(源码安装)
@@ -86,6 +78,11 @@ Debian / Ubuntu
 如果 ./configure && make 命令出错，试试如下命令：
     
     ./configure --with-sodium-include=/usr/include --with-sodium-lib=/usr/lib --with-mbedtls-include=/usr/include --with-mbedtls-lib=/usr/lib
+    
+    
+我在 ./configure && make 这一步一直出错，直到最后也没有解决。
+做了各种尝试也没有成功，死活都想不起来上一次是怎么搜的了。
+然后就跳过了这一步，继续之后的步骤，最后也运行成功了。
     
     
 #### 2. 服务端配置
@@ -138,4 +135,3 @@ Debian / Ubuntu
 插件：obfs-local
 插件选项：obfs=http;obfs-host=www.bing.com  
 （网址可以随便填，当访问被强网址时，会显示这个网址）
-    
