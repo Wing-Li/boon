@@ -55,6 +55,15 @@ Ubuntu 16.10或更高版本：
     
     sudo systemctl start shadowsocks-libev      # for systemd
     
+#### 4. 在 AWS 配置
+
+1. 进入“实例”，拖到最后，点击进入“安全组”；
+2. 选择“入站”，点击“编辑”，选择“添加规则”；
+3. 填入 端口号，来源 选择 任何位置，点击保存。
+
+**至此，就配置成功了。现在去下载个客户端，填上服务器相关信息，应该就可以连接了。**
+
+接下来是地址混淆插件，可装 可不装。
 
     
 ## 配置 simple-obfs 插件
@@ -66,13 +75,19 @@ Debian / Ubuntu
     sudo apt-get install --no-install-recommends build-essential autoconf libtool libssl-dev libpcre3-dev libev-dev asciidoc xmlto automake
     
     # 源码安装
-    git clone https://github.com/shadowsocks/simple-obfs.git
+    sudo git clone https://github.com/shadowsocks/simple-obfs.git
     cd simple-obfs
-    git submodule update --init --recursive
-    ./autogen.sh
-    ./configure && make
+    sudo git submodule update --init --recursive
+    sudo ./autogen.sh
+    sudo ./configure && make
     sudo make install
 
+
+如果 ./configure && make 命令出错，试试如下命令：
+    
+    ./configure --with-sodium-include=/usr/include --with-sodium-lib=/usr/lib --with-mbedtls-include=/usr/include --with-mbedtls-lib=/usr/lib
+    
+    
 #### 2. 服务端配置
 重新配置 Shadowsocks-libev 的配置文件 /etc/shadowsocks-libev/config.json
 添加如下一行
@@ -111,3 +126,16 @@ Debian / Ubuntu
 #### 3. 运行
 
     service shadowsocks-libev restart
+    
+    
+## 配置客户端
+以此填入：
+服务器地址
+服务器端口
+密码
+加密（选择）
+
+插件：obfs-local
+插件选项：obfs=http;obfs-host=www.bing.com  
+（网址可以随便填，当访问被强网址时，会显示这个网址）
+    
