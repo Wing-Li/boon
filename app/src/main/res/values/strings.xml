@@ -8,6 +8,8 @@
 
     <string name="menu_learn">Learn</string>
     <string name="menu_learn_msg">学习</string>
+    <string name="menu_wanandroid">WanAnd</string>
+    <string name="menu_wanandroid_msg">玩Android</string>
     <string name="menu_joke">Joke</string>
     <string name="menu_joke_msg">逗逼</string>
     <string name="menu_young">Young</string>

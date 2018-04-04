@@ -26,6 +26,10 @@ public class Network {
      **/
     private static final String URL_GANK = "http://gank.io/api/";
     /**
+     * 玩Android请求的地址
+     **/
+    private static final String URL_WANANDROID = "http://www.wanandroid.com/";
+    /**
      * 360图片 请求地址
      */
     private static final String URL_TNGOU = "http://image.so.com/";

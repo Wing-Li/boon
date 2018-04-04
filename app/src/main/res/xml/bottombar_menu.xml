@@ -7,6 +7,12 @@
         barColorWhenSelected="#a8dba8"
         />
     <tab
+        id="@+id/menu_wanandroid"
+        title="@string/menu_wanandroid"
+        icon="@drawable/ic_android_black_24dp"
+        barColorWhenSelected="#276692"
+        />
+    <tab
         id="@+id/menu_joke"
         title="@string/menu_joke"
         icon="@drawable/ic_sentiment_very_satisfied_black_24dp"

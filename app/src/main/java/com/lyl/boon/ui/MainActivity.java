@@ -14,6 +14,7 @@ import com.lyl.boon.ui.base.BaseActivity;
 import com.lyl.boon.ui.joke.JokeFragment;
 import com.lyl.boon.ui.learn.LearnFragment;
 import com.lyl.boon.ui.superboon.SuperBoonFragment;
+import com.lyl.boon.ui.wanandroid.WanAndroidFragment;
 import com.lyl.boon.ui.young.YoungFragment;
 import com.lyl.boon.utils.NetStatusUtil;
 import com.roughike.bottombar.BottomBar;
@@ -26,6 +27,7 @@ import me.drakeet.materialdialog.MaterialDialog;
 public class MainActivity extends BaseActivity {
 
     private LearnFragment learnFragment;
+    private WanAndroidFragment wanandroidFragment;
     private YoungFragment youngFragment;
     private JokeFragment jokeFragment;
     private SuperBoonFragment superFragment;
@@ -70,6 +72,10 @@ public class MainActivity extends BaseActivity {
                     case R.id.menu_learn: //学习
                         setActTitle(R.string.menu_learn_msg);
                         toFragment(learnFragment);
+                        break;
+
+                    case R.id.menu_wanandroid: //玩Android
+                        goFragment(0);
                         break;
 
                     case R.id.menu_joke: //开心
@@ -126,6 +132,14 @@ public class MainActivity extends BaseActivity {
     private void goFragment(int position) {
 
         switch (position) {
+
+            case 0://玩Android
+                setActTitle(R.string.menu_wanandroid_msg);
+                if (wanandroidFragment == null) {
+                    wanandroidFragment = new WanAndroidFragment();
+                }
+                toFragment(wanandroidFragment);
+                break;
 
             case 1://开心
                 setActTitle(R.string.menu_joke_msg);
