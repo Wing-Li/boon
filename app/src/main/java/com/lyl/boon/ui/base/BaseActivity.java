@@ -118,23 +118,23 @@ public class BaseActivity extends AppCompatActivity {
         });
     }
 
-    public void setShareIcon(final String shareContent) {
+    public void setShareIcon(final String shareTitle, final String shareContent) {
         mActionRightImg.setVisibility(View.VISIBLE);
         mActionRightImg.setImageResource(R.drawable.ic_share_black_24dp);
         mActionRightImg.setColorFilter(Color.GRAY);
         mActionRightImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shareContent(shareContent);
+                shareContent(shareTitle, shareContent);
             }
         });
     }
 
-    public void shareContent(String text) {
+    public void shareContent(String shareTitle, String text) {
         if (TextUtils.isEmpty(text)) {
             showToast(R.string.share_err);
         } else {
-            share(text);
+            share(shareTitle, text);
         }
     }
 
@@ -151,13 +151,13 @@ public class BaseActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    private void share(String str) {
+    private void share(String shareTitle, String str) {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_SUBJECT, "分享");
+        intent.putExtra(Intent.EXTRA_SUBJECT, shareTitle);
         intent.putExtra(Intent.EXTRA_TEXT, str);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(Intent.createChooser(intent, "分享"));
+        startActivity(Intent.createChooser(intent, shareTitle));
     }
 
 }

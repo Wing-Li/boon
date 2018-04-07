@@ -48,7 +48,7 @@ public class Html5Activity extends BaseActivity {
         setBackIcon();
         // 设置分享
         String share = mDesc + " 链接地址:" + mUrl;
-        setShareIcon(share);
+        setShareIcon(mDesc, share);
 
         initWebView();
     }

@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.lyl.boon.BuildConfig;
 import com.lyl.boon.net.api.GankApi;
 import com.lyl.boon.net.api.TngouApi;
+import com.lyl.boon.net.api.WanAndroidApi;
 import com.lyl.boon.net.api.ZhuangbiApi;
 
 import java.util.concurrent.TimeUnit;
@@ -45,6 +46,7 @@ public class Network {
 
     private static OkHttpClient.Builder httpClientBuilder;
     private static GankApi gankApi;
+    private static WanAndroidApi wanAndroidApi;
     private static TngouApi tngouApi;
     private static ZhuangbiApi zhuangbiApi;
 
@@ -76,6 +78,16 @@ public class Network {
             gankApi = getRetrofit( URL_GANK ).create( GankApi.class );
         }
         return gankApi;
+    }
+
+    /**
+     * 获取 玩Android 请求的操作。
+     */
+    public static WanAndroidApi getWanAndroidList() {
+        if (wanAndroidApi == null) {
+            wanAndroidApi = getRetrofit( URL_WANANDROID ).create( WanAndroidApi.class );
+        }
+        return wanAndroidApi;
     }
 
     /**

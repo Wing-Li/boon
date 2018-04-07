@@ -3,16 +3,12 @@ package com.lyl.boon.ui.wanandroid;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 
 import com.lyl.boon.R;
 import com.lyl.boon.net.Network;
-import com.lyl.boon.net.entity.BaseGankEntity;
-import com.lyl.boon.net.entity.GankDataEntity;
+import com.lyl.boon.net.entity.WanAndroidEntity;
 import com.lyl.boon.ui.base.fragment.BaseRecyclerFragment;
-import com.lyl.boon.ui.learn.DevelopAdapter;
-import com.lyl.boon.ui.learn.LearnFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,18 +22,12 @@ import rx.schedulers.Schedulers;
  * Wing_Li
  * 2016/4/5.
  */
-public class WanAndroidFragment extends BaseRecyclerFragment<GankDataEntity> {
-
-    /**
-     * 当前页面显示的内容类型： LearnFragment.TYPE
-     **/
-    private String type;
+public class WanAndroidFragment extends BaseRecyclerFragment<WanAndroidEntity.DataBean.DatasBean> {
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        Bundle bundle = getArguments();
-        type = bundle.getString(LearnFragment.LEARN_TYPE);
+        page = 0;
     }
 
     @Override
@@ -47,19 +37,19 @@ public class WanAndroidFragment extends BaseRecyclerFragment<GankDataEntity> {
 
     @Override
     protected void initData() {
-        mData = new ArrayList<GankDataEntity>();
-        mAdapter = new DevelopAdapter(getHolder(), mData, R.layout.item_develop);
-        View itemHrader = LayoutInflater.from(getHolder()).inflate(R.layout.item_header, null);
-        mAdapter.addHeaderView(itemHrader);
+        mData = new ArrayList<WanAndroidEntity.DataBean.DatasBean>();
+        mAdapter = new WanAndroidAdapter(getHolder(), mData, R.layout.item_develop);
     }
 
     @Override
     protected void setSubscribe(Observer observer) {
-        subscription = Network.getGankMenuList().getGankList(type, page).map(new Func1<BaseGankEntity<List<GankDataEntity>>, List<GankDataEntity>>() {
+        subscription = Network.getWanAndroidList().getWanAndroidList(page).map(new Func1<WanAndroidEntity, List<WanAndroidEntity.DataBean.DatasBean>>() {
+
             @Override
-            public List<GankDataEntity> call(BaseGankEntity<List<GankDataEntity>> baseGankEntiry) {
-                if (!baseGankEntiry.isError()) {
-                    return baseGankEntiry.getResults();
+            public List<WanAndroidEntity.DataBean.DatasBean> call(WanAndroidEntity wanAndroidEntity) {
+                WanAndroidEntity.DataBean data = wanAndroidEntity.getData();
+                if (data != null && data.getDatas().size() > 0){
+                    return data.getDatas();
                 }
                 return null;
             }
@@ -68,12 +58,12 @@ public class WanAndroidFragment extends BaseRecyclerFragment<GankDataEntity> {
 
     @Override
     protected void ItemClickListener(View itemView, int viewType, int position) {
-        GankDataEntity gankDataEntity = (GankDataEntity) mAdapter.getItem(position - 1);
+        WanAndroidEntity.DataBean.DatasBean gankDataEntity = (WanAndroidEntity.DataBean.DatasBean) mAdapter.getItem(position - 1);
         //避免内存泄露，开启一个新的进程来加载WebView。
         Intent intent = new Intent("com.lyl.boon.main.web.Html5Activity");
         Bundle bundle = new Bundle();
-        bundle.putString("desc", gankDataEntity.getDesc());
-        bundle.putString("url", gankDataEntity.getUrl());
+        bundle.putString("desc", gankDataEntity.getTitle());
+        bundle.putString("url", gankDataEntity.getLink());
         intent.putExtra("bundle", bundle);
         startActivity(intent);
     }
