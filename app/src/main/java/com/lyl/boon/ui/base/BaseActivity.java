@@ -45,7 +45,7 @@ public class BaseActivity extends AppCompatActivity {
      */
     protected void initActionbar() {
         ActionBar.LayoutParams lp = new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar
-                .LayoutParams.MATCH_PARENT, Gravity.CENTER);
+                .LayoutParams.WRAP_CONTENT, Gravity.CENTER);
         View viewTitleBar = getLayoutInflater().inflate(R.layout.action_bar_title, null);
 
         actionBar = getSupportActionBar();
@@ -54,8 +54,8 @@ public class BaseActivity extends AppCompatActivity {
         actionBar.setCustomView(viewTitleBar, lp);
         actionBar.setDisplayShowHomeEnabled(false);//去掉导航
         actionBar.setDisplayShowTitleEnabled(false);//去掉标题
-        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
 
         View actionView = getSupportActionBar().getCustomView();
         if (actionView == null) return;
@@ -95,7 +95,7 @@ public class BaseActivity extends AppCompatActivity {
 
     public void setBackIcon() {
         mActionLeftImg.setImageResource(R.drawable.ic_back);
-        mActionLeftImg.setColorFilter(Color.GRAY);
+        mActionLeftImg.setColorFilter(Color.BLACK);
         mActionLeftImg.setVisibility(View.VISIBLE);
         mActionLeftImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,7 +109,6 @@ public class BaseActivity extends AppCompatActivity {
         mActionBack.setVisibility(View.GONE);
         mActionRightImg.setVisibility(View.VISIBLE);
         mActionRightImg.setImageResource(R.drawable.ic_info_outline_black_24dp);
-        mActionRightImg.setColorFilter(Color.GRAY);
         mActionRightImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,7 +120,6 @@ public class BaseActivity extends AppCompatActivity {
     public void setShareIcon(final String shareTitle, final String shareContent) {
         mActionRightImg.setVisibility(View.VISIBLE);
         mActionRightImg.setImageResource(R.drawable.ic_share_black_24dp);
-        mActionRightImg.setColorFilter(Color.GRAY);
         mActionRightImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

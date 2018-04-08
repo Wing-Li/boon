@@ -123,7 +123,10 @@ public abstract class BaseRecyclerFragment<T> extends BaseFragment {
             public void onRefresh() {
                 if (!isLoading) {
                     page = 1;
+                    int count = mAdapter.getCount();
                     mAdapter.clear();
+                    mAdapter.notifyItemRangeRemoved(0, count);
+
                     loadMore();
                 }
             }

@@ -189,7 +189,9 @@ public class MainActivity extends BaseActivity {
      * 设置导航栏的标题
      */
     private void setActTitle(int res) {
-        mActionTitle.setText(getString(res));
+        if (mActionTitle != null){
+            mActionTitle.setText(getString(res));
+        }
     }
 
 
