@@ -176,8 +176,7 @@ public class MainActivity extends BaseActivity {
     private void toFragment(Fragment to) {
         if (to == oldFragment) return;
 
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction().setCustomAnimations(android
-                .R.anim.fade_in, android.R.anim.fade_out);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
         if (!to.isAdded()) {    // 先判断是否被add过
             transaction.hide(oldFragment).add(R.id.fragment_content, to).commit(); // 隐藏当前的fragment，add下一个到Activity中
         } else {

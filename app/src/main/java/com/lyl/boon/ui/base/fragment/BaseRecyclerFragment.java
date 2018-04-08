@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.lyl.boon.R;
 import com.lyl.boon.ui.base.BaseFragment;
 import com.lyl.boon.ui.base.apdter.MyBaseAdapter;
+import com.lyl.boon.view.recycler.LinearLayoutManagerWrapper;
 import com.lyl.boon.view.recycler.OnRecycleViewScrollListener;
 import com.wang.avi.AVLoadingIndicatorView;
 
@@ -90,7 +91,7 @@ public abstract class BaseRecyclerFragment<T> extends BaseFragment {
 
         switch (mListType) {
             case TYPE_LIST://列表
-                mLayoutManager = new LinearLayoutManager(getHolder(), LinearLayoutManager.VERTICAL, false);
+                mLayoutManager = new LinearLayoutManagerWrapper(getHolder(), LinearLayoutManager.VERTICAL, false);
                 break;
             case TYPE_GRID://网格
                 mLayoutManager = new GridLayoutManager(getHolder(), GRID_COUNT);

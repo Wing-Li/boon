@@ -58,7 +58,7 @@ public class WanAndroidFragment extends BaseRecyclerFragment<WanAndroidEntity.Da
 
     @Override
     protected void ItemClickListener(View itemView, int viewType, int position) {
-        WanAndroidEntity.DataBean.DatasBean gankDataEntity = (WanAndroidEntity.DataBean.DatasBean) mAdapter.getItem(position - 1);
+        WanAndroidEntity.DataBean.DatasBean gankDataEntity = (WanAndroidEntity.DataBean.DatasBean) mAdapter.getItem(position);
         //避免内存泄露，开启一个新的进程来加载WebView。
         Intent intent = new Intent("com.lyl.boon.main.web.Html5Activity");
         Bundle bundle = new Bundle();
