@@ -189,7 +189,6 @@ public class Html5Activity extends BaseActivity {
             mWebView.destroy();
             mWebView = null;
         }
-        System.exit(0);
     }
 
 }

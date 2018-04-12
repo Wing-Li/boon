@@ -23,6 +23,7 @@
         android:icon="${app_icon}"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:resizeableActivity="true"
         android:theme="@style/AppTheme">
 
         <activity
@@ -37,14 +38,8 @@
 
         <activity
             android:name=".ui.web.Html5Activity"
-            android:launchMode="singleInstance"
-            android:process=":lyl.boon.process.web"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="com.lyl.boon.main.web.Html5Activity"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.image.ImageActivity"
