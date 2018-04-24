@@ -1,5 +1,6 @@
 package com.lyl.boon.ui.web;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.KeyEvent;
@@ -53,6 +54,7 @@ public class Html5Activity extends BaseActivity {
         initWebView();
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     private void initWebView() {
         mLayout = (RelativeLayout) findViewById(R.id.web_layout);
         mLoadingView = (LoadingView) findViewById(R.id.loadingView);
@@ -65,12 +67,12 @@ public class Html5Activity extends BaseActivity {
         mLoadingView.bringToFront();
 
         WebSettings mWebSettings = mWebView.getSettings();
+        mWebSettings.setJavaScriptEnabled(true);  //支持js
         mWebSettings.setSupportZoom(true);
-        mWebSettings.setLoadWithOverviewMode(true);
+        mWebSettings.setBuiltInZoomControls(true);
         mWebSettings.setUseWideViewPort(true);
-        mWebSettings.setDefaultTextEncodingName("utf-8");
+        mWebSettings.setLoadWithOverviewMode(true);
         mWebSettings.setLoadsImagesAutomatically(true);
-        mWebSettings.setSupportMultipleWindows(true);
 
         saveData(mWebSettings);
         newWin(mWebSettings);
