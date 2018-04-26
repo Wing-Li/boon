@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
+    <include layout="@layout/action_bar"/>
+
     <FrameLayout
         android:id="@+id/fragment_content"
         android:layout_width="match_parent"

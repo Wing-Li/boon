@@ -185,16 +185,6 @@ public class MainActivity extends BaseActivity {
         oldFragment = to;
     }
 
-    /**
-     * 设置导航栏的标题
-     */
-    private void setActTitle(int res) {
-        if (mActionTitle != null){
-            mActionTitle.setText(getString(res));
-        }
-    }
-
-
     //***************************
     // 双击返回退出
     //***************************
