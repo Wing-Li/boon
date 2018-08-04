@@ -25,7 +25,6 @@
         android:layout_centerInParent="true"
         android:visibility="visible"
         app:indicator="BallScaleMultiple"
-        app:indicator_color="@color/loading"
-        />
+        app:indicator_color="@color/loading"/>
 
 </RelativeLayout>

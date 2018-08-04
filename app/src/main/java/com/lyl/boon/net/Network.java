@@ -37,7 +37,7 @@ public class Network {
     /**
      * 装逼图片地址
      */
-    private static final String URL_ZHUANG = "http://zhuangbi.info/";
+    private static final String URL_ZHUANG = "http://www.zhuangbi.info/";
 
     /**
      * 设置超时的时间

@@ -8,6 +8,7 @@ import com.lyl.boon.net.entity.ZhuangbiEntity;
 import com.lyl.boon.ui.base.fragment.BaseRecyclerFragment;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import rx.Observable;
@@ -35,7 +36,7 @@ public class JokeFragment extends BaseRecyclerFragment<ZhuangbiEntity> {
 
     @Override
     protected void setSubscribe(Observer observer) {
-        subscription = Observable.zip( Network.getZhuangbi().search( "可爱" ), Network.getZhuangbi().search( "110" ), Network.getZhuangbi().search( "在下" ),
+        subscription = Observable.zip( Network.getZhuangbi().search( "爱" ), Network.getZhuangbi().search( "笑" ), Network.getZhuangbi().search( "美" ),
                 Network.getZhuangbi().search( "装逼" ), new Func4<List<ZhuangbiEntity>, List<ZhuangbiEntity>, List<ZhuangbiEntity>, List<ZhuangbiEntity>,
                         List<ZhuangbiEntity>>() {
                     @Override
@@ -46,6 +47,8 @@ public class JokeFragment extends BaseRecyclerFragment<ZhuangbiEntity> {
                         entiryList.addAll( zhuangbiEntiries2 );
                         entiryList.addAll( zhuangbiEntiries3 );
                         entiryList.addAll( zhuangbiEntiries4 );
+                        // 混乱排序
+                        Collections.shuffle(entiryList);
                         return entiryList;
                     }
                 } ).subscribeOn( Schedulers.io() ).observeOn( AndroidSchedulers.mainThread() ).subscribe( observer );

@@ -35,6 +35,7 @@ public class AboutActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         initActionbar();
+        setBackIcon();
 
         mActionTitle.setText(getString(R.string.about_title));
     }

@@ -5,8 +5,7 @@
               android:layout_height="48dp"
               android:background="?attr/colorPrimary"
               android:gravity="center_vertical"
-              android:orientation="horizontal"
-    >
+              android:orientation="horizontal">
 
     <!-- 左边文字 、 图标 -->
     <TextView
@@ -24,8 +23,7 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:background="@drawable/selector_gary"
-        android:visibility="invisible"
-        />
+        android:visibility="invisible"/>
 
     <!-- 中间文字 -->
     <TextSwitcher
@@ -48,6 +46,5 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:visibility="invisible"/>
-
 
 </LinearLayout>
