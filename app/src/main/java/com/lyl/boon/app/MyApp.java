@@ -10,6 +10,8 @@ import com.tencent.bugly.crashreport.CrashReport;
 
 import java.io.File;
 
+import cn.jpush.android.api.JPushInterface;
+
 /**
  * Wing_Li
  * 2016/3/31.
@@ -23,6 +25,8 @@ public class MyApp extends Application {
     public void onCreate() {
         super.onCreate();
         initBugly();
+
+        JPushInterface.init(this);
     }
 
     /**
