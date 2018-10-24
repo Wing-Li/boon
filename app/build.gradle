@@ -33,6 +33,7 @@ android {
         targetSdkVersion 22
         versionCode 5
         versionName "1.5.0"
+        flavorDimensions "App"
         ndk {
             abiFilters 'armeabi' //设置支持的SO库架构, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
         }
@@ -59,6 +60,8 @@ android {
             // 修改 AndroidManifest.xml 里渠道变量
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "dev",
                                     app_icon   : "@drawable/ic_launcher"]
+
+            dimension "App"
         }
         stage {
             applicationId "com.lyl.boon.stage"
@@ -71,6 +74,8 @@ android {
 
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "stage",
                                     app_icon   : "@drawable/logo"]
+
+            dimension "App"
         }
         prod {
             applicationId "com.lyl.boon"
@@ -83,6 +88,8 @@ android {
 
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "prod",
                                     app_icon   : "@drawable/logo"]
+
+            dimension "App"
         }
     }
 
@@ -110,13 +117,8 @@ android {
 
             // 批量打包
             applicationVariants.all { variant ->
-                variant.outputs.each { output ->
-                    def outputFile = output.outputFile
-                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                        //输出apk名称为：渠道名_版本名_时间.apk
-                        def fileName = "${variant.productFlavors[0].name}_v${defaultConfig.versionName}_${releaseTime()}.apk"
-                        output.outputFile = new File(outputFile.parent, fileName)
-                    }
+                variant.outputs.all {
+                    outputFileName = "${variant.productFlavors[0].name}_v${defaultConfig.versionName}_${releaseTime()}.apk"
                 }
             }
         }
@@ -134,6 +136,7 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.8.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
     compile 'com.jakewharton:butterknife:7.0.1'
+    annotationProcessor 'com.jakewharton:butterknife:7.0.1'
     compile 'com.github.bumptech.glide:glide:4.3.1'
     compile 'com.commit451:PhotoView:1.2.5'
 
