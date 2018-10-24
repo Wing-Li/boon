@@ -9,10 +9,6 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 
-def releaseTime() {
-    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
-}
-
 android {
     compileSdkVersion 27
     buildToolsVersion '27.0.3'
@@ -39,9 +35,9 @@ android {
         }
 
         manifestPlaceholders = [
-                JPUSH_PKGNAME : applicationId,
+                JPUSH_PKGNAME: applicationId,
                 JPUSH_APPKEY : "4d06f2c5c86efb3f03df0160", //JPush上注册的包名对应的appkey.
-                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
         ]
     }
 
@@ -59,7 +55,7 @@ android {
             buildConfigField "String", "BUGLYAPPID", properties.getProperty('appIdMark')
             // 修改 AndroidManifest.xml 里渠道变量
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "dev",
-                                    app_icon   : "@drawable/ic_launcher"]
+                                    app_icon           : "@drawable/ic_launcher"]
 
             dimension "App"
         }
@@ -73,7 +69,7 @@ android {
             buildConfigField "String", "BUGLYAPPID", properties.getProperty('appIdMark')
 
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "stage",
-                                    app_icon   : "@drawable/logo"]
+                                    app_icon           : "@drawable/logo"]
 
             dimension "App"
         }
@@ -87,7 +83,7 @@ android {
             buildConfigField "String", "BUGLYAPPID", properties.getProperty('appIdMark')
 
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "prod",
-                                    app_icon   : "@drawable/logo"]
+                                    app_icon           : "@drawable/logo"]
 
             dimension "App"
         }
@@ -123,6 +119,10 @@ android {
             }
         }
     }
+}
+
+static def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
 }
 
 dependencies {
