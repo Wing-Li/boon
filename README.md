@@ -13,7 +13,7 @@
 ![](https://github.com/Wing-Li/boon/blob/master/img/joke.png)
 ![](https://github.com/Wing-Li/boon/blob/master/img/young.png)
 
-你猜为什么没有第四个 Page 的图？
+你猜为什么没有第五个 Page 的图？
 想知道吗？
 
 
