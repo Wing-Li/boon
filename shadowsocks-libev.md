@@ -77,7 +77,7 @@ Debian / Ubuntu
 
 如果 ./configure && make 命令出错，试试如下命令：
     
-    ./configure --with-sodium-include=/usr/include --with-sodium-lib=/usr/lib --with-mbedtls-include=/usr/include --with-mbedtls-lib=/usr/lib
+    sudo ./configure --with-sodium-include=/usr/include --with-sodium-lib=/usr/lib --with-mbedtls-include=/usr/include --with-mbedtls-lib=/usr/lib
     
     
 我在 ./configure && make 这一步一直出错，直到最后也没有解决。
@@ -93,7 +93,7 @@ Debian / Ubuntu
     
 执行如下命令，自动添加：
 
-    ss-server -c config.json --plugin obfs-server --plugin-opts "obfs=http"
+    sudo ss-server -c config.json --plugin obfs-server --plugin-opts "obfs=http"
     
     
 配置文件如下：
@@ -122,7 +122,7 @@ Debian / Ubuntu
 
 #### 3. 运行
 
-    service shadowsocks-libev restart
+    sudo service shadowsocks-libev restart
     
     
 ## 配置客户端
