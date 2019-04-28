@@ -2,7 +2,7 @@
 移动开发者福利App
 
 自己做的一个小练习。
-第一页是 Gank.io 的资源，
+第一个 tab 是 Gank.io 的资源，第二个是 WanAndroid 的资源，
 后面的都是福利，满满的福利。
 
 ### [App 下载地址](https://www.coolapk.com/apk/com.lyl.boon)
