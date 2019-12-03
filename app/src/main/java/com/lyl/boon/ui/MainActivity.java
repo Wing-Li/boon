@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
 
+import com.jaeger.library.StatusBarUtil;
 import com.lyl.boon.R;
 import com.lyl.boon.ui.base.BaseActivity;
 import com.lyl.boon.ui.joke.JokeFragment;
@@ -42,6 +43,7 @@ public class MainActivity extends BaseActivity {
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        StatusBarUtil.setLightMode(this);
         ButterKnife.bind(this);
 
         initActionbar();

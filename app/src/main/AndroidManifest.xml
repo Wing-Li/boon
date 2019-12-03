@@ -8,10 +8,9 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
-    <!--保存资源到SD卡-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <meta-data
         android:name="android.max_aspect"
@@ -37,6 +36,11 @@
         </activity>
 
         <activity
+            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
+            android:theme="@android:style/Theme.Translucent" />
+
+        <activity
             android:name=".ui.web.Html5Activity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
@@ -54,13 +58,11 @@
             android:launchMode="singleTop"/>
 
         <!--Bugly 应用升级-->
-        <activity
-            android:name="com.tencent.bugly.beta.ui.BetaActivity"
-            android:theme="@android:style/Theme.Translucent" />
 
         <meta-data
             android:name="UMENG"
             android:value="${UMENG_CHANNEL_VALUE}"/>
+
     </application>
 
 
