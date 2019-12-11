@@ -40,6 +40,15 @@
     <string name="param_error">参数错误，请稍后再试</string>
     <string name="image_save">保存图片</string>
     <string name="image_save_msg">您要将图片保存到本地吗？</string>
+
     <string name="save">保存</string>
+    <string name="email">邮 箱</string>
+    <string name="password">密 码</string>
+    <string name="password_confirm">确认密码</string>
+    <string name="login">登 录</string>
+    <string name="register_text">没有账号？立即注册</string>
+
+    <string name="toast_register_input_hint">请确认信息是否输入完毕！</string>
+    <string name="toast_password_confirm_hint">两次输入的密码不同</string>
 
 </resources>

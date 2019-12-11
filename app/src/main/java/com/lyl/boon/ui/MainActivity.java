@@ -1,15 +1,14 @@
 package com.lyl.boon.ui;
 
 import android.os.Bundle;
-import android.support.annotation.IdRes;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
+import androidx.annotation.IdRes;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
 
-import com.jaeger.library.StatusBarUtil;
 import com.lyl.boon.R;
 import com.lyl.boon.ui.base.BaseActivity;
 import com.lyl.boon.ui.joke.JokeFragment;
@@ -43,11 +42,12 @@ public class MainActivity extends BaseActivity {
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        StatusBarUtil.setLightMode(this);
+
         ButterKnife.bind(this);
 
         initActionbar();
         setAppAbout();
+        setFavoriteIcon();
         initBottom();
         initFragmentContent();
     }

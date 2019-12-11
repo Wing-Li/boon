@@ -1,10 +1,11 @@
 package com.lyl.boon.ui.base;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
@@ -14,8 +15,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
+import com.jaeger.library.StatusBarUtil;
 import com.lyl.boon.R;
+import com.lyl.boon.net.model.UserModel;
 import com.lyl.boon.ui.AboutActivity;
+import com.lyl.boon.ui.account.LoginActivity;
+import com.lyl.boon.ui.favorite.FavoriteActivity;
 
 /**
  * Wing_Li
@@ -23,6 +28,7 @@ import com.lyl.boon.ui.AboutActivity;
  */
 public class BaseActivity extends AppCompatActivity {
 
+    public Context mContext;
     // 界面顶部Bar
     public ActionBar actionBar;
     //整个顶部
@@ -35,9 +41,19 @@ public class BaseActivity extends AppCompatActivity {
     //返回按钮
     public TextView mActionBack;
 
+    public UserModel mUserModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mContext = this;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        StatusBarUtil.setLightMode(this);
+        mUserModel = new UserModel(mContext);
     }
 
     /**
@@ -107,12 +123,28 @@ public class BaseActivity extends AppCompatActivity {
 
     public void setAppAbout() {
         mActionBack.setVisibility(View.GONE);
-        mActionRightImg.setVisibility(View.VISIBLE);
-        mActionRightImg.setImageResource(R.drawable.ic_info_outline_black_24dp);
-        mActionRightImg.setOnClickListener(new View.OnClickListener() {
+        mActionLeftImg.setVisibility(View.VISIBLE);
+        mActionLeftImg.setImageResource(R.drawable.ic_info_outline_black_24dp);
+        mActionLeftImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(BaseActivity.this, AboutActivity.class));
+            }
+        });
+    }
+
+    public void setFavoriteIcon() {
+        mActionBack.setVisibility(View.GONE);
+        mActionRightImg.setVisibility(View.VISIBLE);
+        mActionRightImg.setImageResource(R.drawable.ic_favorite);
+        mActionRightImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mUserModel.getUserInfo() != null) {
+                    startActivity(new Intent(mContext, FavoriteActivity.class));
+                } else {
+                    startActivity(new Intent(mContext, LoginActivity.class));
+                }
             }
         });
     }

@@ -1,6 +1,6 @@
 package com.lyl.boon.net;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.lyl.boon.BuildConfig;
 import com.lyl.boon.net.api.GankApi;

@@ -1,7 +1,7 @@
 package com.lyl.boon.ui.superboon;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 import com.lyl.boon.ui.base.fragment.BaseMenuFragment;
 
