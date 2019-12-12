@@ -61,21 +61,59 @@ object LeanCloudNet {
         return AVUser.getCurrentUser()
     }
 
-    fun isLogin(): Boolean {
-        return getCurrentUser() != null
-    }
-
     fun saveFavorite(title: String, author: String, url: String) {
         val obj = AVObject("Favorite")
         obj.put("title", title)
         obj.put("author", author)
         obj.put("url", url)
-        obj.save()
+        obj.saveInBackground().subscribe(object :Observer<AVObject>{
+            override fun onComplete() {
+            }
+
+            override fun onSubscribe(d: Disposable) {
+            }
+
+            override fun onNext(t: AVObject) {
+            }
+
+            override fun onError(e: Throwable) {
+            }
+        })
     }
 
     fun deleteFavorite(objId: String) {
         val obj = AVObject.createWithoutData("Favorite", objId)
         obj.delete()
+    }
+
+    fun deleteFavorite(title: String, author: String, url: String) {
+        val obj = AVQuery<AVObject>("Favorite")
+        obj.whereEqualTo("title", title)
+        obj.whereEqualTo("author", author)
+        obj.whereEqualTo("url", url)
+        obj.first.delete()
+    }
+
+    fun isFavorite(title: String, author: String, url: String, callBack: LeanCloudCallBack<Boolean>) {
+        val obj = AVQuery<AVObject>("Favorite")
+        obj.whereEqualTo("title", title)
+        obj.whereEqualTo("author", author)
+        obj.whereEqualTo("url", url)
+        obj.countInBackground().subscribe(object : Observer<Int> {
+            override fun onComplete() {
+            }
+
+            override fun onSubscribe(d: Disposable) {
+            }
+
+            override fun onNext(t: Int) {
+                callBack.onSuccess(t > 0)
+            }
+
+            override fun onError(e: Throwable) {
+                callBack.onError(502, "", null)
+            }
+        })
     }
 
     fun fetchFavorite(callBack: LeanCloudCallBack<List<FavoriteEntity>>) {

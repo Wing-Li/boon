@@ -73,6 +73,7 @@ public class LearnListFragment extends BaseRecyclerFragment<GankDataEntity> {
         Intent intent = new Intent(getContext(), Html5Activity.class);
         Bundle bundle = new Bundle();
         bundle.putString("desc", gankDataEntity.getDesc());
+        bundle.putString("author", gankDataEntity.getWho());
         bundle.putString("url", gankDataEntity.getUrl());
         intent.putExtra("bundle", bundle);
         startActivity(intent);

@@ -64,6 +64,7 @@ public class WanAndroidFragment extends BaseRecyclerFragment<WanAndroidEntity.Da
         Intent intent = new Intent(getContext(), Html5Activity.class);
         Bundle bundle = new Bundle();
         bundle.putString("desc", gankDataEntity.getTitle());
+        bundle.putString("author", gankDataEntity.getAuthor());
         bundle.putString("url", gankDataEntity.getLink());
         intent.putExtra("bundle", bundle);
         startActivity(intent);

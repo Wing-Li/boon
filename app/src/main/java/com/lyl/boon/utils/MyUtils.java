@@ -1,5 +1,9 @@
 package com.lyl.boon.utils;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+
 import com.lyl.boon.R;
 
 import java.util.Random;
@@ -17,4 +21,9 @@ public class MyUtils {
         return mTextColors[new Random().nextInt(6)];
     }
 
+    public static void setClipText(Context context, String str) {
+        ClipboardManager clipboardManager= (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clipData = ClipData.newPlainText("test", str);
+        clipboardManager.setPrimaryClip(clipData);
+    }
 }

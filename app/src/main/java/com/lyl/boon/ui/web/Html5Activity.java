@@ -10,21 +10,36 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.appcompat.widget.ListPopupWindow;
+
 import com.lyl.boon.R;
+import com.lyl.boon.net.LeanCloudCallBack;
+import com.lyl.boon.net.LeanCloudNet;
 import com.lyl.boon.ui.base.BaseActivity;
+import com.lyl.boon.utils.MyUtils;
 import com.lyl.boon.view.loading.LoadingView;
 import com.lyl.boon.utils.LogUtil;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.io.File;
+import java.util.ArrayList;
 
 
 public class Html5Activity extends BaseActivity {
 
     private String mUrl;
+    private String mAuthor;
     private String mDesc;
+
+    private Boolean isFavorite;
 
     private RelativeLayout mLayout;
     private LoadingView mLoadingView;
@@ -36,22 +51,37 @@ public class Html5Activity extends BaseActivity {
         setContentView(R.layout.activity_web);
 
         Bundle bundle = getIntent().getBundleExtra("bundle");
-        if (bundle != null){
-            mUrl = bundle.getString("url");
+        if (bundle != null) {
             mDesc = bundle.getString("desc");
+            mAuthor = bundle.getString("author");
+            mUrl = bundle.getString("url");
             LogUtil.d("Web--Url:", mUrl);
-        }else {
+        } else {
             showToast(getString(R.string.param_error));
             return;
         }
 
         initActionbar();
         setBackIcon();
-        // 设置分享
-        String share = mDesc + " 链接地址:" + mUrl;
-        setShareIcon(mDesc, share);
+
+        initData();
 
         initWebView();
+        initMoreItem();
+    }
+
+    private void initData() {
+        LeanCloudNet.INSTANCE.isFavorite(mDesc, mAuthor, mUrl, new LeanCloudCallBack<Boolean>() {
+            @Override
+            public void onSuccess(Boolean aBoolean) {
+                isFavorite = aBoolean;
+                LogUtil.d(mDesc + "=== 已收藏");
+            }
+
+            @Override
+            public void onError(int code, @NotNull String msg, @Nullable Exception e) {
+            }
+        });
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -83,6 +113,69 @@ public class Html5Activity extends BaseActivity {
         mWebView.loadUrl(mUrl);
     }
 
+    private void initMoreItem() {
+        mActionRightImg.setVisibility(View.VISIBLE);
+        mActionRightImg.setImageResource(R.drawable.ic_more);
+        mActionRightImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initListPopuItem(v);
+            }
+        });
+    }
+
+    private void initListPopuItem(View view) {
+        ArrayList<String> moreItems = new ArrayList<>();
+        if (isFavorite) {
+            moreItems.add("取消收藏");
+        } else {
+            moreItems.add("收藏");
+        }
+        moreItems.add("复制链接");
+        moreItems.add("分享");
+
+        final ListPopupWindow mListPop = new ListPopupWindow(this);
+        mListPop.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, moreItems));
+        mListPop.setWidth(500);
+        mListPop.setHeight(LinearLayoutCompat.LayoutParams.WRAP_CONTENT);
+        mListPop.setAnchorView(view);
+        mListPop.setModal(true);
+        mListPop.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0: {
+                        if (isFavorite) {
+                            LeanCloudNet.INSTANCE.deleteFavorite(mDesc, mAuthor, mUrl);
+                            showToast("取消收藏");
+                            isFavorite = true;
+                        } else {
+                            LeanCloudNet.INSTANCE.saveFavorite(mDesc, mAuthor, mUrl);
+                            showToast("收藏成功");
+                            isFavorite = false;
+                        }
+                        break;
+                    }
+
+                    case 1: {
+                        MyUtils.setClipText(mContext, mUrl);
+                        showToast("复制成功");
+                        break;
+                    }
+
+                    case 2: {
+                        String share = mDesc + " 链接地址:" + mUrl;
+                        shareContent(mDesc, share);
+                        break;
+                    }
+                }
+                mListPop.dismiss();
+            }
+        });
+
+        mListPop.show();
+    }
+
     /**
      * 多窗口的问题
      */
@@ -99,8 +192,8 @@ public class Html5Activity extends BaseActivity {
     private void saveData(WebSettings mWebSettings) {
         //有时候网页需要自己保存一些关键数据,Android WebView 需要自己设置
         File cacheDir = getApplicationContext().getCacheDir();
-        if (cacheDir != null){
-            String appCachePath  = cacheDir.getAbsolutePath();
+        if (cacheDir != null) {
+            String appCachePath = cacheDir.getAbsolutePath();
             mWebSettings.setDomStorageEnabled(true);
             mWebSettings.setDatabaseEnabled(true);
             mWebSettings.setAppCacheEnabled(true);
