@@ -143,16 +143,18 @@ public class Html5Activity extends BaseActivity {
         mListPop.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mListPop.dismiss();
+
                 switch (position) {
                     case 0: {
                         if (isFavorite) {
                             LeanCloudNet.INSTANCE.deleteFavorite(mDesc, mAuthor, mUrl);
                             showToast("取消收藏");
-                            isFavorite = true;
+                            isFavorite = false;
                         } else {
                             LeanCloudNet.INSTANCE.saveFavorite(mDesc, mAuthor, mUrl);
                             showToast("收藏成功");
-                            isFavorite = false;
+                            isFavorite = true;
                         }
                         break;
                     }
@@ -169,7 +171,6 @@ public class Html5Activity extends BaseActivity {
                         break;
                     }
                 }
-                mListPop.dismiss();
             }
         });
 

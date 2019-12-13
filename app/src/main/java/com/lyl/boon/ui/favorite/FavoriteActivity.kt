@@ -13,6 +13,10 @@ class FavoriteActivity : BaseActivity() {
 
         setContentView(R.layout.activity_favorite)
 
+        initActionbar()
+        mActionTitle.setText(getString(R.string.favorite))
+        setBackIcon()
+
         initViews()
     }
 

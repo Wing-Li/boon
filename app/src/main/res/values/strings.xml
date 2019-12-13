@@ -50,5 +50,6 @@
 
     <string name="toast_register_input_hint">请确认信息是否输入完毕！</string>
     <string name="toast_password_confirm_hint">两次输入的密码不同</string>
+    <string name="favorite">收藏夹</string>
 
 </resources>

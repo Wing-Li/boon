@@ -1,10 +1,12 @@
 package com.lyl.boon.net
 
+import android.text.TextUtils
 import cn.leancloud.AVUser
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 import cn.leancloud.AVObject
 import cn.leancloud.AVQuery
+import cn.leancloud.types.AVNull
 import com.lyl.boon.net.entity.FavoriteEntity
 import com.lyl.boon.net.entity.UserInfoEntity
 
@@ -61,12 +63,17 @@ object LeanCloudNet {
         return AVUser.getCurrentUser()
     }
 
+    const val DB_FAVORITE = "Favorite"
+    const val DB_FAVORITE_TITLE = "title"
+    const val DB_FAVORITE_AUTHOR = "author"
+    const val DB_FAVORITE_URL = "url"
+
     fun saveFavorite(title: String, author: String, url: String) {
-        val obj = AVObject("Favorite")
-        obj.put("title", title)
-        obj.put("author", author)
-        obj.put("url", url)
-        obj.saveInBackground().subscribe(object :Observer<AVObject>{
+        val obj = AVObject(DB_FAVORITE)
+        obj.put(DB_FAVORITE_TITLE, title)
+        obj.put(DB_FAVORITE_AUTHOR, author)
+        obj.put(DB_FAVORITE_URL, url)
+        obj.saveInBackground().subscribe(object : Observer<AVObject> {
             override fun onComplete() {
             }
 
@@ -81,24 +88,49 @@ object LeanCloudNet {
         })
     }
 
-    fun deleteFavorite(objId: String) {
-        val obj = AVObject.createWithoutData("Favorite", objId)
-        obj.delete()
-    }
-
     fun deleteFavorite(title: String, author: String, url: String) {
-        val obj = AVQuery<AVObject>("Favorite")
-        obj.whereEqualTo("title", title)
-        obj.whereEqualTo("author", author)
-        obj.whereEqualTo("url", url)
-        obj.first.delete()
+        val obj = AVQuery<AVObject>(DB_FAVORITE)
+        obj.whereEqualTo(DB_FAVORITE_TITLE, title)
+        obj.whereEqualTo(DB_FAVORITE_AUTHOR, author)
+        obj.whereEqualTo(DB_FAVORITE_URL, url)
+        obj.firstInBackground.subscribe(object : Observer<AVObject> {
+            override fun onComplete() {
+            }
+
+            override fun onSubscribe(d: Disposable) {
+            }
+
+            override fun onNext(t: AVObject) {
+                val objId = t["objectId"] as? String
+                if (!TextUtils.isEmpty(objId)) {
+                    val avObject = AVObject.createWithoutData(DB_FAVORITE, objId)
+                    avObject.deleteInBackground().subscribe(object :Observer<AVNull> {
+                        override fun onComplete() {
+                        }
+
+                        override fun onSubscribe(d: Disposable) {
+                        }
+
+                        override fun onNext(t: AVNull) {
+                        }
+
+                        override fun onError(e: Throwable) {
+                        }
+
+                    })
+                }
+            }
+
+            override fun onError(e: Throwable) {
+            }
+        })
     }
 
     fun isFavorite(title: String, author: String, url: String, callBack: LeanCloudCallBack<Boolean>) {
-        val obj = AVQuery<AVObject>("Favorite")
-        obj.whereEqualTo("title", title)
-        obj.whereEqualTo("author", author)
-        obj.whereEqualTo("url", url)
+        val obj = AVQuery<AVObject>(DB_FAVORITE)
+        obj.whereEqualTo(DB_FAVORITE_TITLE, title)
+        obj.whereEqualTo(DB_FAVORITE_AUTHOR, author)
+        obj.whereEqualTo(DB_FAVORITE_URL, url)
         obj.countInBackground().subscribe(object : Observer<Int> {
             override fun onComplete() {
             }
@@ -117,7 +149,7 @@ object LeanCloudNet {
     }
 
     fun fetchFavorite(callBack: LeanCloudCallBack<List<FavoriteEntity>>) {
-        val obj = AVQuery<AVObject>("Favorite")
+        val obj = AVQuery<AVObject>(DB_FAVORITE)
         obj.findInBackground().subscribe(object : Observer<List<AVObject>> {
             override fun onComplete() {
             }
@@ -129,9 +161,9 @@ object LeanCloudNet {
                 val data = t.map {
                     FavoriteEntity(
                             it.objectId,
-                            it.getString("title"),
-                            it.getString("author"),
-                            it.getString("url"),
+                            it.getString(DB_FAVORITE_TITLE),
+                            it.getString(DB_FAVORITE_AUTHOR),
+                            it.getString(DB_FAVORITE_URL),
                             it.createdAt
                     )
                 }

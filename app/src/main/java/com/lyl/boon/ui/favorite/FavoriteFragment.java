@@ -1,5 +1,7 @@
 package com.lyl.boon.ui.favorite;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 
 import com.lyl.boon.R;
@@ -7,6 +9,7 @@ import com.lyl.boon.net.LeanCloudCallBack;
 import com.lyl.boon.net.LeanCloudNet;
 import com.lyl.boon.net.entity.FavoriteEntity;
 import com.lyl.boon.ui.base.fragment.BaseRecyclerFragment;
+import com.lyl.boon.ui.web.Html5Activity;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -55,7 +58,15 @@ public class FavoriteFragment extends BaseRecyclerFragment<FavoriteEntity> {
 
     @Override
     protected void ItemClickListener(View itemView, int viewType, int position) {
-
+        FavoriteEntity entity = (FavoriteEntity) mAdapter.getItem(position);
+        //避免内存泄露，开启一个新的进程来加载WebView。
+        Intent intent = new Intent(getContext(), Html5Activity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("desc", entity.getTitle());
+        bundle.putString("author", entity.getAuthor());
+        bundle.putString("url", entity.getUrl());
+        intent.putExtra("bundle", bundle);
+        startActivity(intent);
     }
 
 }
