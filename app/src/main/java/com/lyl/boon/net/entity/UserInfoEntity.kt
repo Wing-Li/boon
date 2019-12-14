@@ -1,7 +1,7 @@
 package com.lyl.boon.net.entity
 
 class UserInfoEntity(
-        id: String = "",
-        email: String = "",
-        sessionToken: String = ""
+        var id: String = "",
+        var email: String = "",
+        var sessionToken: String = ""
 )

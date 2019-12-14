@@ -8,8 +8,12 @@ import com.lyl.boon.utils.SPUtils
 
 class UserModel(var mContext: Context) {
 
-    fun saveUserInfo(user: UserInfoEntity) {
-        SPUtils.put(mContext, "userInfo", Gson().toJson(user))
+    fun saveUserInfo(user: UserInfoEntity?) {
+        if (user == null) {
+            SPUtils.put(mContext, "userInfo", "")
+        } else {
+            SPUtils.put(mContext, "userInfo", Gson().toJson(user))
+        }
     }
 
     fun getUserInfo(): UserInfoEntity? {
