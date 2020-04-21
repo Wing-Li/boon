@@ -21,6 +21,10 @@
 国内好多网站都发不了，暂时放这里。
 
 
+[搭建SSR/SS服务端教程 (安装器)](https://viencoding.com/article/122)
+
+[搭建v2ray(安装器，安装非常方便)](https://viencoding.com/article/207)
+
 ## License
 
     MIT License
