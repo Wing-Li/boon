@@ -59,7 +59,7 @@ public class Network {
      */
     private static void initOkHttp() {
         httpClientBuilder = new OkHttpClient.Builder();
-        httpClientBuilder.connectTimeout( DEFAULT_TIMEOUT, TimeUnit.SECONDS );
+        httpClientBuilder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
 
         // devCompile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
         // compile 'com.squareup.okhttp3:okhttp:3.8.0'
@@ -75,7 +75,7 @@ public class Network {
      */
     public static GankApi getGankMenuList() {
         if (gankApi == null) {
-            gankApi = getRetrofit( URL_GANK ).create( GankApi.class );
+            gankApi = getRetrofit(URL_GANK).create(GankApi.class);
         }
         return gankApi;
     }
@@ -85,7 +85,7 @@ public class Network {
      */
     public static WanAndroidApi getWanAndroidList() {
         if (wanAndroidApi == null) {
-            wanAndroidApi = getRetrofit( URL_WANANDROID ).create( WanAndroidApi.class );
+            wanAndroidApi = getRetrofit(URL_WANANDROID).create(WanAndroidApi.class);
         }
         return wanAndroidApi;
     }
@@ -95,7 +95,7 @@ public class Network {
      */
     public static TngouApi getTngou() {
         if (tngouApi == null) {
-            tngouApi = getRetrofit( URL_TNGOU ).create( TngouApi.class );
+            tngouApi = getRetrofit(URL_TNGOU).create(TngouApi.class);
         }
         return tngouApi;
     }
@@ -103,9 +103,9 @@ public class Network {
     /**
      * 装逼图片的接口
      */
-    public static ZhuangbiApi getZhuangbi(){
-        if (zhuangbiApi==null){
-            zhuangbiApi = getRetrofit( URL_ZHUANG ).create( ZhuangbiApi.class );
+    public static ZhuangbiApi getZhuangbi() {
+        if (zhuangbiApi == null) {
+            zhuangbiApi = getRetrofit(URL_ZHUANG).create(ZhuangbiApi.class);
         }
         return zhuangbiApi;
     }
@@ -116,10 +116,10 @@ public class Network {
             initOkHttp();
         }
         return new Retrofit.Builder()//
-                .client( httpClientBuilder.build() )//
-                .baseUrl( url )//
-                .addConverterFactory( GsonConverterFactory.create() )//
-                .addCallAdapterFactory( RxJavaCallAdapterFactory.create() )//
+                .client(httpClientBuilder.build())//
+                .baseUrl(url)//
+                .addConverterFactory(GsonConverterFactory.create())//
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())//
                 .build();
     }
 

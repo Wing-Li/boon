@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@+id/action_bar_layout"
-              xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="48dp"
-              android:background="?attr/colorPrimary"
-              android:gravity="center_vertical"
-              android:orientation="horizontal">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/action_bar_layout"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="?attr/colorPrimary"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
 
     <!-- 左边文字 、 图标 -->
     <TextView
@@ -15,23 +15,24 @@
         android:text="@string/back"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/white"
-        android:visibility="gone"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        android:visibility="gone" />
 
     <ImageView
         android:id="@+id/action_bar_left_img"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:background="@drawable/selector_gary"
-        android:visibility="invisible"/>
+        android:padding="4dp"
+        android:visibility="invisible" />
 
     <!-- 中间文字 -->
     <TextSwitcher
         android:id="@+id/action_bar_title_txt"
         style="@style/action_title_style"
-        android:singleLine="true"
         android:ellipsize="middle"
-        android:text="@string/app_name"/>
+        android:singleLine="true"
+        android:text="@string/app_name" />
 
     <!-- 右边文字 、 图标 -->
     <ImageView
@@ -39,12 +40,14 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginEnd="16dp"
-        android:visibility="gone"/>
+        android:padding="4dp"
+        android:visibility="gone" />
 
     <ImageView
         android:id="@+id/action_bar_right_img"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:visibility="invisible"/>
+        android:padding="4dp"
+        android:visibility="invisible" />
 
 </LinearLayout>
