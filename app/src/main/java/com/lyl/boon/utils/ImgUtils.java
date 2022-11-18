@@ -21,7 +21,7 @@ import java.io.File;
 public class ImgUtils {
 
     private static final int placeholderRes = R.drawable.bg_gary;
-    private static final int errorRes = R.drawable.error_img;
+    private static final int errorRes = R.drawable.error_img1;
 
     private static RequestOptions baseOptions = new RequestOptions()//
             .placeholder(placeholderRes)//

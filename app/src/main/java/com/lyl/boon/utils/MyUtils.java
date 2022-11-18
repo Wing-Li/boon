@@ -22,8 +22,12 @@ public class MyUtils {
     }
 
     public static void setClipText(Context context, String str) {
-        ClipboardManager clipboardManager= (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipboardManager clipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clipData = ClipData.newPlainText("test", str);
         clipboardManager.setPrimaryClip(clipData);
+    }
+
+    public static int random(int num) {
+        return new Random().nextInt(num);
     }
 }

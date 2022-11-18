@@ -2,21 +2,16 @@ package com.lyl.boon.net.api;
 
 import com.lyl.boon.net.entity.SuperGalleryEntity;
 import com.lyl.boon.net.entity.SuperImageEntity;
-import com.lyl.boon.net.entity.SuperMenuEntity;
-import com.lyl.boon.net.entity.WanAndroidEntity;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.http.Path;
 import rx.Observable;
-import rx.Subscriber;
 
 /**
  * 宅男女神
@@ -33,7 +28,7 @@ public class ZhaiNanApi {
 
             try {
                 String url = "";
-                if (page == 1) {
+                if (page <= 1) {
                     url = baseUrl + "gallery/" + type + "/";
                 } else {
                     url = baseUrl + "gallery/" + type + "/" + page + ".html";
