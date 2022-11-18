@@ -16,6 +16,7 @@ import java.util.List;
  * Wing_Li
  * 2016/4/14.
  */
+@Deprecated
 public class YongAdapter extends MyBaseAdapter<GankDataEntity> {
 
     private Context context;
@@ -28,7 +29,7 @@ public class YongAdapter extends MyBaseAdapter<GankDataEntity> {
     @Override
     public void onBind(SuperViewHolder holder, int viewType, int position, GankDataEntity item) {
         super.onBind(holder, viewType, position, item);
-        ImgUtils.load(context,item.getUrl(), (ImageView) holder.getView(R.id.item_image_v ));
+        ImgUtils.load(context,item.getUrl(), (ImageView) holder.getView(R.id.item_image ));
     }
 
 }

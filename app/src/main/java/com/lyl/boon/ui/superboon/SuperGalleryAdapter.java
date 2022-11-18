@@ -32,13 +32,13 @@ public class SuperGalleryAdapter extends MyBaseAdapter<SuperImageEntity.ListBean
         if (NetStatusUtil.isWifi(mContext)) {
             ImgUtils.load(context, //
                     item.getQhimg_url(), //
-                    (ImageView) holder.getView(R.id.item_image_h), //
+                    (ImageView) holder.getView(R.id.item_image), //
                     item.getPic_width(), //
                     item.getPic_height());
         } else {
             ImgUtils.load(context, //
                     item.getQhimg_thumb_url(), //
-                    (ImageView) holder.getView(R.id.item_image_h), //
+                    (ImageView) holder.getView(R.id.item_image), //
                     item.getQhimg_thumb_width(),//
                     item.getQhimg_thumb_height());
         }

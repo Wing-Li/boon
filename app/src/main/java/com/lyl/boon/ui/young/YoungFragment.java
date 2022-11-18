@@ -21,6 +21,7 @@ import rx.schedulers.Schedulers;
 /**
  * 妹子
  */
+@Deprecated
 public class YoungFragment extends BaseRecyclerFragment<GankDataEntity> {
 
     private ArrayList<String> imgs;

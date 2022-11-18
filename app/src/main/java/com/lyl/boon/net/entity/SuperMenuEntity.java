@@ -7,9 +7,9 @@ package com.lyl.boon.net.entity;
 public class SuperMenuEntity extends BaseEntity {
 
     private String title;
-    private int type;
+    private String type;
 
-    public SuperMenuEntity(String title, int type) {
+    public SuperMenuEntity(String title, String type) {
         this.title = title;
         this.type = type;
     }
@@ -22,11 +22,11 @@ public class SuperMenuEntity extends BaseEntity {
         this.title = title;
     }
 
-    public int getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(String type) {
         this.type = type;
     }
 }

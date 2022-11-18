@@ -10,7 +10,7 @@ public class SuperGalleryActivity extends BaseActivity {
     private SuperGalleryFragment galleryFragment;
     private String mId;
     private String mTitle;
-    private int mMenu;
+    private String mMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +21,7 @@ public class SuperGalleryActivity extends BaseActivity {
         if (budele != null){
             mId = budele.getString("id");
             mTitle = budele.getString("title");
-            mMenu = budele.getInt("menu");
+            mMenu = budele.getString("menu");
         }else {
             showToast(R.string.msg_net_erro);
             return;
@@ -38,7 +38,7 @@ public class SuperGalleryActivity extends BaseActivity {
             Bundle bundle = new Bundle();
             bundle.putString("id", mId);
             bundle.putString("title", mTitle);
-            bundle.putInt("menu", mMenu);
+            bundle.putString("menu", mMenu);
             galleryFragment.setArguments(bundle);
         }
 

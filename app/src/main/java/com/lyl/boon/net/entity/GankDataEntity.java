@@ -4,6 +4,7 @@ package com.lyl.boon.net.entity;
  * Wing_Li
  * 2016/3/30.
  */
+@Deprecated
 public class GankDataEntity extends BaseEntity {
 
     /**

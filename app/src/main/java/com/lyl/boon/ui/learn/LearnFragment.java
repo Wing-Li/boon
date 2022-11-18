@@ -12,6 +12,7 @@ import java.util.List;
  * Wing_Li
  * 2016/4/1.
  */
+@Deprecated
 public class LearnFragment extends BaseMenuFragment {
 
     public static final String LEARN_TYPE = "type";

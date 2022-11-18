@@ -56,9 +56,9 @@ public class MainActivity extends BaseActivity {
      * 设置中间内容页
      */
     private void initFragmentContent() {
-        learnFragment = new LearnFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_content, learnFragment).commit();
-        oldFragment = learnFragment;
+        wanandroidFragment = new WanAndroidFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_content, wanandroidFragment).commit();
+        oldFragment = wanandroidFragment;
     }
 
     /**
@@ -71,13 +71,14 @@ public class MainActivity extends BaseActivity {
 
                 switch (tabId) {
 
-                    case R.id.menu_learn: //学习
-                        setActTitle(R.string.menu_learn_msg);
-                        toFragment(learnFragment);
-                        break;
+//                    case R.id.menu_learn: //学习
+//                        setActTitle(R.string.menu_learn_msg);
+//                        toFragment(learnFragment);
+//                        break;
 
                     case R.id.menu_wanandroid: //玩Android
-                        goFragment(0);
+                        setActTitle(R.string.menu_learn_msg);
+                        toFragment(wanandroidFragment);
                         break;
 
                     case R.id.menu_joke: //开心
@@ -94,7 +95,7 @@ public class MainActivity extends BaseActivity {
 
                     default:
                         setActTitle(R.string.menu_learn_msg);
-                        toFragment(learnFragment);
+                        toFragment(wanandroidFragment);
                         break;
                 }
             }
@@ -123,7 +124,7 @@ public class MainActivity extends BaseActivity {
                 public void onClick(View v) {
                     dialog.dismiss();
                     showToast("(*^__^*) 没事去读书学习吧");
-                    mBottomBar.selectTabWithId(R.id.menu_learn);
+                    mBottomBar.selectTabWithId(R.id.menu_wanandroid);
                 }
             });
 

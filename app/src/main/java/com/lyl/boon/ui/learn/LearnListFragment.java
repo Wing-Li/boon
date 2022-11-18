@@ -26,6 +26,7 @@ import rx.schedulers.Schedulers;
  * Wing_Li
  * 2016/4/5.
  */
+@Deprecated
 public class LearnListFragment extends BaseRecyclerFragment<GankDataEntity> {
 
     /**
@@ -49,8 +50,8 @@ public class LearnListFragment extends BaseRecyclerFragment<GankDataEntity> {
     protected void initData() {
         mData = new ArrayList<GankDataEntity>();
         mAdapter = new DevelopAdapter(getHolder(), mData, R.layout.item_develop);
-        View itemHrader = LayoutInflater.from(getHolder()).inflate(R.layout.item_header, null);
-        mAdapter.addHeaderView(itemHrader);
+        View itemHeader = LayoutInflater.from(getHolder()).inflate(R.layout.item_header, null);
+        mAdapter.addHeaderView(itemHeader);
     }
 
     @Override

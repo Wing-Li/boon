@@ -1,6 +1,7 @@
 package com.lyl.boon.ui.superboon;
 
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
 
 import com.lyl.boon.ui.base.fragment.BaseMenuFragment;
@@ -17,24 +18,30 @@ public class SuperBoonFragment extends BaseMenuFragment {
 
     @Override
     protected void setFragment(List<String> titles, List<Fragment> fragments) {
-        addFragment(titles, fragments, "萌妹子", 595);
-        addFragment(titles, fragments, "少女", 625);
-        addFragment(titles, fragments, "婚纱", 596);
-        addFragment(titles, fragments, "车模", 600);
-        addFragment(titles, fragments, "明星", 599);
-        addFragment(titles, fragments, "街拍", 596);
-        addFragment(titles, fragments, "时装秀", 2006);
-        addFragment(titles, fragments, "女孩们", 2007);
-        addFragment(titles, fragments, "cosplay", 598);
+        addFragment(titles, fragments, "骨感", "gugan");
+        addFragment(titles, fragments, "女神", "nvshen");
+        addFragment(titles, fragments, "极品", "jipin");
+        addFragment(titles, fragments, "美腿", "meitui");
+        addFragment(titles, fragments, "波涛汹涌", "botao");
+        addFragment(titles, fragments, "人间胸器", "xiongqi");
+        addFragment(titles, fragments, "娇小萝莉", "jiaoxiao");
+        addFragment(titles, fragments, "童颜巨乳", "tongyanjuru");
+        addFragment(titles, fragments, "肉感", "rougan");
+        addFragment(titles, fragments, "白嫩", "bainen");
+        addFragment(titles, fragments, "小麦色", "xiaomaise");
+        addFragment(titles, fragments, "玉足", "yuzu");
+        addFragment(titles, fragments, "蜜桃臀", "mitaotun");
+        addFragment(titles, fragments, "尤物", "youwu");
+        addFragment(titles, fragments, "美臀", "meitun");
     }
 
-    private void addFragment(List<String> titles, List<Fragment> fragments, String title, int id) {
-        titles.add( title );
+    private void addFragment(List<String> titles, List<Fragment> fragments, String title, String id) {
+        titles.add(title);
 
         Fragment fragment = new SuperBoonListFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt( SUPER_TYPE, id );
-        fragment.setArguments( bundle );
-        fragments.add( fragment );
+        bundle.putString(SUPER_TYPE, id);
+        fragment.setArguments(bundle);
+        fragments.add(fragment);
     }
 }

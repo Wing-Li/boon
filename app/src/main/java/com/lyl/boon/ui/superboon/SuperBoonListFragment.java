@@ -26,7 +26,7 @@ public class SuperBoonListFragment extends BaseRecyclerFragment<SuperGalleryEnti
     /**
      * 当前页面显示的分类id
      */
-    private int typeId;
+    private String typeId;
 
     /**
      * 每页显示多少个
@@ -35,48 +35,47 @@ public class SuperBoonListFragment extends BaseRecyclerFragment<SuperGalleryEnti
 
     @Override
     public void onAttach(Context context) {
-        super.onAttach( context );
-        typeId = getArguments().getInt( SuperBoonFragment.SUPER_TYPE );
+        super.onAttach(context);
+        typeId = getArguments().getString(SuperBoonFragment.SUPER_TYPE);
     }
 
     @Override
     protected void initListType() {
-        mListType = BaseRecyclerFragment.TYPE_STAG_V;
+        mListType = BaseRecyclerFragment.TYPE_GRID;
     }
 
     @Override
     protected void initData() {
         mData = new ArrayList<SuperGalleryEntity.ListBean>();
-        mAdapter = new SuperBoonListAdapter( getHolder(), mData, R.layout.item_image_v );
+        mAdapter = new SuperBoonListAdapter(getHolder(), mData, R.layout.item_image_v);
     }
 
     @Override
     protected void setSubscribe(Observer observer) {
-        int count = page * ROWS;
-        Network.getTngou().getGalleryList( typeId, count ).map(new Func1<SuperGalleryEntity, List<SuperGalleryEntity.ListBean>>() {
+        Network.getZhaiNanApi().getGalleryList(typeId, page).map(new Func1<SuperGalleryEntity, List<SuperGalleryEntity.ListBean>>() {
 
             @Override
             public List<SuperGalleryEntity.ListBean> call(SuperGalleryEntity superGalleryEntity) {
-                if (superGalleryEntity.getCount() > 0){
+                if (superGalleryEntity.getList().size() > 0) {
                     return superGalleryEntity.getList();
                 }
                 return null;
             }
-        }).subscribeOn( Schedulers.io() ).observeOn( AndroidSchedulers.mainThread() ).subscribe( observer );
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
     @Override
     protected void ItemClickListener(View itemView, int viewType, int position) {
-        SuperGalleryEntity.ListBean galleryEntiry = (SuperGalleryEntity.ListBean) mAdapter.getItem( position );
+        SuperGalleryEntity.ListBean galleryEntiry = (SuperGalleryEntity.ListBean) mAdapter.getItem(position);
 
-        Intent intent = new Intent( getHolder(), SuperGalleryActivity.class );
+        Intent intent = new Intent(getHolder(), SuperGalleryActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt( "menu", typeId );
-        bundle.putString( "id", galleryEntiry.getId() );
-        bundle.putString( "title", galleryEntiry.getGroup_title() );
-        intent.putExtra( "budele", bundle );
-        startActivity( intent );
-        getHolder().overridePendingTransition( R.anim.fade_in, R.anim.fade_out );
+        bundle.putString("menu", typeId);
+        bundle.putString("id", galleryEntiry.getId());
+        bundle.putString("title", galleryEntiry.getGroup_title());
+        intent.putExtra("budele", bundle);
+        startActivity(intent);
+        getHolder().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
 }

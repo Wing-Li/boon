@@ -4,8 +4,8 @@ import androidx.annotation.NonNull;
 
 import com.lyl.boon.BuildConfig;
 import com.lyl.boon.net.api.GankApi;
-import com.lyl.boon.net.api.TngouApi;
 import com.lyl.boon.net.api.WanAndroidApi;
+import com.lyl.boon.net.api.ZhaiNanApi;
 import com.lyl.boon.net.api.ZhuangbiApi;
 
 import java.util.concurrent.TimeUnit;
@@ -25,6 +25,7 @@ public class Network {
     /**
      * Gank请求的地址
      **/
+    @Deprecated
     private static final String URL_GANK = "http://gank.io/api/";
     /**
      * 玩Android请求的地址
@@ -47,8 +48,8 @@ public class Network {
     private static OkHttpClient.Builder httpClientBuilder;
     private static GankApi gankApi;
     private static WanAndroidApi wanAndroidApi;
-    private static TngouApi tngouApi;
     private static ZhuangbiApi zhuangbiApi;
+    private static ZhaiNanApi zhaiNanApi;
 
 
     private Network() {
@@ -73,6 +74,7 @@ public class Network {
     /**
      * 获取Gank.io 请求的操作。
      */
+    @Deprecated
     public static GankApi getGankMenuList() {
         if (gankApi == null) {
             gankApi = getRetrofit(URL_GANK).create(GankApi.class);
@@ -91,16 +93,6 @@ public class Network {
     }
 
     /**
-     * 获取360图片接口的 请求的操作。
-     */
-    public static TngouApi getTngou() {
-        if (tngouApi == null) {
-            tngouApi = getRetrofit(URL_TNGOU).create(TngouApi.class);
-        }
-        return tngouApi;
-    }
-
-    /**
      * 装逼图片的接口
      */
     public static ZhuangbiApi getZhuangbi() {
@@ -108,6 +100,16 @@ public class Network {
             zhuangbiApi = getRetrofit(URL_ZHUANG).create(ZhuangbiApi.class);
         }
         return zhuangbiApi;
+    }
+
+    /**
+     * 宅男女神的接口
+     */
+    public static ZhaiNanApi getZhaiNanApi() {
+        if (zhaiNanApi == null) {
+            zhaiNanApi = new ZhaiNanApi();
+        }
+        return zhaiNanApi;
     }
 
     @NonNull

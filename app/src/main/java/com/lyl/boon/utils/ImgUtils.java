@@ -59,7 +59,11 @@ public class ImgUtils {
     }
 
     public static void load(Context context, String url, ImageView imageView, int w, int h) {
-        Glide.with(context).load(url).apply(baseOptions).apply(new RequestOptions().override(w, h)).into(imageView);
+        if (w <= 0 || h <= 0) {
+            load(context, url, imageView);
+        } else {
+            Glide.with(context).load(url).apply(baseOptions).apply(new RequestOptions().override(w, h)).into(imageView);
+        }
     }
 
     /**
@@ -109,9 +113,9 @@ public class ImgUtils {
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
-                            if (file != null && file.exists()){
+                            if (file != null && file.exists()) {
                                 downloadImage.downloadImage(file);
-                            }else {
+                            } else {
                                 downloadImage.downloadImage(null);
                             }
                         }

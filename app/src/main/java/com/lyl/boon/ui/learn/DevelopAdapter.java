@@ -17,6 +17,7 @@ import java.util.List;
  * Wing_Li
  * 2016/4/7.
  */
+@Deprecated
 public class DevelopAdapter extends MyBaseAdapter<GankDataEntity> {
 
     public DevelopAdapter(Context context, List<GankDataEntity> items, int layoutResId) {

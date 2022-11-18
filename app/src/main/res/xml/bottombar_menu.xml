@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <tabs>
-    <tab
-        id="@+id/menu_learn"
-        title="@string/menu_learn"
-        icon="@drawable/ic_phone_android_black_24dp"
-        barColorWhenSelected="#a8dba8"
-        />
+<!--    <tab-->
+<!--        id="@+id/menu_learn"-->
+<!--        title="@string/menu_learn"-->
+<!--        icon="@drawable/ic_phone_android_black_24dp"-->
+<!--        barColorWhenSelected="#a8dba8"-->
+<!--        />-->
     <tab
         id="@+id/menu_wanandroid"
         title="@string/menu_wanandroid"

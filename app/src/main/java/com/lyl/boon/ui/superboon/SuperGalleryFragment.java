@@ -3,7 +3,9 @@ package com.lyl.boon.ui.superboon;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
+
 import android.text.TextUtils;
 import android.view.View;
 
@@ -27,7 +29,7 @@ import rx.schedulers.Schedulers;
  */
 public class SuperGalleryFragment extends BaseRecyclerFragment<ListBean> {
 
-    private int menu;
+    private String menu;
     private String galleryId;// 当前页面显示的分类id
     private String title;
 
@@ -38,16 +40,11 @@ public class SuperGalleryFragment extends BaseRecyclerFragment<ListBean> {
 
     private ArrayList<String> imgs;
 
-    /**
-     * 是否加载过
-     */
-    private boolean isLoaded;
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         Bundle bundle = getArguments();
-        menu = bundle.getInt("menu");
+        menu = bundle.getString("menu");
         galleryId = bundle.getString("id");
         title = bundle.getString("title");
     }
@@ -65,32 +62,23 @@ public class SuperGalleryFragment extends BaseRecyclerFragment<ListBean> {
 
     @Override
     protected void initListType() {
-        mListType = BaseRecyclerFragment.TYPE_STAG_H;
+//        mListType = BaseRecyclerFragment.TYPE_STAG_H;
+        mListType = BaseRecyclerFragment.TYPE_LIST;
     }
 
     @Override
     protected void initData() {
         mData = new ArrayList<ListBean>();
-        mAdapter = new SuperGalleryAdapter(getHolder(), mData, R.layout.item_image_h);
+        mAdapter = new SuperGalleryAdapter(getHolder(), mData, R.layout.item_image_v);
     }
 
     @Override
     protected void setSubscribe(Observer observer) {
-        //TODO
-        //这里设计不太合理
-        //因为 父类 ，无法判断 下一次是否还有数据，每一次到这里都会重复加载数据。
-        //提供接口的服务器并没有判断，下一次是否还有数据。
-        if (isLoaded) {
-            setRefreshing(false);
-            return;
-        }
-
-        subscription = Network.getTngou().getGalleryInfo(menu, galleryId).map(new Func1<SuperImageEntity, List<ListBean>>() {
+        subscription = Network.getZhaiNanApi().getGalleryInfo(galleryId, page).map(new Func1<SuperImageEntity, List<ListBean>>() {
             @Override
             public List<ListBean> call(SuperImageEntity superImageEntirty) {
                 if (superImageEntirty != null) {
                     List<ListBean> listBeen = superImageEntirty.getList();
-                    isLoaded = true;
                     return listBeen;
                 }
                 return null;
