@@ -1,6 +1,7 @@
 package com.lyl.boon.ui.web;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.KeyEvent;
@@ -21,6 +22,8 @@ import androidx.appcompat.widget.ListPopupWindow;
 import com.lyl.boon.R;
 import com.lyl.boon.net.LeanCloudCallBack;
 import com.lyl.boon.net.LeanCloudNet;
+import com.lyl.boon.net.model.UserModel;
+import com.lyl.boon.ui.account.LoginActivity;
 import com.lyl.boon.ui.base.BaseActivity;
 import com.lyl.boon.utils.MyUtils;
 import com.lyl.boon.view.loading.LoadingView;
@@ -39,7 +42,7 @@ public class Html5Activity extends BaseActivity {
     private String mAuthor;
     private String mDesc;
 
-    private Boolean isFavorite;
+    private boolean isFavorite;
 
     private FrameLayout mLayout;
     private LoadingView mLoadingView;
@@ -147,14 +150,19 @@ public class Html5Activity extends BaseActivity {
 
                 switch (position) {
                     case 0: {
-                        if (isFavorite) {
-                            LeanCloudNet.INSTANCE.deleteFavorite(mDesc, mAuthor, mUrl);
-                            showToast("取消收藏");
-                            isFavorite = false;
+                        UserModel userModel = new UserModel(mContext);
+                        if (userModel.getUserInfo() != null) {
+                            if (isFavorite) {
+                                LeanCloudNet.INSTANCE.deleteFavorite(mDesc, mAuthor, mUrl);
+                                showToast("取消收藏");
+                                isFavorite = false;
+                            } else {
+                                LeanCloudNet.INSTANCE.saveFavorite(mDesc, mAuthor, mUrl);
+                                showToast("收藏成功");
+                                isFavorite = true;
+                            }
                         } else {
-                            LeanCloudNet.INSTANCE.saveFavorite(mDesc, mAuthor, mUrl);
-                            showToast("收藏成功");
-                            isFavorite = true;
+                            startActivity(new Intent(mContext, LoginActivity.class));
                         }
                         break;
                     }
