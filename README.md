@@ -5,7 +5,7 @@
 第一个 tab 是 大佬公众号 的文章，第二个是 WanAndroid 的，
 后面的都是福利，满满的福利。
 
-### [App 下载地址](https://www.coolapk.com/apk/com.lyl.boon)
+### [App 下载地址](http://betaqa.lylyl.cn/ymup)
 
 
 ![](https://github.com/Wing-Li/boon/blob/master/img/1.png)

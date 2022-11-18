@@ -94,7 +94,7 @@ public class AboutActivity extends BaseActivity {
                 break;
 
             case R.id.link_text:
-                openUri("https://www.coolapk.com/apk/com.lyl.boon");
+                openUri("https://github.com/Wing-Li/boon");
                 break;
 
             case R.id.wing_li:
