@@ -2,16 +2,16 @@
 移动开发者福利App
 
 自己做的一个小练习。
-第一个 tab 是 Gank.io 的资源，第二个是 WanAndroid 的资源，
+第一个 tab 是 大佬公众号 的文章，第二个是 WanAndroid 的，
 后面的都是福利，满满的福利。
 
 ### [App 下载地址](https://www.coolapk.com/apk/com.lyl.boon)
 
 
-![](https://github.com/Wing-Li/boon/blob/master/img/learn.png)
-![](https://github.com/Wing-Li/boon/blob/master/img/android.png)
-![](https://github.com/Wing-Li/boon/blob/master/img/joke.png)
-![](https://github.com/Wing-Li/boon/blob/master/img/young.png)
+![](https://github.com/Wing-Li/boon/blob/master/img/1.png)
+![](https://github.com/Wing-Li/boon/blob/master/img/2.png)
+![](https://github.com/Wing-Li/boon/blob/master/img/3.png)
+![](https://github.com/Wing-Li/boon/blob/master/img/4.png)
 
 你猜为什么没有第五个 Page 的图？
 想知道吗？
