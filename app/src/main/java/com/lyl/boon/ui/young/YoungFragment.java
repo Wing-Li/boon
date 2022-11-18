@@ -37,15 +37,16 @@ public class YoungFragment extends BaseRecyclerFragment<SuperGalleryEntity.ListB
 
     @Override
     protected void setSubscribe(Observer observer) {
-        int page = MyUtils.random(23);
-        subscription = Network.getZhaiNanApi().getGalleryList("qingchun", page).map(superGalleryEntity -> {
+        int page = MyUtils.random(34);
+        // qingchun   jipin
+        subscription = Network.getZhaiNanApi().getGalleryList("keai", page).map(superGalleryEntity -> {
             List<SuperGalleryEntity.ListBean> listBeanList = new ArrayList<>();
             if (superGalleryEntity.getList().size() > 0) {
                 SuperGalleryEntity.ListBean listBean;
                 for (int i = 0; i < 10; i++) {
                     listBean = new SuperGalleryEntity.ListBean();
                     int galleryIndex = MyUtils.random(20);
-                    int sizeIndex = MyUtils.random(30);
+                    int sizeIndex = MyUtils.random(15);
                     SuperGalleryEntity.ListBean bean = superGalleryEntity.getList().get(galleryIndex);
                     // https://img.buuxk.com:85/gallery/28195/36882/cover/0.jpg
                     String imgUrl = bean.getQhimg_url()

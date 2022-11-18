@@ -1,12 +1,14 @@
 package com.lyl.boon.ui.base.fragment;
 
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -98,9 +100,11 @@ public abstract class BaseRecyclerFragment<T> extends BaseFragment {
                 break;
             case TYPE_STAG_V://竖向瀑布流
                 mLayoutManager = new StaggeredGridLayoutManager(GRID_COUNT, StaggeredGridLayoutManager.VERTICAL);
+                ((StaggeredGridLayoutManager) mLayoutManager).setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
                 break;
             case TYPE_STAG_H://横向瀑布流
                 mLayoutManager = new StaggeredGridLayoutManager(GRID_COUNT, StaggeredGridLayoutManager.HORIZONTAL);
+                ((StaggeredGridLayoutManager) mLayoutManager).setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
                 break;
 
             default:
@@ -181,7 +185,7 @@ public abstract class BaseRecyclerFragment<T> extends BaseFragment {
     /**
      * 停止加载
      */
-    private void stopLoad(){
+    private void stopLoad() {
         if (mSwipeRefreshLayout != null && mSwipeRefreshLayout.isRefreshing()) {
             mSwipeRefreshLayout.setRefreshing(false);
         }
@@ -202,7 +206,7 @@ public abstract class BaseRecyclerFragment<T> extends BaseFragment {
      * 显示刷新的进度圈
      */
     protected void setRefreshing(boolean b) {
-        if (mSwipeRefreshLayout != null){
+        if (mSwipeRefreshLayout != null) {
             mSwipeRefreshLayout.setRefreshing(b);
         }
     }
