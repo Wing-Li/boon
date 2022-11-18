@@ -12,8 +12,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.appcompat.widget.ListPopupWindow;
@@ -41,7 +41,7 @@ public class Html5Activity extends BaseActivity {
 
     private Boolean isFavorite;
 
-    private RelativeLayout mLayout;
+    private FrameLayout mLayout;
     private LoadingView mLoadingView;
     private WebView mWebView;
 
@@ -86,7 +86,7 @@ public class Html5Activity extends BaseActivity {
 
     @SuppressLint("SetJavaScriptEnabled")
     private void initWebView() {
-        mLayout = (RelativeLayout) findViewById(R.id.web_layout);
+        mLayout = (FrameLayout) findViewById(R.id.web_layout);
         mLoadingView = (LoadingView) findViewById(R.id.loadingView);
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
