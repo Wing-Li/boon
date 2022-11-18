@@ -14,4 +14,8 @@ public interface WanAndroidApi {
 
     @GET("article/list/{page}/json")
     Observable<WanAndroidEntity> getWanAndroidList(@Path("page") int page);
+
+    @GET("wxarticle/list/{id}/{page}/json")
+    Observable<WanAndroidEntity> getWxArticleList(@Path("id") String id, @Path("page") int page);
+
 }

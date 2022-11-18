@@ -9,7 +9,8 @@ import android.view.View;
 import com.lyl.boon.R;
 import com.lyl.boon.net.Network;
 import com.lyl.boon.net.entity.BaseGankEntity;
-import com.lyl.boon.net.entity.GankDataEntity;
+import com.lyl.boon.net.entity.WanAndroidEntity;
+import com.lyl.boon.net.entity.WanAndroidEntity.DataBean.DatasBean;
 import com.lyl.boon.ui.base.fragment.BaseRecyclerFragment;
 import com.lyl.boon.ui.web.Html5Activity;
 
@@ -26,8 +27,7 @@ import rx.schedulers.Schedulers;
  * Wing_Li
  * 2016/4/5.
  */
-@Deprecated
-public class LearnListFragment extends BaseRecyclerFragment<GankDataEntity> {
+public class LearnListFragment extends BaseRecyclerFragment<WanAndroidEntity.DataBean.DatasBean> {
 
     /**
      * 当前页面显示的内容类型： LearnFragment.TYPE
@@ -48,7 +48,7 @@ public class LearnListFragment extends BaseRecyclerFragment<GankDataEntity> {
 
     @Override
     protected void initData() {
-        mData = new ArrayList<GankDataEntity>();
+        mData = new ArrayList<>();
         mAdapter = new DevelopAdapter(getHolder(), mData, R.layout.item_develop);
         View itemHeader = LayoutInflater.from(getHolder()).inflate(R.layout.item_header, null);
         mAdapter.addHeaderView(itemHeader);
@@ -56,26 +56,20 @@ public class LearnListFragment extends BaseRecyclerFragment<GankDataEntity> {
 
     @Override
     protected void setSubscribe(Observer observer) {
-        subscription = Network.getGankMenuList().getGankList(type, page).map(new Func1<BaseGankEntity<List<GankDataEntity>>, List<GankDataEntity>>() {
-            @Override
-            public List<GankDataEntity> call(BaseGankEntity<List<GankDataEntity>> baseGankEntiry) {
-                if (!baseGankEntiry.isError()) {
-                    return baseGankEntiry.getResults();
-                }
-                return null;
-            }
+        subscription = Network.getWanAndroidList().getWxArticleList(type, page).map(wanAndroidEntity -> {
+            return wanAndroidEntity.getData().getDatas();
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
     @Override
     protected void ItemClickListener(View itemView, int viewType, int position) {
-        GankDataEntity gankDataEntity = (GankDataEntity) mAdapter.getItem(position - 1);
+        WanAndroidEntity.DataBean.DatasBean datasBean = (WanAndroidEntity.DataBean.DatasBean) mAdapter.getItem(position - 1);
         //避免内存泄露，开启一个新的进程来加载WebView。
         Intent intent = new Intent(getContext(), Html5Activity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("desc", gankDataEntity.getDesc());
-        bundle.putString("author", gankDataEntity.getWho());
-        bundle.putString("url", gankDataEntity.getUrl());
+        bundle.putString("desc", datasBean.getTitle());
+        bundle.putString("author", datasBean.getAuthor());
+        bundle.putString("url", datasBean.getLink());
         intent.putExtra("bundle", bundle);
         startActivity(intent);
     }

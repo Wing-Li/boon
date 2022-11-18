@@ -3,7 +3,6 @@ package com.lyl.boon.net;
 import androidx.annotation.NonNull;
 
 import com.lyl.boon.BuildConfig;
-import com.lyl.boon.net.api.GankApi;
 import com.lyl.boon.net.api.WanAndroidApi;
 import com.lyl.boon.net.api.ZhaiNanApi;
 import com.lyl.boon.net.api.ZhuangbiApi;
@@ -23,18 +22,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Network {
 
     /**
-     * Gank请求的地址
-     **/
-    @Deprecated
-    private static final String URL_GANK = "http://gank.io/api/";
-    /**
      * 玩Android请求的地址
      **/
     private static final String URL_WANANDROID = "http://www.wanandroid.com/";
-    /**
-     * 360图片 请求地址
-     */
-    private static final String URL_TNGOU = "http://image.so.com/";
     /**
      * 装逼图片地址
      */
@@ -46,7 +36,6 @@ public class Network {
     private static final int DEFAULT_TIMEOUT = 5;
 
     private static OkHttpClient.Builder httpClientBuilder;
-    private static GankApi gankApi;
     private static WanAndroidApi wanAndroidApi;
     private static ZhuangbiApi zhuangbiApi;
     private static ZhaiNanApi zhaiNanApi;
@@ -69,17 +58,6 @@ public class Network {
             logging.setLevel(HttpLoggingInterceptor.Level.BODY);
             httpClientBuilder.addInterceptor(logging);
         }
-    }
-
-    /**
-     * 获取Gank.io 请求的操作。
-     */
-    @Deprecated
-    public static GankApi getGankMenuList() {
-        if (gankApi == null) {
-            gankApi = getRetrofit(URL_GANK).create(GankApi.class);
-        }
-        return gankApi;
     }
 
     /**

@@ -1,9 +1,11 @@
 package com.lyl.boon.ui;
 
 import android.os.Bundle;
+
 import androidx.annotation.IdRes;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -56,9 +58,9 @@ public class MainActivity extends BaseActivity {
      * 设置中间内容页
      */
     private void initFragmentContent() {
-        wanandroidFragment = new WanAndroidFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_content, wanandroidFragment).commit();
-        oldFragment = wanandroidFragment;
+        learnFragment = new LearnFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_content, learnFragment).commit();
+        oldFragment = learnFragment;
     }
 
     /**
@@ -71,14 +73,13 @@ public class MainActivity extends BaseActivity {
 
                 switch (tabId) {
 
-//                    case R.id.menu_learn: //学习
-//                        setActTitle(R.string.menu_learn_msg);
-//                        toFragment(learnFragment);
-//                        break;
+                    case R.id.menu_learn: //学习
+                        setActTitle(R.string.menu_learn_msg);
+                        toFragment(learnFragment);
+                        break;
 
                     case R.id.menu_wanandroid: //玩Android
-                        setActTitle(R.string.menu_learn_msg);
-                        toFragment(wanandroidFragment);
+                        goFragment(0);
                         break;
 
                     case R.id.menu_joke: //开心
@@ -95,7 +96,7 @@ public class MainActivity extends BaseActivity {
 
                     default:
                         setActTitle(R.string.menu_learn_msg);
-                        toFragment(wanandroidFragment);
+                        toFragment(learnFragment);
                         break;
                 }
             }
@@ -192,7 +193,7 @@ public class MainActivity extends BaseActivity {
      * 设置导航栏的标题
      */
     private void setActTitle(int res) {
-        if (mActionTitle != null){
+        if (mActionTitle != null) {
             mActionTitle.setText(getString(res));
         }
     }
