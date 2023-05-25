@@ -22,7 +22,8 @@ import rx.schedulers.Schedulers;
  */
 public class YoungFragment extends BaseRecyclerFragment<SuperGalleryEntity.ListBean> {
 
-    private ArrayList<String> imgs;
+    private ArrayList<String> mImgs;
+    private ArrayList<String> mLoaded;
 
     @Override
     protected void initListType() {
@@ -33,34 +34,34 @@ public class YoungFragment extends BaseRecyclerFragment<SuperGalleryEntity.ListB
     protected void initData() {
         mData = new ArrayList<SuperGalleryEntity.ListBean>();
         mAdapter = new YongAdapter(getHolder(), mData, R.layout.item_image_v);
+        mLoaded = new ArrayList<>();
     }
 
     @Override
     protected void setSubscribe(Observer observer) {
-        int page = MyUtils.random(34);
-        // qingchun   jipin
-        subscription = Network.getZhaiNanApi().getGalleryList("keai", page).map(superGalleryEntity -> {
+        int page = MyUtils.random(21);
+        // qingchun   jipin  taiwan
+        subscription = Network.getZhaiNanApi().getGalleryList("taiwan", page).map(superGalleryEntity -> {
             List<SuperGalleryEntity.ListBean> listBeanList = new ArrayList<>();
             if (superGalleryEntity.getList().size() > 0) {
                 SuperGalleryEntity.ListBean listBean;
                 for (int i = 0; i < 10; i++) {
-                    listBean = new SuperGalleryEntity.ListBean();
+
                     int galleryIndex = MyUtils.random(20);
                     int sizeIndex = MyUtils.random(15);
                     SuperGalleryEntity.ListBean bean = superGalleryEntity.getList().get(galleryIndex);
-                    // https://img.buuxk.com:85/gallery/28195/36882/cover/0.jpg
-                    String imgUrl = bean.getQhimg_url()
-                            .replace("img", "t1")
-                            .replace("cover/0.jpg", "s/0");
-                    if (sizeIndex < 10) {
-                        imgUrl = imgUrl + "0" + sizeIndex + ".jpg";
-                    } else {
-                        imgUrl = imgUrl + sizeIndex + ".jpg";
+
+                    // https://image.haonvshen.com/zb_users/upload/2021/09/20210914005301163155198175401.jpg
+                    // https://image.haonvshen.com/zb_users/upload/2021/09/20210914005303163155198354159.jpg
+                    String imgUrl = bean.getQhimg_url();
+                    if (!mLoaded.contains(imgUrl)) {
+                        listBean = new SuperGalleryEntity.ListBean();
+                        listBean.setQhimg_url(imgUrl);
+                        listBean.setQhimg_thumb_url(imgUrl);
+                        listBeanList.add(listBean);
+
+                        mLoaded.add(imgUrl);
                     }
-                    // https://img.buuxk.com:85/gallery/28195/36882/s/001.jpg
-                    listBean.setQhimg_url(imgUrl);
-                    listBean.setQhimg_thumb_url(imgUrl);
-                    listBeanList.add(listBean);
                 }
             }
             return listBeanList;
@@ -71,14 +72,14 @@ public class YoungFragment extends BaseRecyclerFragment<SuperGalleryEntity.ListB
     protected void ItemClickListener(View itemView, int viewType, int position) {
         mData = mAdapter.getList();
 
-        if (imgs == null) imgs = new ArrayList<>();
-        imgs.clear();
+        if (mImgs == null) mImgs = new ArrayList<>();
+        mImgs.clear();
 
         for (SuperGalleryEntity.ListBean entity : mData) {
-            imgs.add(entity.getQhimg_url());
+            mImgs.add(entity.getQhimg_url());
         }
 
-        Intent intent = ImageActivity.getIntent(getHolder(), imgs, position);
+        Intent intent = ImageActivity.getIntent(getHolder(), mImgs, position);
         startActivity(intent);
         getHolder().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
