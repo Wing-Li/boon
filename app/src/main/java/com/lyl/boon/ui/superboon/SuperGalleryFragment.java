@@ -30,7 +30,7 @@ import rx.schedulers.Schedulers;
 public class SuperGalleryFragment extends BaseRecyclerFragment<ListBean> {
 
     private String menu;
-    private String galleryId;// 当前页面显示的分类id
+    private String detailsUrl;// 当前页面显示的分类id
     private String title;
 
     /**
@@ -45,7 +45,7 @@ public class SuperGalleryFragment extends BaseRecyclerFragment<ListBean> {
         super.onAttach(context);
         Bundle bundle = getArguments();
         menu = bundle.getString("menu");
-        galleryId = bundle.getString("id");
+        detailsUrl = bundle.getString("detailsUrl");
         title = bundle.getString("title");
     }
 
@@ -74,7 +74,7 @@ public class SuperGalleryFragment extends BaseRecyclerFragment<ListBean> {
 
     @Override
     protected void setSubscribe(Observer observer) {
-        subscription = Network.getZhaiNanApi().getGalleryInfo(galleryId, page).map(new Func1<SuperImageEntity, List<ListBean>>() {
+        subscription = Network.getZhaiNanApi().getGalleryInfo(detailsUrl, page).map(new Func1<SuperImageEntity, List<ListBean>>() {
             @Override
             public List<ListBean> call(SuperImageEntity superImageEntirty) {
                 if (superImageEntirty != null) {

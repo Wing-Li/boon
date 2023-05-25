@@ -15,11 +15,11 @@ import rx.Observable;
 
 /**
  * 宅男女神
- * https://www.gnvshen.com/
+ * https://www.haonvshen.com/
  */
 public class ZhaiNanApi {
 
-    private String baseUrl = "https://www.gnvshen.com/";
+    private String baseUrl = "https://www.haonvshen.com/";
 
     public Observable<SuperGalleryEntity> getGalleryList(String type, int page) {
         return Observable.create(subscriber -> {
@@ -29,9 +29,9 @@ public class ZhaiNanApi {
             try {
                 String url = "";
                 if (page <= 1) {
-                    url = baseUrl + "gallery/" + type + "/";
+                    url = baseUrl + "tags/" + type + ".html";
                 } else {
-                    url = baseUrl + "gallery/" + type + "/" + page + ".html";
+                    url = baseUrl + "tags/" + type + "_" + page + ".html";
                 }
                 Document document = Jsoup.connect(url).get();
                 Elements galleryList = document.select("div#listdiv ul li");
@@ -42,9 +42,9 @@ public class ZhaiNanApi {
                     Element link = gallery.selectFirst("div.galleryli_div a");
                     Element img = gallery.selectFirst("div.galleryli_div img");
 
-                    String imageUrl = img.attr("data-original").replace("img", "t1");
+                    String imageUrl = img.attr("data-original").replace("httpS://", "https://");
 
-                    listBean.setId(link.attr("href")); // g/38047/
+                    listBean.setUrl(link.attr("href")); // https://www.haonvshen.com/gallery/25662.html
                     listBean.setGroup_title(img.attr("title"));
                     listBean.setQhimg_thumb_url(imageUrl);
                     listBean.setQhimg_url(imageUrl);
@@ -63,13 +63,19 @@ public class ZhaiNanApi {
         });
     }
 
-    public Observable<SuperImageEntity> getGalleryInfo(String id, int page) {
+    public Observable<SuperImageEntity> getGalleryInfo(String detailsUrl, int page) {
         return Observable.create(subscriber -> {
             SuperImageEntity superImageEntity = new SuperImageEntity();
             List<SuperImageEntity.ListBean> listBeanList = new ArrayList<>();
 
             try {
-                String url = baseUrl + id + page + ".html";
+                String url = "";
+                if (page <= 1) {
+                    url = detailsUrl; // https://www.haonvshen.com/gallery/25662.html
+                } else {
+                    url = detailsUrl.replace(".html", "_" + page + ".html"); // https://www.haonvshen.com/gallery/25662_2.html
+                }
+
                 Document document = Jsoup.connect(url).get();
                 Elements imgs = document.select("div#high ul img");
 
@@ -77,7 +83,7 @@ public class ZhaiNanApi {
                 for (Element img : imgs) {
                     listBean = new SuperImageEntity.ListBean();
 
-                    String imageUrl = img.attr("src").replace("img", "t1");
+                    String imageUrl = img.attr("src");
                     listBean.setPic_url(imageUrl);
                     listBean.setQhimg_url(imageUrl);
                     listBean.setQhimg_thumb_url(imageUrl);

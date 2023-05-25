@@ -71,9 +71,10 @@ public class SuperBoonListFragment extends BaseRecyclerFragment<SuperGalleryEnti
         Intent intent = new Intent(getHolder(), SuperGalleryActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("menu", typeId);
-        bundle.putString("id", galleryEntiry.getId());
+        bundle.putString("detailsUrl", galleryEntiry.getUrl());
         bundle.putString("title", galleryEntiry.getGroup_title());
         intent.putExtra("budele", bundle);
+        intent.putExtras(bundle);
         startActivity(intent);
         getHolder().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }

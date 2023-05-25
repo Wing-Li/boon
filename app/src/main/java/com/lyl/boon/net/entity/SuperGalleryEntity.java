@@ -47,6 +47,7 @@ public class SuperGalleryEntity extends BaseEntity {
 
     public static class ListBean extends BaseEntity {
         private String id;
+        private String url;
         private String imageid;
         private String group_title;
         private String tag;
@@ -62,6 +63,14 @@ public class SuperGalleryEntity extends BaseEntity {
         private int qhimg_width;
         private int qhimg_height;
         private String dsptime;
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
 
         public String getId() {
             return id;

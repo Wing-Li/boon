@@ -8,7 +8,7 @@ import com.lyl.boon.ui.base.BaseActivity;
 public class SuperGalleryActivity extends BaseActivity {
 
     private SuperGalleryFragment galleryFragment;
-    private String mId;
+    private String mDetailsUrl;
     private String mTitle;
     private String mMenu;
 
@@ -17,12 +17,12 @@ public class SuperGalleryActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_super_gallery);
 
-        Bundle budele = getIntent().getBundleExtra("budele");
-        if (budele != null){
-            mId = budele.getString("id");
-            mTitle = budele.getString("title");
-            mMenu = budele.getString("menu");
-        }else {
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            mDetailsUrl = bundle.getString("detailsUrl");
+            mTitle = bundle.getString("title");
+            mMenu = bundle.getString("menu");
+        } else {
             showToast(R.string.msg_net_erro);
             return;
         }
@@ -36,7 +36,7 @@ public class SuperGalleryActivity extends BaseActivity {
         if (galleryFragment == null) {
             galleryFragment = new SuperGalleryFragment();
             Bundle bundle = new Bundle();
-            bundle.putString("id", mId);
+            bundle.putString("detailsUrl", mDetailsUrl);
             bundle.putString("title", mTitle);
             bundle.putString("menu", mMenu);
             galleryFragment.setArguments(bundle);
