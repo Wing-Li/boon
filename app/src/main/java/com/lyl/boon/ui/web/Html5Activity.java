@@ -202,11 +202,8 @@ public class Html5Activity extends BaseActivity {
         //有时候网页需要自己保存一些关键数据,Android WebView 需要自己设置
         File cacheDir = getApplicationContext().getCacheDir();
         if (cacheDir != null) {
-            String appCachePath = cacheDir.getAbsolutePath();
             mWebSettings.setDomStorageEnabled(true);
             mWebSettings.setDatabaseEnabled(true);
-            mWebSettings.setAppCacheEnabled(true);
-            mWebSettings.setAppCachePath(appCachePath);
         }
     }
 

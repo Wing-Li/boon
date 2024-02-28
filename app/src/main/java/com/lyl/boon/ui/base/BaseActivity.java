@@ -19,6 +19,7 @@ import com.jaeger.library.StatusBarUtil;
 import com.lyl.boon.R;
 import com.lyl.boon.net.model.UserModel;
 import com.lyl.boon.ui.AboutActivity;
+import com.lyl.boon.ui.AboutActivity$$ViewBinder;
 import com.lyl.boon.ui.account.LoginActivity;
 import com.lyl.boon.ui.favorite.FavoriteActivity;
 
